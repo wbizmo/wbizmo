@@ -8,10 +8,10 @@ I'm a Software Engineer in training at [Altschoolafrica](https://altschoolafrica
 
 - 😊 Pronouns: He/him
 - 💡 Fun fact: I'm currently studying at AltSchool Africa [School of Software Engineering](https://altschoolafrica.com/schools/engineering) Class of 2022.
-- 🌱 I’m currently learning JavaScript, Reactjs, and Python.
+- 🌱 I’m currently learning how to use various cloud platforms like AWS, Azure and GCP.
 - 😊 I’m looking for help with open source projects, hackathons, internships, and entry-level opportunities.
 - 💼 Job interests: Data analyst, Frontend Engineer, or Cloud Engineer (Intern or Junior level).
-- 📫 You can [view my resume](#) and contact me by emailing mailtobolaji@gmail.com.
+- 📫 You can [view my resume](#) or contact me by emailing wbizmo@gmail.com.
 
 ---
 
