@@ -1,12 +1,7 @@
 # Hello there; welcome 👋🏾
 
-[![Website Badge](https://img.shields.io/badge/-https://codepen.io/wbizmo-000000?style=for-the-badge&logo=Google-Chrome&logoColor=white&link=https://codepen.io/wbizmo)](https://codepen.io/wbizmo) 
-[![Linkedin Badge](https://img.shields.io/badge/-wbizmo-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/wbizmo)](https://www.linkedin.com/in/wbizmo) 
-[![Twitter Badge](https://img.shields.io/badge/-@wbizmo-1ca0f1?style=for-the-badge&logo=twitter&logoColor=white&link=https://twitter.com/wbizmo)](https://twitter.com/wbizmo)
-
-
 I’m **Williams**, a Web Developer with experience in **software engineering, cloud technologies, finance, and healthcare innovation**.  
-Currently, I’m building **SalesPlus**, a modern **POS and warehouse management system** with Laravel, Vue.js, and Electron.js.  
+Currently, I’m building **[SalesPlus](https://salesplus.sbs)**, a modern **POS and warehouse management system** with Laravel, Vue.js, and Electron.js.  
 I also work with **Faitech** and **Tribes Computers** as an **Instructor and Web Developer**, where I’ve trained students and rebuilt [faitech.com.ng](https://faitech.com.ng).  
 
 ---
@@ -17,7 +12,7 @@ I also work with **Faitech** and **Tribes Computers** as an **Instructor and Web
 - ☁️ Cloud & Hosting: **Oracle Cloud Certified, cPanel administration, WordPress**  
 - 📊 Finance & Strategy: Certified in **Financial Markets (Yale), Portfolio & Risk Management (University of Geneva), Corporate Strategy (University of London), Negotiation (University of Michigan), Leadership (Copenhagen Business School)**  
 - 🛠️ Interests: Web Engineering, Cloud Computing, Digital Finance Solutions, and Scalable Business Apps  
-- 🚀 Current Project: **SalesPlus** – integrating POS, inventory, finance tracking, and reporting into one seamless system  
+- 🚀 Current Project: **[SalesPlus](https://salesplus.sbs)** – integrating POS, inventory, finance tracking, and reporting into one seamless system  
 
 ---
 
@@ -53,6 +48,7 @@ I also work with **Faitech** and **Tribes Computers** as an **Instructor and Web
 - 📧 Email: **wbizmo@gmail.com**  
 - 💼 LinkedIn: [linkedin.com/in/wbizmo](https://linkedin.com/in/wbizmo)  
 - 🐦 Twitter: [@wbizmo](https://twitter.com/wbizmo)  
+- 🖊️ CodePen: [codepen.io/wbizmo](https://codepen.io/wbizmo)  
 
 ---
 
