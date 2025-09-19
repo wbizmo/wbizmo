@@ -1,8 +1,9 @@
 # Hello there; welcome 👋🏾
 
-[![AltSchool Badge](https://img.shields.io/badge/-Engineering-6773E5?style=for-the-badge&logo=Google-Chrome&logoColor=white&link=https://altschoolafrica.com/schools/engineering)](https://altschoolafrica.com/schools/engineering)  
-[![Linkedin Badge](https://img.shields.io/badge/-wbizmo-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/wbizmo)](https://www.linkedin.com/in/wbizmo)  
-[![Twitter Badge](https://img.shields.io/badge/-@wbizmo-1ca0f1?style=for-the-badge&logo=twitter&logoColor=white&link=https://twitter.com/wbizmo)](https://twitter.com/wbizmo)
+[![AltSchool Badge](https://img.shields.io/badge/AltSchool%20Africa-6773E5?style=for-the-badge&logo=google-chrome&logoColor=white)](https://altschoolafrica.com/schools/engineering)  
+[![Linkedin Badge](https://img.shields.io/badge/LinkedIn-wbizmo-blue?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/wbizmo)  
+[![Twitter Badge](https://img.shields.io/badge/Twitter-@wbizmo-1ca0f1?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/wbizmo)  
+
 
 I’m **Williams**, a Web Developer with experience in **software engineering, cloud technologies, finance, and healthcare innovation**.  
 Currently, I’m building **SalesPlus**, a modern **POS and warehouse management system** with Laravel, Vue.js, and Electron.js.  
