@@ -13,7 +13,6 @@ Currently, I’m building **[SalesPlus](https://salesplus.sbs)**, a modern POS, 
 # About Me
 
 - Pronouns: **He/Him**
-- Based in: **Nigeria**
 - Focus Areas:
   - Full-stack web engineering
   - Backend systems & APIs
