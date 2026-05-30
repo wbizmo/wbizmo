@@ -103,7 +103,7 @@ Frontend:
 https://cashflowr-frontend.vercel.app/
 
 GitHub Repository:  
-https://github.com/yourusername/cashflowr
+https://github.com/wbizmo/cashflowr
 
 ---
 
