@@ -1,12 +1,12 @@
 # Hello there; welcome 👋🏾
 
-I'm **Williams**, a Software Engineer focused on building scalable web applications, backend systems, business software, analytics platforms, workflow automation systems, and cloud-powered solutions.
+I'm **Williams**, a Software Engineer focused on building scalable web applications, backend platforms, workflow automation systems, analytics platforms, business software, and cloud-native services.
 
-My experience spans full-stack development, API architecture, event-driven systems, workflow automation, reporting platforms, finance technology, cloud infrastructure, and data analytics.
+My experience spans full-stack engineering, backend architecture, API platforms, queue-driven systems, event-driven workflows, business automation, reporting platforms, finance technology, cloud infrastructure, and data analytics solutions.
 
 I enjoy building software that combines strong engineering principles with practical business value, creating systems that are reliable, maintainable, and capable of solving real-world problems at scale.
 
-Whether I'm developing a REST API, designing a reporting platform, building a business management system, creating workflow automation engines, or analyzing large datasets, my goal is always the same: create software that is useful, efficient, and built to last.
+Whether I'm developing a REST API, designing a reporting platform, building a business management system, creating workflow automation engines, engineering backend infrastructure, or analyzing large datasets, my goal is always the same: create software that is useful, efficient, and built to last.
 
 ---
 
@@ -15,7 +15,8 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 * Pronouns: **He/Him**
 * I build software for business, finance, analytics, automation, and web platforms.
 * I enjoy working across both frontend and backend systems.
-* I care about clean architecture, practical features, reliable systems, and strong user experience.
+* I care about clean architecture, practical features, reliable systems, and strong developer and user experience.
+* I enjoy building systems that automate business processes and reduce operational complexity.
 
 ---
 
@@ -23,19 +24,25 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 
 * Full-Stack Web Development
 * Backend Engineering & Distributed Systems
+* Backend Platform Engineering
 * REST API Design
 * API Platform Development
-* Database Design & Optimization
 * Authentication & Authorization Systems
 * Multi-Tenant Architectures
-* Workflow Automation
+* Workflow Automation Platforms
 * Event-Driven Systems
 * Queue-Based Architectures
 * Distributed Job Processing
-* Cloud Infrastructure
+* Background Worker Architectures
+* Webhook Architecture
+* Job Queue Orchestration
+* API Security & Access Control
+* Database Design & Optimization
 * Reporting & Analytics Systems
 * Financial Technology Solutions
 * Business Process Automation
+* Cloud Infrastructure
+* Production Deployments
 * Technical Documentation
 
 ---
@@ -58,38 +65,81 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 * Bootstrap
 * jQuery
 
+---
+
 ## Backend & Infrastructure
 
 * REST APIs
 * Fastify
 * Prisma ORM
 * Authentication Systems
+* Authorization Systems
 * API Key Authentication
+* Access Control Systems
 * Multi-Tenant Architectures
 * Queue Processing
+* Queue Orchestration
 * Background Job Processing
+* Worker Processes
 * Event-Driven Architecture
+* Event Processing Pipelines
 * Webhooks
+* Workflow Engines
+* Workflow Automation Platforms
 * Scheduled Jobs
 * Redis
+* Redis Caching
+* Redis Queues
 * BullMQ
 * Rate Limiting
 * Audit Logging
-* OpenAPI / Swagger
+* Workspace Isolation
+* OpenAPI
+* Swagger Documentation
+* API Documentation
+* API Security
+* Third-Party Service Integrations
+* Production Monitoring
 * cPanel Administration
 * Oracle Cloud Infrastructure
 
+---
+
 ## Databases & Analytics
 
-* MongoDB
 * PostgreSQL
 * MySQL
+* MongoDB
+* Prisma
+* Relational Database Design
 * Database Modeling
+* Database Design
+* Query Optimization
 * Database Migrations
+* Database Seeding
 * Reporting Dashboards
-* CSV/Excel Processing
+* CSV Processing
+* Excel Processing
 * Financial Analytics
 * Data Visualization
+* Data Analysis
+
+---
+
+## Cloud & DevOps
+
+* Docker
+* Render
+* Neon PostgreSQL
+* Upstash Redis
+* Oracle Cloud Infrastructure
+* CI/CD Workflows
+* Environment Management
+* Infrastructure Configuration
+* Production Deployments
+* Application Monitoring
+
+---
 
 ## Desktop & Business Applications
 
@@ -98,6 +148,7 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 * Inventory Systems
 * Warehouse Management
 * Finance & Reporting Platforms
+* Business Management Systems
 
 ---
 
@@ -106,17 +157,22 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 I am particularly interested in:
 
 * Backend Engineering
+* Platform Engineering
 * System Design
+* Software Architecture
 * API Platforms
+* Developer Platforms
+* Integration Platforms
 * Event-Driven Systems
+* Distributed Systems
+* Backend Infrastructure
+* Workflow Automation Platforms
 * Cloud Computing
 * Business Software Development
 * Financial Systems
-* Workflow Automation
 * Developer Tooling
-* Data Analytics
 * Reporting Platforms
-* Software Architecture
+* Data Analytics
 * Developer Experience
 
 ---
@@ -127,3 +183,4 @@ I am particularly interested in:
 * LinkedIn: https://linkedin.com/in/wbizmo
 * X: https://x.com/user_null_err
 * CodePen: https://codepen.io/wbizmo
+* GitHub: https://github.com/wbizmo
