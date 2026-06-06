@@ -1,30 +1,40 @@
 # Hello there; welcome 👋🏾
 
-I'm **Williams**, a Software Engineer focused on building scalable web applications, backend platforms, workflow automation systems, analytics platforms, business software, and cloud-native services.
+I'm **Williams**, a Software Engineer focused on building scalable web applications, backend platforms, workflow automation systems, analytics platforms, business software, CMS platforms, and cloud-native services.
 
-My experience spans full-stack engineering, backend architecture, API platforms, queue-driven systems, event-driven workflows, business automation, reporting platforms, finance technology, cloud infrastructure, and data analytics solutions.
+My experience spans full-stack engineering, backend architecture, API platforms, workflow automation, CMS development, WordPress engineering, business software, reporting systems, analytics platforms, financial technology solutions, and cloud infrastructure.
 
 I enjoy building software that combines strong engineering principles with practical business value, creating systems that are reliable, maintainable, and capable of solving real-world problems at scale.
 
-Whether I'm developing a REST API, designing a reporting platform, building a business management system, creating workflow automation engines, engineering backend infrastructure, or analyzing large datasets, my goal is always the same: create software that is useful, efficient, and built to last.
+Whether I'm developing a REST API, designing a reporting platform, building a CMS, creating a WordPress theme or plugin, engineering backend infrastructure, developing workflow automation engines, or analyzing large datasets, my goal is always the same: create software that is useful, efficient, and built to last.
 
 ---
 
 # About Me
 
 * Pronouns: **He/Him**
-* I build software for business, finance, analytics, automation, and web platforms.
-* I enjoy working across both frontend and backend systems.
-* I care about clean architecture, practical features, reliable systems, and strong developer and user experience.
+* I build software for business, finance, analytics, automation, content management, and web platforms.
+* I enjoy working across frontend, backend, and infrastructure layers.
+* I care about clean architecture, practical features, maintainable systems, and strong developer and user experience.
 * I enjoy building systems that automate business processes and reduce operational complexity.
+* I enjoy transforming ideas into products that are both technically sound and commercially useful.
 
 ---
 
 # Core Competencies
 
 * Full-Stack Web Development
-* Backend Engineering & Distributed Systems
-* Backend Platform Engineering
+* Backend Engineering
+* Software Architecture
+* Platform Engineering
+* Backend Platform Development
+* CMS Engineering
+* WordPress Development
+* Theme Development
+* Plugin Development
+* Frontend Architecture
+* UI Engineering
+* Design Systems
 * REST API Design
 * API Platform Development
 * Authentication & Authorization Systems
@@ -58,6 +68,7 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 * React
 * PHP
 * Laravel
+* WordPress
 * Python
 * HTML
 * CSS
@@ -102,6 +113,40 @@ Whether I'm developing a REST API, designing a reporting platform, building a bu
 * Production Monitoring
 * cPanel Administration
 * Oracle Cloud Infrastructure
+
+---
+
+## CMS & WordPress
+
+* WordPress Theme Development
+* WordPress Plugin Development
+* Custom Theme Architecture
+* Gutenberg Integration
+* Theme JSON
+* WordPress Customizer
+* Widget Systems
+* Custom Templates
+* Builder-Friendly Themes
+* Responsive Theme Development
+* CMS Development
+* Content Platform Architecture
+* Plugin Architecture
+* Theme Packaging & Distribution
+
+---
+
+## Frontend Engineering
+
+* Responsive Design
+* Design Systems
+* Component Architecture
+* User Interface Engineering
+* Frontend Architecture
+* Accessibility Fundamentals
+* Cross-Browser Compatibility
+* Form Systems
+* Layout Systems
+* Theme Styling Architecture
 
 ---
 
@@ -163,6 +208,9 @@ I am particularly interested in:
 * API Platforms
 * Developer Platforms
 * Integration Platforms
+* CMS Platforms
+* WordPress Engineering
+* Theme & Plugin Development
 * Event-Driven Systems
 * Distributed Systems
 * Backend Infrastructure
