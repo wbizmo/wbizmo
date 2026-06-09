@@ -59,7 +59,7 @@ Areas of Interest
 
 Connect
 
-- Email: wbizmo@gmail.com
-- LinkedIn: linkedin.com/in/wbizmo
-- X: @user_null_err
-- CodePen: codepen.io/wbizmo
+- wbizmo@gmail.com
+- in: https://linkedin.com/in/wbizmo
+- 𝕏: [@user_null_err](https://x.com/user_null_err)
+- ⓘ: https://codepen.io/wbizmo
