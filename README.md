@@ -1,6 +1,6 @@
 Hello there; welcome 👋🏾
 
-I'm Williams, a Software Engineer focused on building web applications, APIs, CMS platforms, automation tools, business software and data-driven products.
+I'm Williams, a Software Engineer focused on building web applications, APIs, CMS platforms, developer tools, automation systems, business software and data-driven products.
 
 ---
 
@@ -37,6 +37,7 @@ Tools & Infrastructure
 - BullMQ
 - OpenAPI
 - Swagger
+- GitHub Actions
 - Oracle Cloud
 - Render
 - Neon PostgreSQL
@@ -49,6 +50,8 @@ Areas of Interest
 - Backend Engineering
 - API Development
 - Platform Engineering
+- Developer Tooling
+- DevOps Automation
 - CMS Development
 - WordPress Development
 - Workflow Automation
@@ -59,7 +62,7 @@ Areas of Interest
 
 Connect
 
-- wbizmo@gmail.com
-- in: https://linkedin.com/in/wbizmo
-- 𝕏: [@user_null_err](https://x.com/user_null_err)
-- ⓘ: https://codepen.io/wbizmo
+- Email: wbizmo@gmail.com
+- LinkedIn: https://linkedin.com/in/wbizmo
+- 𝕏: @user_null_err
+- CodePen: https://codepen.io/wbizmo
