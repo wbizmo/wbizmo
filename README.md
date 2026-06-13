@@ -64,5 +64,5 @@ Connect
 
 - Email: wbizmo@gmail.com
 - LinkedIn: https://linkedin.com/in/wbizmo
-- 𝕏: @user_null_err
+- 𝕏: [@user_null_err](https://x.com/user_null_err)
 - CodePen: https://codepen.io/wbizmo
