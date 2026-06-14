@@ -1,6 +1,6 @@
 Hello there; welcome 👋🏾
 
-I'm Williams, a Software Engineer focused on building web applications, APIs, CMS platforms, developer tools, automation systems, business software and data-driven products.
+I'm Williams, a Backend & Platform Engineer focused on building APIs, integration platforms, CMS systems, developer tools, workflow automation software, business applications and data-driven products.
 
 ---
 
