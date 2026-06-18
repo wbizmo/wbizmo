@@ -69,6 +69,14 @@ My work spans backend architecture, distributed systems, protocol design, develo
 
 ---
 
+## Most Used Languages
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=wbizmo&layout=compact&hide_border=true" />
+</p>
+
+---
+
 ## Connect
 
 * Email: [wbizmo@gmail.com](mailto:wbizmo@gmail.com)
