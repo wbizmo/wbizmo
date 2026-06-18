@@ -76,4 +76,4 @@ My work spans backend architecture, distributed systems, protocol design, develo
 * 𝕏: https://x.com/user_null_err
 * CodePen: https://codepen.io/wbizmo
 * GitHub: https://github.com/wbizmo
-* Website: https://my-portfolio-website-three-ebon.vercel.app
+* Website: https://wbizmo.vercel.app
