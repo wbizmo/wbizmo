@@ -66,8 +66,9 @@ My work spans backend architecture, distributed systems, protocol design, develo
 * WordPress Development
 * Business Software
 * Data Analytics
-* 
+
 ---
+
 ## Core Technologies
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
