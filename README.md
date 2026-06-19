@@ -6,17 +6,17 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 
 ---
 
-Tech Stack
+##Tech Stack
 
-Languages & Frameworks
+###Languages & Frameworks
 
 JavaScript • TypeScript • Node.js • Fastify • React • PHP • Laravel • WordPress • Python • HTML • CSS • Tailwind CSS
 
-Databases
+###Databases
 
 PostgreSQL • MySQL • MongoDB • Redis
 
-Tools & Infrastructure
+###Tools & Infrastructure
 
 Docker • Prisma • BullMQ • OpenAPI • Swagger • GitHub Actions • OCI • Render • Neon • Upstash Redis • TCP Networking • Binary Protocol Design • RPC Systems
 
