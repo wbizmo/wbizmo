@@ -1,28 +1,18 @@
 Hello there; welcome 👋🏾
 
-I'm Williams, a Software Engineer focused on Backend, Platform & Infrastructure Engineering.
+I'm **Williams**, a Software Engineer focused on Backend, Platform & Infrastructure Engineering.
 
 I build APIs, integration platforms, developer tools, protocol systems, workflow automation platforms, CMS products, business software, and cloud-hosted applications.
 
 ---
 
-## Tech Stack
-
-### Languages & Frameworks
+**Languages & Frameworks**
 
 JavaScript • TypeScript • Node.js • Fastify • React • PHP • Laravel • WordPress • Python • HTML • CSS • Tailwind CSS
 
-### Databases
-
-PostgreSQL • MySQL • MongoDB • Redis
-
-### Tools & Infrastructure
-
-Docker • Prisma • BullMQ • OpenAPI • Swagger • GitHub Actions • OCI • Render • Neon • Upstash Redis • TCP Networking • Binary Protocol Design • RPC Systems
-
 ---
 
-## Core Technologies
+**Core Technologies**
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
@@ -39,10 +29,9 @@ Docker • Prisma • BullMQ • OpenAPI • Swagger • GitHub Actions • OCI 
 
 ---
 
-Connect
+**Connect**
 
 - Email: wbizmo@gmail.com
 - LinkedIn: https://linkedin.com/in/wbizmo
-- GitHub: https://github.com/wbizmo
 - CodePen: https://codepen.io/wbizmo
-- Portfolio: https://my-portfolio-website-three-ebon.vercel.app/
+- Portfolio: https://wbizmo.vercel.app/
