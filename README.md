@@ -20,6 +20,10 @@ JavaScript • TypeScript • Node.js • Fastify • React • PHP • Laravel 
   <img src="https://img.shields.io/badge/Go-Top%20100%20Nigeria-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Top 100 Go Developer Nigeria" />
 </p>
 
+<p align="center">
+  <i>Recognition based on CodersRank engineering activity and technology rankings.</i>
+</p>
+
 ---
 
 **Core Technologies**
