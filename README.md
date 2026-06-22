@@ -8,7 +8,7 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 
 **Languages & Technologies**
 
-JavaScript • TypeScript • Go • PHP • Python • SQL • HTML • CSS
+JavaScript • TypeScript • Go • PHP • Python • SQL
 
 Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQL • Redis • Docker • BullMQ • OpenAPI
 
@@ -46,8 +46,12 @@ Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQ
 
 **Connect**
 
-* Email: [wbizmo@gmail.com](mailto:wbizmo@gmail.com)
+* Email:
+* [wbizmo@gmail.com](mailto:wbizmo@gmail.com)
 * LinkedIn: https://linkedin.com/in/wbizmo
-* GitHub: https://github.com/wbizmo
-* CodePen: https://codepen.io/wbizmo
-* Portfolio: https://wbizmo.vercel.app
+* GitHub:
+* https://github.com/wbizmo
+* CodePen:
+* https://codepen.io/wbizmo
+* Portfolio:
+* https://wbizmo.vercel.app
