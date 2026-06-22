@@ -10,7 +10,7 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 
 JavaScript • TypeScript • Go • PHP • Python • SQL • HTML • CSS
 
-Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQL • Redis • Docker • BullMQ • OpenAPI • GitHub Actions
+Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQL • Redis • Docker • BullMQ • OpenAPI
 
 ---
 
@@ -40,7 +40,6 @@ Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQ
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge\&logo=prisma\&logoColor=white)
 ![BullMQ](https://img.shields.io/badge/BullMQ-EA4B71?style=for-the-badge)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?style=for-the-badge\&logo=openapiinitiative\&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge\&logo=github-actions\&logoColor=white)
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge\&logo=laravel\&logoColor=white)
 
 ---
