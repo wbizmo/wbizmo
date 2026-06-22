@@ -15,10 +15,6 @@ Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQ
 ---
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=wbizmo&style=for-the-badge&color=blue" alt="Profile Views" />
-</p>
-
-<p align="center">
   <a href="https://profile.codersrank.io/user/wbizmo">
     <img src="https://img.shields.io/badge/Top%204%25-Developers%20Worldwide-00C4CC?style=for-the-badge" alt="Top 4% Developers Worldwide" />
   </a>
