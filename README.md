@@ -12,8 +12,6 @@ JavaScript • TypeScript • Go • PHP • Python • SQL • HTML • CSS
 
 Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQL • Redis • Docker • BullMQ • OpenAPI • GitHub Actions
 
-Cloud & Platform Engineering • API Design • Systems Integration • Workflow Automation • Developer Tooling • Infrastructure & Observability
-
 ---
 
 <p align="center">
