@@ -44,6 +44,22 @@ Node.js • Fastify • React • Laravel • WordPress • Prisma • PostgreSQ
 
 ---
 
+**Published Open Source Packages**
+
+Toolip — Security & Secrets Management CLI
+
+![npm weekly downloads](https://img.shields.io/npm/dw/toolip)
+![npm version](https://img.shields.io/npm/v/toolip)
+![npm monthly downloads](https://img.shields.io/npm/dm/toolip)
+
+LaunchStack CLI — Deployment Workflow Toolkit
+
+![npm weekly downloads](https://img.shields.io/npm/dw/launchstack-cli)
+![npm version](https://img.shields.io/npm/v/launchstack-cli)
+![npm monthly downloads](https://img.shields.io/npm/dm/launchstack-cli)
+
+---
+
 **Connect**
 
 * Email:
