@@ -64,7 +64,8 @@ LaunchStack CLI — Deployment Workflow Toolkit
 
 * Email:
 * [wbizmo@gmail.com](mailto:wbizmo@gmail.com)
-* LinkedIn: https://linkedin.com/in/wbizmo
+* LinkedIn:
+* https://linkedin.com/in/wbizmo
 * GitHub:
 * https://github.com/wbizmo
 * CodePen:
