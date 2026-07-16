@@ -98,13 +98,13 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 
 <p align="center">
   <a href="https://profile.codersrank.io/user/wbizmo">
-    <img src="https://img.shields.io/badge/Top%203%25-Developers%20Worldwide-00C4CC?style=for-the-badge" alt="Top 3% Developers Worldwide" />
+    <img src="https://img.shields.io/badge/Top%203%25-Developers%20Worldwide-00C4CC?style=for-the-badge" alt="CodersRank Top 3% Developers Worldwide" />
   </a>
   <a href="https://profile.codersrank.io/user/wbizmo">
-    <img src="https://img.shields.io/badge/Fastify-%231%20Nigeria-000000?style=for-the-badge&logo=fastify&logoColor=white" alt="Top Fastify Developer in Nigeria" />
+    <img src="https://img.shields.io/badge/Fastify-%231%20Nigeria-000000?style=for-the-badge&logo=fastify&logoColor=white" alt="CodersRank Top Fastify Developer in Nigeria" />
   </a>
   <a href="https://profile.codersrank.io/user/wbizmo">
-    <img src="https://img.shields.io/badge/Go-Top%20100%20Nigeria-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Top 100 Go Developer in Nigeria" />
+    <img src="https://img.shields.io/badge/Go-Top%20100%20Nigeria-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="CodersRank Top 100 Go Developer in Nigeria" />
   </a>
 </p>
 
