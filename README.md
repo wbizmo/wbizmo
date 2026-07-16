@@ -72,7 +72,6 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 ![Elementor](https://img.shields.io/badge/Elementor-92003B?style=for-the-badge\&logo=elementor\&logoColor=white)
 ![WordPress Plugins](https://img.shields.io/badge/WordPress_Plugin_Development-21759B?style=for-the-badge\&logo=wordpress\&logoColor=white)
 ![WordPress Themes](https://img.shields.io/badge/WordPress_Theme_Development-3858E9?style=for-the-badge\&logo=wordpress\&logoColor=white)
-![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge\&logo=electron\&logoColor=white)
 
 ---
 
@@ -86,6 +85,10 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge\&logo=npm\&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge\&logo=postman\&logoColor=white)
 ![CLI Development](https://img.shields.io/badge/CLI_Development-4D4D4D?style=for-the-badge\&logo=gnubash\&logoColor=white)
+
+---
+
+![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge\&logo=electron\&logoColor=white)
 
 ---
 
