@@ -39,7 +39,6 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge\&logo=sqlite\&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma_ORM-2D3748?style=for-the-badge\&logo=prisma\&logoColor=white)
 ![Neon](https://img.shields.io/badge/Neon_PostgreSQL-00E699?style=for-the-badge\&logo=postgresql\&logoColor=black)
-![MongoDB Atlas](https://img.shields.io/badge/MongoDB_Atlas-47A248?style=for-the-badge\&logo=mongodb\&logoColor=white)
 
 ---
 
@@ -86,7 +85,6 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
 ![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge\&logo=npm\&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge\&logo=postman\&logoColor=white)
-![Swagger UI](https://img.shields.io/badge/Swagger_UI-85EA2D?style=for-the-badge\&logo=swagger\&logoColor=black)
 ![CLI Development](https://img.shields.io/badge/CLI_Development-4D4D4D?style=for-the-badge\&logo=gnubash\&logoColor=white)
 
 ---
