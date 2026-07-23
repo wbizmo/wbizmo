@@ -77,14 +77,14 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 
 ## Testing & Developer Tooling
 
-![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge\&logo=jest\&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge\&logo=vitest\&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge\&logo=eslint\&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
-![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge\&logo=npm\&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge\&logo=postman\&logoColor=white)
-![CLI Development](https://img.shields.io/badge/CLI_Development-4D4D4D?style=for-the-badge\&logo=gnubash\&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![CLI Development](https://img.shields.io/badge/CLI_Development-4D4D4D?style=for-the-badge&logo=gnubash&logoColor=white)
 
 ---
 
@@ -131,7 +131,14 @@ I build APIs, integration platforms, developer tools, protocol systems, workflow
 
 ---
 
-## Published WordPress Product
+## Published WordPress Products
+
+**Origin WP**
+
+A lightweight Elementor-ready WordPress theme with improved blog layouts and subtle admin branding.
+
+[![WordPress Theme](https://img.shields.io/badge/WordPress.org-Origin_WP-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/themes/origin-wp/)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/wbizmo/origin-wp)
 
 ### Wbizmo Form Builder
 
