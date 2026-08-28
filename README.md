@@ -20,7 +20,7 @@ A significant part of my current production work lives in private repositories. 
 
 <p align="center">
   <img height="180" src="https://github-stats-extended.vercel.app/api?username=wbizmo&show_icons=true&theme=transparent&hide_border=true&rank_icon=github" alt="Williams' GitHub stats" />
-  <img height="180" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' GitHub streak" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=transparent&utcOffset=1" alt="Williams' productive commit time" />
 </p>
 
 <p align="center">
