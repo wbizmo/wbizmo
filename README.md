@@ -2,11 +2,11 @@
 
 <p align="center"><strong>Software Engineer · Backend · Platform · Infrastructure · IoT & Connected Systems</strong></p>
 
-I build **production software across backend engineering, platform infrastructure, distributed and event-driven systems, IoT and connected devices, web and mobile applications, desktop clients, developer and security tooling, financial and business platforms, CMS products, and cloud services**.
+I build **production software across backend engineering, platform infrastructure, distributed systems, IoT and connected devices, web and mobile applications, desktop clients, developer tooling, financial and business platforms, CMS products, and cloud services**.
 
-My work spans the path from device or client to production infrastructure: **APIs and service boundaries, networking and messaging, identity and access, queues and background processing, databases and ledgers, third-party integrations, real-time events, containerized deployment, CI/CD, observability, security controls, and operational recovery**.
+My work spans the path from client or device to production infrastructure: **application architecture, backend services, data systems, messaging, integrations, deployment, observability, reliability, and operational recovery**.
 
-I am especially interested in systems that must remain correct when **money, devices, networks, external providers, concurrency, and failures** are involved — with emphasis on idempotency, data integrity, authentication and authorization, failure handling, and maintainable production architecture.
+I am especially interested in systems that must remain correct when **money, devices, networks, external providers, concurrency, and failures** are involved.
 
 A significant part of my current production engineering work lives in private repositories, so the public repositories on this profile represent only part of the systems I build.
 
@@ -35,13 +35,13 @@ A significant part of my current production engineering work lives in private re
 
 <p><strong>WHAT I BUILD</strong></p>
 
-- **Backend & API platforms** — REST APIs, service boundaries, provider integrations, webhooks, API keys, authentication, authorization, RBAC/MFA, rate limits, background jobs, and operational tooling.
-- **Platform, distributed & infrastructure systems** — service discovery, orchestration, routing, queues, messaging, custom protocols, deployment automation, observability, Linux infrastructure, reverse proxies, and self-hosted services.
-- **IoT, connected & real-time systems** — device integration, device-to-cloud APIs, telemetry and alert flows, event ingestion, notifications, connected safety/security workflows, and network-aware failure handling.
-- **Financial & business systems** — transaction workflows, ledgers, reconciliation, idempotency, approval controls, inventory, sales, payments, reporting, audit trails, and accounting-sensitive operations.
-- **Developer & security tooling** — CLI applications, dependency and supply-chain analysis, secrets workflows, protocol tooling, automation, project scaffolding, and developer-experience systems.
-- **Web, mobile, desktop & CMS products** — React and React Native applications, Electron clients, Laravel/Livewire products, WordPress themes/plugins, PWAs, forms, ecommerce, and extensible content platforms.
-- **Cloud & production operations** — containerized workloads, object storage, databases, caching, CI/CD, release pipelines, server hardening, monitoring, backups, and operational recovery.
+- **Backend & API platforms** — production APIs, integrations, background processing, service boundaries, and operational systems.
+- **Platform & distributed systems** — messaging, service coordination, routing, orchestration, infrastructure, and reliability engineering.
+- **IoT & connected systems** — device-backed services, telemetry, real-time events, alerts, and connected operational platforms.
+- **Financial & business systems** — transaction systems, ledgers, reconciliation, inventory, sales, payments, reporting, and accounting-sensitive workflows.
+- **Developer tooling** — CLI applications, automation, project scaffolding, package tooling, and developer-experience systems.
+- **Web, mobile, desktop & CMS products** — browser applications, native mobile applications, desktop clients, Laravel products, and WordPress products.
+- **Cloud & production operations** — containerized workloads, databases, caching, CI/CD, server infrastructure, monitoring, backups, and recovery.
 
 ---
 
@@ -79,7 +79,7 @@ A multi-step WordPress form builder with submission management, email notificati
 
 ---
 
-<p><strong>TECHNOLOGY STACK</strong></p>
+<p><strong>TECH STACK</strong></p>
 
 <p><strong>Languages</strong></p>
 
@@ -90,16 +90,25 @@ A multi-step WordPress form builder with submission management, email notificati
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge)
 
-<p><strong>Backend & Application Frameworks</strong></p>
+<p><strong>Backend</strong></p>
 
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Fastify](https://img.shields.io/badge/Fastify-000000?style=for-the-badge&logo=fastify&logoColor=white)
-![Go Chi](https://img.shields.io/badge/Go_Chi-HTTP_Router-00ADD8?style=for-the-badge&logo=go&logoColor=white)
+![Go Chi](https://img.shields.io/badge/Go_Chi-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Livewire](https://img.shields.io/badge/Livewire-4E56A6?style=for-the-badge&logo=livewire&logoColor=white)
 
-<p><strong>Data & Persistence</strong></p>
+<p><strong>Web, Mobile & Desktop</strong></p>
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge&logo=electron&logoColor=white)
+![WordPress](https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white)
+
+<p><strong>Data & Messaging</strong></p>
 
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
@@ -108,43 +117,10 @@ A multi-step WordPress form builder with submission management, email notificati
 ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
 ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
+![NATS](https://img.shields.io/badge/NATS-27AAE1?style=for-the-badge)
+![BullMQ](https://img.shields.io/badge/BullMQ-DC382D?style=for-the-badge&logo=redis&logoColor=white)
 
-<p><strong>APIs, Messaging, Security & Protocols</strong></p>
-
-![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white)
-![NATS](https://img.shields.io/badge/NATS-Messaging-27AAE1?style=for-the-badge&logoColor=white)
-![BullMQ](https://img.shields.io/badge/BullMQ-Job_Queues-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![Webhooks](https://img.shields.io/badge/Webhooks-Event_Integration-2563EB?style=for-the-badge)
-![WebAuthn](https://img.shields.io/badge/WebAuthn-Passkeys-6B21A8?style=for-the-badge)
-![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP-Model_Context_Protocol-111827?style=for-the-badge)
-![TCP RPC](https://img.shields.io/badge/TCP%2FRPC-Network_Protocols-374151?style=for-the-badge)
-![BitcoinJS](https://img.shields.io/badge/BitcoinJS-BIP32%2FBIP39-F7931A?style=for-the-badge&logo=bitcoin&logoColor=white)
-
-<p><strong>Web, Mobile & Desktop</strong></p>
-
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Laravel Blade](https://img.shields.io/badge/Laravel_Blade-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
-![Alpine.js](https://img.shields.io/badge/Alpine.js-8BC0D0?style=for-the-badge&logo=alpinedotjs&logoColor=black)
-![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
-![PWA](https://img.shields.io/badge/PWA-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)
-![Electron](https://img.shields.io/badge/Electron-47848F?style=for-the-badge&logo=electron&logoColor=white)
-
-<p><strong>CMS</strong></p>
-
-![WordPress](https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white)
-![Elementor](https://img.shields.io/badge/Elementor-92003B?style=for-the-badge&logo=elementor&logoColor=white)
-![WordPress Plugins](https://img.shields.io/badge/WordPress-Plugin_Development-21759B?style=for-the-badge&logo=wordpress&logoColor=white)
-![WordPress Themes](https://img.shields.io/badge/WordPress-Theme_Development-3858E9?style=for-the-badge&logo=wordpress&logoColor=white)
-
-<p><strong>Cloud, Infrastructure & Delivery</strong></p>
+<p><strong>Infrastructure</strong></p>
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
@@ -153,8 +129,6 @@ A multi-step WordPress form builder with submission management, email notificati
 ![Amazon S3](https://img.shields.io/badge/Amazon_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white)
 ![Microsoft Azure](https://img.shields.io/badge/Microsoft_Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Oracle Cloud](https://img.shields.io/badge/Oracle_Cloud-F80000?style=for-the-badge&logo=oracle&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-![Render](https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=black)
 
 <p><strong>Testing</strong></p>
 
@@ -185,9 +159,9 @@ A multi-step WordPress form builder with submission management, email notificati
 
 <p><strong>ENGINEERING PRINCIPLES</strong></p>
 
-I value **correctness over cleverness**, explicit security boundaries, boring-but-reliable infrastructure, measurable failure handling, narrow service contracts, data integrity, maintainable systems, and tests that protect real behavior rather than simply increase coverage numbers.
+I value **correctness over cleverness**, explicit boundaries, boring-but-reliable infrastructure, measurable failure handling, narrow service contracts, data integrity, maintainable systems, and tests that protect real behavior rather than simply increase coverage numbers.
 
-My interests span **backend architecture, platform engineering, infrastructure, distributed systems, IoT and connected systems, real-time/event-driven systems, fintech and business software, developer tooling, security, reliability engineering, mobile and desktop systems, CMS/product platforms, and production operations**.
+My interests span **backend architecture, platform engineering, infrastructure, distributed systems, IoT and connected systems, real-time systems, fintech and business software, developer tooling, reliability engineering, mobile and desktop systems, CMS/product platforms, and production operations**.
 
 ---
 
