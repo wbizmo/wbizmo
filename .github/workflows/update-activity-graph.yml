@@ -1,0 +1,43 @@
+name: Update activity graph
+
+on:
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-activity-graph.yml'
+      - 'scripts/generate-activity-graph.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-activity-graph
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate graph from GitHub GraphQL
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_LOGIN: wbizmo
+        run: node scripts/generate-activity-graph.mjs
+
+      - name: Commit refreshed graph
+        run: |
+          if git diff --quiet -- assets/github-activity.svg; then
+            echo 'Activity graph is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/github-activity.svg
+          git commit -m 'chore: refresh GitHub activity graph'
+          git push
