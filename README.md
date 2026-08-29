@@ -28,7 +28,7 @@ I am especially interested in systems that must remain correct when **money, dev
 </p>
 
 <p align="center">
-  <img src="https://ghchart.rshah.org/0969DA/wbizmo" alt="Williams' live GitHub contribution calendar" />
+  <img src="./assets/github-activity.svg" alt="Williams' live GitHub contribution activity" />
 </p>
 
 ---
