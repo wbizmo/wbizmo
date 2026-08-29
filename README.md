@@ -19,16 +19,16 @@ I am especially interested in systems that must remain correct when **money, dev
 <p><strong>GITHUB ACTIVITY</strong></p>
 
 <p align="center">
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=wbizmo&theme=transparent" alt="Williams' GitHub stats" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=wbizmo&theme=transparent" alt="Williams' repositories by language" />
   <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=transparent&utcOffset=1" alt="Williams' productive commit time" />
 </p>
 
 <p align="center">
-  <img height="180" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' GitHub contribution streak" />
+  <img height="180" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true&hide_total_contributions=true&card_width=600" alt="Williams' live GitHub contribution streak" />
 </p>
 
 <p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wbizmo&theme=transparent" alt="Williams' GitHub profile activity" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=wbizmo&theme=github-compact&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="Williams' live GitHub contribution activity" />
 </p>
 
 ---
@@ -165,7 +165,7 @@ My interests span **backend architecture, platform engineering, infrastructure, 
 
 ---
 
-<p><strong>CONNECT</strong></p>
+<p align="center"><strong>CONNECT</strong></p>
 
 <p align="center">
   <a href="https://wbizmo.vercel.app">Portfolio</a> ·
