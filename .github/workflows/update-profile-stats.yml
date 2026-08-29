@@ -1,0 +1,43 @@
+name: Update profile stats
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-profile-stats.yml'
+      - 'scripts/generate-profile-stats.mjs'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-stats
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Generate cards from GitHub GraphQL data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_LOGIN: wbizmo
+        run: node scripts/generate-profile-stats.mjs
+
+      - name: Commit changed cards
+        run: |
+          if git diff --quiet -- assets; then
+            echo 'Profile stats are already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/github-stats.svg assets/github-streak.svg assets/github-contributions.svg
+          git commit -m 'chore: refresh GitHub profile stats'
+          git push
