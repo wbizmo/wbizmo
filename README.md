@@ -8,8 +8,6 @@ My work spans the path from client or device to production infrastructure: **app
 
 I am especially interested in systems that must remain correct when **money, devices, networks, external providers, concurrency, and failures** are involved.
 
-A significant part of my current production engineering work lives in private repositories, so the public repositories on this profile represent only part of the systems I build.
-
 <p align="center">
   <a href="https://wbizmo.vercel.app"><img src="https://img.shields.io/badge/Portfolio-wbizmo.vercel.app-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/wbizmo"><img src="https://img.shields.io/badge/LinkedIn-wbizmo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
@@ -21,8 +19,8 @@ A significant part of my current production engineering work lives in private re
 <p><strong>GITHUB ACTIVITY</strong></p>
 
 <p align="center">
-  <img height="180" src="https://github-stats-extended.vercel.app/api?username=wbizmo&show_icons=true&theme=transparent&hide_border=true&rank_icon=github" alt="Williams' GitHub stats" />
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=transparent&utcOffset=1" alt="Williams' productive commit time" />
+  <img height="180" src="https://github-readme-stats.vercel.app/api?username=wbizmo&show_icons=true&theme=transparent&hide_border=true&rank_icon=github&include_all_commits=true" alt="Williams' live GitHub stats" />
+  <img height="180" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' live GitHub contribution streak" />
 </p>
 
 <p align="center">
