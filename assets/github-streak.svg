@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180" viewBox="0 0 600 180" role="img" aria-label="GitHub contribution streak for wbizmo">
+
+<style>
+  .bg{fill:#fff}.border{fill:none;stroke:#d0d7de;stroke-width:1}
+  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .label{font:400 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .value{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .big{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .small{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .sub{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .strong{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .grid{stroke:#d8dee4;stroke-width:1}.track{fill:#eaeef2}.mark{fill:#0969da}
+  @media(prefers-color-scheme:dark){
+    .bg{fill:#0d1117}.border,.grid{stroke:#30363d}.track{fill:#21262d}
+    .title,.value,.big,.strong,.mark{fill:#58a6ff}.label,.small,.sub{fill:#8b949e}
+  }
+</style>
+<rect class="bg" width="600" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="599" height="179" rx="8"/>
+<line class="grid" x1="200" y1="24" x2="200" y2="158"/><line class="grid" x1="400" y1="24" x2="400" y2="158"/>
+<text class="big" x="100" y="72" text-anchor="middle">103</text>
+<text class="label" x="100" y="105" text-anchor="middle">Active Days</text>
+<text class="sub" x="100" y="131" text-anchor="middle">last 12 months</text>
+<circle cx="300" cy="69" r="38" fill="none" stroke="#0969da" stroke-width="6"/>
+<text class="big" x="300" y="80" text-anchor="middle">26</text>
+<text class="strong" x="300" y="120" text-anchor="middle">Current Streak</text>
+<text class="sub" x="300" y="146" text-anchor="middle">Aug 4 – Aug 29</text>
+<text class="big" x="500" y="72" text-anchor="middle">26</text>
+<text class="label" x="500" y="105" text-anchor="middle">Longest Streak</text>
+<text class="sub" x="500" y="131" text-anchor="middle">Aug 4 – Aug 29</text>
+</svg>

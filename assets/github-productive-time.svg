@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Commit time distribution for wbizmo">
+
+<style>
+  .bg{fill:#fff}.border{fill:none;stroke:#d0d7de;stroke-width:1}
+  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .label{font:400 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .value{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .big{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .small{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .sub{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .strong{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .grid{stroke:#d8dee4;stroke-width:1}.track{fill:#eaeef2}.mark{fill:#0969da}
+  @media(prefers-color-scheme:dark){
+    .bg{fill:#0d1117}.border,.grid{stroke:#30363d}.track{fill:#21262d}
+    .title,.value,.big,.strong,.mark{fill:#58a6ff}.label,.small,.sub{fill:#8b949e}
+  }
+</style>
+<rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
+<text class="title" x="18" y="30">Commits (UTC +1.00)</text><text class="sub" x="410" y="29" text-anchor="end">default branches</text>
+<line class="grid" x1="44" y1="150" x2="406" y2="150"/>
+<line class="grid" x1="44" y1="48" x2="406" y2="48"/>
+<text class="small" x="36" y="52" text-anchor="end">163</text>
+<text class="small" x="36" y="154" text-anchor="end">0</text>
+<rect x="45.0" y="94.3" width="13.1" height="55.7" rx="1" fill="#0969da"><title>0:00 — 89 commits</title></rect><rect x="60.1" y="99.3" width="13.1" height="50.7" rx="1" fill="#0969da"><title>1:00 — 81 commits</title></rect><rect x="75.2" y="121.8" width="13.1" height="28.2" rx="1" fill="#0969da"><title>2:00 — 45 commits</title></rect><rect x="90.3" y="133.7" width="13.1" height="16.3" rx="1" fill="#0969da"><title>3:00 — 26 commits</title></rect><rect x="105.3" y="136.9" width="13.1" height="13.1" rx="1" fill="#0969da"><title>4:00 — 21 commits</title></rect><rect x="120.4" y="140.6" width="13.1" height="9.4" rx="1" fill="#0969da"><title>5:00 — 15 commits</title></rect><rect x="135.5" y="138.1" width="13.1" height="11.9" rx="1" fill="#0969da"><title>6:00 — 19 commits</title></rect><rect x="150.6" y="143.1" width="13.1" height="6.9" rx="1" fill="#0969da"><title>7:00 — 11 commits</title></rect><rect x="165.7" y="139.4" width="13.1" height="10.6" rx="1" fill="#0969da"><title>8:00 — 17 commits</title></rect><rect x="180.8" y="136.9" width="13.1" height="13.1" rx="1" fill="#0969da"><title>9:00 — 21 commits</title></rect><rect x="195.8" y="146.2" width="13.1" height="3.8" rx="1" fill="#0969da"><title>10:00 — 6 commits</title></rect><rect x="210.9" y="148.1" width="13.1" height="1.9" rx="1" fill="#0969da"><title>11:00 — 3 commits</title></rect><rect x="226.0" y="145.0" width="13.1" height="5.0" rx="1" fill="#0969da"><title>12:00 — 8 commits</title></rect><rect x="241.1" y="142.5" width="13.1" height="7.5" rx="1" fill="#0969da"><title>13:00 — 12 commits</title></rect><rect x="256.2" y="143.7" width="13.1" height="6.3" rx="1" fill="#0969da"><title>14:00 — 10 commits</title></rect><rect x="271.3" y="142.5" width="13.1" height="7.5" rx="1" fill="#0969da"><title>15:00 — 12 commits</title></rect><rect x="286.3" y="144.4" width="13.1" height="5.6" rx="1" fill="#0969da"><title>16:00 — 9 commits</title></rect><rect x="301.4" y="145.6" width="13.1" height="4.4" rx="1" fill="#0969da"><title>17:00 — 7 commits</title></rect><rect x="316.5" y="140.0" width="13.1" height="10.0" rx="1" fill="#0969da"><title>18:00 — 16 commits</title></rect><rect x="331.6" y="136.2" width="13.1" height="13.8" rx="1" fill="#0969da"><title>19:00 — 22 commits</title></rect><rect x="346.7" y="130.6" width="13.1" height="19.4" rx="1" fill="#0969da"><title>20:00 — 31 commits</title></rect><rect x="361.8" y="48.0" width="13.1" height="102.0" rx="1" fill="#0969da"><title>21:00 — 163 commits</title></rect><rect x="376.8" y="116.8" width="13.1" height="33.2" rx="1" fill="#0969da"><title>22:00 — 53 commits</title></rect><rect x="391.9" y="121.2" width="13.1" height="28.8" rx="1" fill="#0969da"><title>23:00 — 46 commits</title></rect><text class="small" x="51.5" y="169" text-anchor="middle">0</text><text class="small" x="142.0" y="169" text-anchor="middle">6</text><text class="small" x="232.5" y="169" text-anchor="middle">12</text><text class="small" x="323.0" y="169" text-anchor="middle">18</text><text class="small" x="398.5" y="169" text-anchor="middle">23</text>
+<text class="small" x="406" y="169" text-anchor="end">per day hour</text>
+</svg>
