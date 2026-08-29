@@ -25,7 +25,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 </tr>
 <tr>
 <td width="50%" align="center"><img width="100%" src="./assets/github-repos-language.svg" alt="Williams' authored public repositories by primary language" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/github-streak.svg" alt="Williams' GitHub contribution streak" /></td>
+<td width="50%" align="center"><img width="100%" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' live GitHub contribution streak" /></td>
 </tr>
 </table>
 
