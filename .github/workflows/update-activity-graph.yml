@@ -1,4 +1,4 @@
-name: Update activity graph
+name: Update GitHub profile cards
 
 on:
   schedule:
@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: profile-activity-graph
+  group: profile-github-cards
   cancel-in-progress: true
 
 jobs:
@@ -24,20 +24,20 @@ jobs:
       - name: Check out profile repository
         uses: actions/checkout@v4
 
-      - name: Generate graph from GitHub GraphQL
+      - name: Generate cards from GitHub GraphQL
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_LOGIN: wbizmo
         run: node scripts/generate-activity-graph.mjs
 
-      - name: Commit refreshed graph
+      - name: Commit refreshed cards
         run: |
-          if [ -z "$(git status --porcelain -- assets/github-activity.svg)" ]; then
-            echo 'Activity graph is already current.'
+          if [ -z "$(git status --porcelain -- assets/github-stats.svg assets/github-activity.svg)" ]; then
+            echo 'GitHub profile cards are already current.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/github-activity.svg
-          git commit -m 'chore: refresh GitHub activity graph'
+          git add assets/github-stats.svg assets/github-activity.svg
+          git commit -m 'chore: refresh GitHub profile cards'
           git push
