@@ -19,7 +19,7 @@ I am especially interested in systems that must remain correct when **money, dev
 <p><strong>GITHUB ACTIVITY</strong></p>
 
 <p align="center">
-  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=wbizmo&theme=transparent" alt="Williams' repositories by language" />
+  <img height="180" src="./assets/github-stats.svg" alt="Williams' live GitHub stats" />
   <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=transparent&utcOffset=1" alt="Williams' productive commit time" />
 </p>
 
@@ -74,7 +74,7 @@ A lightweight, Elementor-ready WordPress theme with improved blog layouts and su
 
 A multi-step WordPress form builder with submission management, email notifications, validation, conditional logic, custom field types, payment integrations, and an extensible plugin architecture.
 
-[![WordPress Plugin](https://img.shields.io/badge/WordPress.org-Wbizmo_Form_Builder-21759B?style=for-the-badge&logo=wordpress&logoColor=white)](https://wordpress.org/plugins/wbizmo-form-builder)
+[![WordPress Plugin](https://img.shields.io/badge/WordPress.org-Wbizmo_Form_Builder-21759B?style=for-the-badge)](https://wordpress.org/plugins/wbizmo-form-builder)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/wbizmo/pulseforms)
 
 ---
