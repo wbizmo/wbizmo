@@ -27,8 +27,6 @@ I am especially interested in systems that must remain correct when **money, dev
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=wbizmo&theme=transparent" alt="Williams' GitHub profile activity" />
 </p>
 
-<p align="center"><sub>GitHub cards primarily reflect public activity. Much of my production engineering work is maintained in private repositories.</sub></p>
-
 ---
 
 <p><strong>WHAT I BUILD</strong></p>
