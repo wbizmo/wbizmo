@@ -19,8 +19,12 @@ I am especially interested in systems that must remain correct when **money, dev
 <p><strong>GITHUB ACTIVITY</strong></p>
 
 <p align="center">
-  <img height="180" src="https://github-readme-stats.vercel.app/api?username=wbizmo&show_icons=true&theme=transparent&hide_border=true&rank_icon=github&include_all_commits=true" alt="Williams' live GitHub stats" />
-  <img height="180" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' live GitHub contribution streak" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=wbizmo&theme=transparent" alt="Williams' GitHub stats" />
+  <img height="180" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=transparent&utcOffset=1" alt="Williams' productive commit time" />
+</p>
+
+<p align="center">
+  <img height="180" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' GitHub contribution streak" />
 </p>
 
 <p align="center">
