@@ -28,7 +28,7 @@ I am especially interested in systems that must remain correct when **money, dev
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=wbizmo&theme=github-compact&hide_border=true&area=true&custom_title=Contribution%20Activity" alt="Williams' live GitHub contribution activity" />
+  <img src="https://ghchart.rshah.org/0969DA/wbizmo" alt="Williams' live GitHub contribution calendar" />
 </p>
 
 ---
