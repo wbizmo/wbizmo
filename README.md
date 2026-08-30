@@ -34,40 +34,6 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 ---
 
-<p><strong>WHAT I BUILD</strong></p>
-
-<table>
-<tr>
-<td width="50%" valign="top"><strong>Backend & API platforms</strong><br><sub>Production APIs, auth, ownership controls, integrations, background processing, service boundaries and operational systems.</sub></td>
-<td width="50%" valign="top"><strong>Distributed systems & protocols</strong><br><sub>RPC, binary framing, persistent connections, multiplexing, deadlines, cancellation, backpressure, retries, pooling, discovery, routing and failover.</sub></td>
-</tr>
-<tr>
-<td valign="top"><strong>Workflow & integration platforms</strong><br><sub>Triggers, conditions, actions, webhooks, provider abstraction, workers, replay, API keys, workspaces and multi-tenant execution.</sub></td>
-<td valign="top"><strong>Security & supply-chain tooling</strong><br><sub>Vulnerability intelligence, AST analysis, dependency health, Git security, SBOMs, secrets, container checks and local-first policy tooling.</sub></td>
-</tr>
-<tr>
-<td valign="top"><strong>Financial, risk & business systems</strong><br><sub>Transactions, ledgers, budgets, reconciliation, payments, credit-risk decisioning, contracts, inventory, reporting and accounting-sensitive workflows.</sub></td>
-<td valign="top"><strong>CMS, publishing & commerce</strong><br><sub>Publishing lifecycles, builders, themes, plugins, media, taxonomy, forms, catalogues, inventory, checkout and payment adapters.</sub></td>
-</tr>
-<tr>
-<td valign="top"><strong>Storage & transfer systems</strong><br><sub>Streaming uploads, resumable downloads, HTTP byte ranges, transfer sessions, checksums, quotas, caching and distributed throttling.</sub></td>
-<td valign="top"><strong>Developer tooling & DX</strong><br><sub>CLI applications, API scaffolding, automation, package tooling, OpenAPI, diagnostics, release tooling and engineering workflows.</sub></td>
-</tr>
-<tr>
-<td valign="top"><strong>Web, mobile & desktop</strong><br><sub>React, React Native/Expo, desktop clients, Laravel interfaces, WordPress products, dashboards and accessible application shells.</sub></td>
-<td valign="top"><strong>IoT & connected systems</strong><br><sub>Device-backed services, telemetry, real-time events, alerts, service connectivity and connected operational platforms.</sub></td>
-</tr>
-<tr>
-<td valign="top"><strong>Cloud & production operations</strong><br><sub>Linux, containers, databases, caching, queues, CI/CD, health/readiness, monitoring, backups, recovery and multi-cloud deployment.</sub></td>
-<td valign="top"><strong>Data, analytics & decision systems</strong><br><sub>Aggregation pipelines, financial analytics, statistical modelling, diagnostics, explainability, stress testing and decision-policy layers.</sub></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>Engineering documentation & education</strong><br><sub>Architecture notes, security contracts, release runbooks, system-design material and a structured software-engineering handbook.</sub></td>
-</tr>
-</table>
-
----
-
 <p><strong>PUBLISHED PRODUCTS</strong></p>
 
 <table>
