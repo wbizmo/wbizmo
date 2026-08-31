@@ -17,14 +17,14 @@
 </style>
 <rect class="bg" width="600" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="599" height="179" rx="8"/>
 <line class="grid" x1="200" y1="24" x2="200" y2="158"/><line class="grid" x1="400" y1="24" x2="400" y2="158"/>
-<text class="big" x="100" y="72" text-anchor="middle">104</text>
+<text class="big" x="100" y="72" text-anchor="middle">105</text>
 <text class="label" x="100" y="105" text-anchor="middle">Active Days</text>
 <text class="sub" x="100" y="131" text-anchor="middle">last 12 months</text>
 <circle cx="300" cy="69" r="38" fill="none" stroke="#0969da" stroke-width="6"/>
-<text class="big" x="300" y="80" text-anchor="middle">27</text>
+<text class="big" x="300" y="80" text-anchor="middle">28</text>
 <text class="strong" x="300" y="120" text-anchor="middle">Current Streak</text>
-<text class="sub" x="300" y="146" text-anchor="middle">Aug 4 – Aug 30</text>
-<text class="big" x="500" y="72" text-anchor="middle">27</text>
+<text class="sub" x="300" y="146" text-anchor="middle">Aug 4 – Aug 31</text>
+<text class="big" x="500" y="72" text-anchor="middle">28</text>
 <text class="label" x="500" y="105" text-anchor="middle">Longest Streak</text>
-<text class="sub" x="500" y="131" text-anchor="middle">Aug 4 – Aug 30</text>
+<text class="sub" x="500" y="131" text-anchor="middle">Aug 4 – Aug 31</text>
 </svg>
