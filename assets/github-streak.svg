@@ -21,10 +21,10 @@
 <text class="label" x="100" y="105" text-anchor="middle">Active Days</text>
 <text class="sub" x="100" y="131" text-anchor="middle">last 12 months</text>
 <circle cx="300" cy="69" r="38" fill="none" stroke="#0969da" stroke-width="6"/>
-<text class="big" x="300" y="80" text-anchor="middle">35</text>
+<text class="big" x="300" y="80" text-anchor="middle">36</text>
 <text class="strong" x="300" y="120" text-anchor="middle">Current Streak</text>
-<text class="sub" x="300" y="146" text-anchor="middle">Aug 4 – Sep 7</text>
-<text class="big" x="500" y="72" text-anchor="middle">35</text>
+<text class="sub" x="300" y="146" text-anchor="middle">Aug 4 – Sep 8</text>
+<text class="big" x="500" y="72" text-anchor="middle">36</text>
 <text class="label" x="500" y="105" text-anchor="middle">Longest Streak</text>
-<text class="sub" x="500" y="131" text-anchor="middle">Aug 4 – Sep 7</text>
+<text class="sub" x="500" y="131" text-anchor="middle">Aug 4 – Sep 8</text>
 </svg>
