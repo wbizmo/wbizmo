@@ -9,8 +9,8 @@ My work spans the full path from client, device, or protocol to production infra
 I am especially interested in systems that must remain correct when <strong>money, data, devices, networks, external providers, concurrency, and failures</strong> are involved.
 
 <p align="center">
-  <a href="https://wbizmo.vercel.app"><img src="https://img.shields.io/badge/Portfolio-wbizmo.vercel.app-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://www.linkedin.com/in/wbizmo"><img src="https://img.shields.io/badge/LinkedIn-wbizmo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://wbizmo.vercel.app" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.vercel.app-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/LinkedIn-wbizmo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:wbizmo@gmail.com"><img src="https://img.shields.io/badge/Email-wbizmo%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 </p>
 
@@ -20,17 +20,16 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-stats-34316525359.png" alt="Williams' lifetime GitHub stats" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-productive-time-34316525359.png" alt="Williams' productive commit time" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/github-stats.png" alt="Williams' lifetime GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/github-productive-time.png" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-repos-language-34316525359.png" alt="Williams' authored public repositories by primary language" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-streak-34316525359.png" alt="Williams' live GitHub contribution streak" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/github-repos-language.png" alt="Williams' authored public repositories by primary language" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/github-streak.png" alt="Williams' live GitHub contribution streak" /></td>
 </tr>
 </table>
 
-<p align="center"><img src="./assets/profile-cards/github-activity-34316525359.png" alt="Williams' rolling GitHub contribution activity" /></p>
-<p align="center"><sub>Generated from GitHub data and refreshed every six hours. Each card uses its own explicitly labelled scope.</sub></p>
+<p align="center"><img src="./assets/github-activity.png" alt="Williams' rolling GitHub contribution activity" /></p>
 
 ---
 
@@ -38,10 +37,10 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td valign="top"><strong><a href="https://www.npmjs.com/package/toolip">Toolip v2.2.1 — Security & Supply-Chain CLI</a></strong><br><sub>Local-first developer security tooling with one resolved npm dependency inventory across vulnerability analysis and dependency-health scoring, including exact transitive package versions, truthful risk scoring, secret and Git/container analysis, SBOMs, hardened encrypted vaults, MCP workspace isolation and transactional security workflows.</sub><br><br><a href="https://www.npmjs.com/package/toolip"><img src="https://img.shields.io/npm/v/toolip?style=flat-square" alt="Toolip npm version"></a> <a href="https://www.npmjs.com/package/toolip"><img src="https://img.shields.io/npm/dm/toolip?style=flat-square&label=downloads%2Fmonth" alt="Toolip monthly npm downloads"></a> <a href="https://www.npmjs.com/package/toolip"><img src="https://img.shields.io/badge/npm-package-CB3837?style=flat-square&logo=npm&logoColor=white" alt="Toolip on npm"></a> <a href="https://github.com/wbizmo/toolip"><img src="https://img.shields.io/badge/source-GitHub-181717?style=flat-square&logo=github" alt="Toolip source"></a></td>
+<td valign="top"><strong><a href="https://www.npmjs.com/package/toolip" target="_blank" rel="noopener noreferrer">Toolip v2.2.1 — Security & Supply-Chain CLI</a></strong><br><sub>Local-first developer security tooling with one resolved npm dependency inventory across vulnerability analysis and dependency-health scoring, including exact transitive package versions, truthful risk scoring, secret and Git/container analysis, SBOMs, hardened encrypted vaults, MCP workspace isolation and transactional security workflows.</sub><br><br><a href="https://www.npmjs.com/package/toolip" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/toolip?style=flat-square" alt="Toolip npm version"></a> <a href="https://www.npmjs.com/package/toolip" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dm/toolip?style=flat-square&label=downloads%2Fmonth" alt="Toolip monthly npm downloads"></a> <a href="https://www.npmjs.com/package/toolip" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/npm-package-CB3837?style=flat-square&logo=npm&logoColor=white" alt="Toolip on npm"></a> <a href="https://github.com/wbizmo/toolip" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/source-GitHub-181717?style=flat-square&logo=github" alt="Toolip source"></a></td>
 </tr>
 <tr>
-<td valign="top"><strong><a href="https://www.npmjs.com/package/launchstack-cli">LaunchStack CLI — Backend Scaffolding</a></strong><br><sub>Fastify/TypeScript API generation with Prisma/PostgreSQL, auth, Zod, OpenAPI, Docker, CI and deployment presets.</sub><br><br><a href="https://www.npmjs.com/package/launchstack-cli"><img src="https://img.shields.io/npm/v/launchstack-cli?style=flat-square" alt="LaunchStack npm version"></a> <a href="https://www.npmjs.com/package/launchstack-cli"><img src="https://img.shields.io/npm/dm/launchstack-cli?style=flat-square&label=downloads%2Fmonth" alt="LaunchStack monthly npm downloads"></a> <a href="https://www.npmjs.com/package/launchstack-cli"><img src="https://img.shields.io/badge/npm-package-CB3837?style=flat-square&logo=npm&logoColor=white" alt="LaunchStack on npm"></a> <a href="https://github.com/wbizmo/launchstack-cli"><img src="https://img.shields.io/badge/source-GitHub-181717?style=flat-square&logo=github" alt="LaunchStack source"></a></td>
+<td valign="top"><strong><a href="https://www.npmjs.com/package/launchstack-cli" target="_blank" rel="noopener noreferrer">LaunchStack CLI — Backend Scaffolding</a></strong><br><sub>Fastify/TypeScript API generation with Prisma/PostgreSQL, auth, Zod, OpenAPI, Docker, CI and deployment presets.</sub><br><br><a href="https://www.npmjs.com/package/launchstack-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/v/launchstack-cli?style=flat-square" alt="LaunchStack npm version"></a> <a href="https://www.npmjs.com/package/launchstack-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dm/launchstack-cli?style=flat-square&label=downloads%2Fmonth" alt="LaunchStack monthly npm downloads"></a> <a href="https://www.npmjs.com/package/launchstack-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/npm-package-CB3837?style=flat-square&logo=npm&logoColor=white" alt="LaunchStack on npm"></a> <a href="https://github.com/wbizmo/launchstack-cli" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/source-GitHub-181717?style=flat-square&logo=github" alt="LaunchStack source"></a></td>
 </tr>
 </table>
 
@@ -72,16 +71,6 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 ---
 
-<p><strong>RECOGNITION</strong></p>
-<p align="center">
-  <a href="https://profile.codersrank.io/user/wbizmo"><img src="https://img.shields.io/badge/Top%203%25-Developers%20Worldwide-00C4CC?style=for-the-badge" alt="CodersRank Top 3% Developers Worldwide"></a>
-  <a href="https://profile.codersrank.io/user/wbizmo"><img src="https://img.shields.io/badge/Fastify-%231%20Nigeria-000000?style=for-the-badge&logo=fastify&logoColor=white" alt="CodersRank Top Fastify Developer in Nigeria"></a>
-  <a href="https://profile.codersrank.io/user/wbizmo"><img src="https://img.shields.io/badge/Go-Top%20100%20Nigeria-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="CodersRank Top 100 Go Developer in Nigeria"></a>
-</p>
-<p align="center"><sub>Recognition based on CodersRank engineering activity and technology rankings.</sub></p>
-
----
-
 <p><strong>ENGINEERING PRINCIPLES</strong></p>
 
 I value <strong>correctness over cleverness</strong>, explicit boundaries, boring-but-reliable infrastructure, measurable failure handling, narrow service contracts, data integrity, maintainable systems, and tests that protect real behavior rather than simply increase coverage numbers.
@@ -90,9 +79,9 @@ I value <strong>correctness over cleverness</strong>, explicit boundaries, borin
 
 <p align="center"><strong>CONNECT</strong></p>
 <p align="center">
-  <a href="https://wbizmo.vercel.app">Portfolio</a> ·
-  <a href="https://www.linkedin.com/in/wbizmo">LinkedIn</a> ·
-  <a href="https://github.com/wbizmo">GitHub</a> ·
-  <a href="https://codepen.io/wbizmo">CodePen</a> ·
+  <a href="https://wbizmo.vercel.app" target="_blank" rel="noopener noreferrer">Portfolio</a> ·
+  <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
+  <a href="https://github.com/wbizmo" target="_blank" rel="noopener noreferrer">GitHub</a> ·
+  <a href="https://codepen.io/wbizmo" target="_blank" rel="noopener noreferrer">CodePen</a> ·
   <a href="mailto:wbizmo@gmail.com">Email</a>
 </p>
