@@ -20,16 +20,16 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-stats.svg?v=20260909-restore" alt="Williams' lifetime GitHub stats" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/github-productive-time.svg" alt="Williams' productive commit time" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-stats.svg?v=34314701741" alt="Williams' lifetime GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-productive-time.svg?v=34314701741" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/github-repos-language.svg" alt="Williams' authored public repositories by primary language" /></td>
-<td width="50%" align="center"><img width="100%" src="https://streak-stats.demolab.com?user=wbizmo&theme=transparent&hide_border=true" alt="Williams' live GitHub contribution streak" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-repos-language.svg?v=34314701741" alt="Williams' authored public repositories by primary language" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-streak.svg?v=34314701741" alt="Williams' live GitHub contribution streak" /></td>
 </tr>
 </table>
 
-<p align="center"><img src="./assets/github-activity.svg" alt="Williams' rolling GitHub contribution activity" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-activity.svg?v=34314701741" alt="Williams' rolling GitHub contribution activity" /></p>
 <p align="center"><sub>Generated from GitHub data and refreshed every six hours. Each card uses its own explicitly labelled scope.</sub></p>
 
 ---
