@@ -52,8 +52,8 @@ jobs:
           path: profile/streak.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generate productive-time and activity cards
-        uses: vn7n24fzkq/github-profile-summary-cards@v0.8.0
+      - name: Generate productive-time card
+        uses: vn7n24fzkq/github-profile-summary-cards@v0.12.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -62,15 +62,13 @@ jobs:
           THEME: github_dark
           AUTO_PUSH: false
 
-      - name: Publish summary cards to stable paths
-        run: |
-          cp profile-summary-card-output/github_dark/4-productive-time.svg profile/productive-time.svg
-          cp profile-summary-card-output/github_dark/0-profile-details.svg profile/activity.svg
+      - name: Publish productive-time card to stable path
+        run: cp profile-summary-card-output/github_dark/4-productive-time.svg profile/productive-time.svg
 
       - name: Validate generated SVGs
         run: |
           set -eu
-          for file in profile/stats.svg profile/top-langs.svg profile/streak.svg profile/productive-time.svg profile/activity.svg; do
+          for file in profile/stats.svg profile/top-langs.svg profile/streak.svg profile/productive-time.svg; do
             test -s "$file"
             grep -q '<svg' "$file"
           done
