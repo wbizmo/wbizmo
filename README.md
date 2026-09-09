@@ -20,7 +20,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="https://beautiful-github-homepage.vercel.app/api?username=wbizmo&hide_title=true&show_icons=true&theme=gotham&include_all_commits=true" alt="Williams' GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="https://beautiful-github-homepage.vercel.app/api?username=wbizmo&hide_title=true&hide_rank=true&show_icons=true&theme=gotham&include_all_commits=true" alt="Williams' GitHub stats" /></td>
 <td width="50%" align="center"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=github_dark&utcOffset=1" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
