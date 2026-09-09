@@ -8,8 +8,10 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/update-activity-graph.yml'
+      - '.github/PROFILE_README_RULES.md'
       - 'scripts/generate-activity-graph.mjs'
       - 'scripts/refresh-readme-image-urls.mjs'
+      - 'scripts/force-dark-profile-cards.mjs'
 
 permissions:
   contents: write
@@ -36,6 +38,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_LOGIN: wbizmo
         run: node scripts/refresh-readme-image-urls.mjs
+
+      - name: Force dark-mode card palette
+        run: node scripts/force-dark-profile-cards.mjs
 
       - name: Commit refreshed cards
         run: |
