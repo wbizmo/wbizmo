@@ -20,7 +20,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/github-stats.svg" alt="Williams' lifetime GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-stats.svg?v=20260909-restore" alt="Williams' lifetime GitHub stats" /></td>
 <td width="50%" align="center"><img width="100%" src="./assets/github-productive-time.svg" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
