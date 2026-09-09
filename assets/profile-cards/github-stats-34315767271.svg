@@ -18,7 +18,7 @@
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
 <text class="title" x="18" y="30">Stats</text><text class="sub" x="410" y="29" text-anchor="end">lifetime</text>
 <text class="label" x="20" y="61">★  Total Stars:</text><text class="value" x="174" y="61">3</text>
-<text class="label" x="20" y="87">⌁  Total Commits:</text><text class="value" x="174" y="87">824</text>
+<text class="label" x="20" y="87">⌁  Total Commits:</text><text class="value" x="174" y="87">825</text>
 <text class="label" x="20" y="113">⑂  Total PRs:</text><text class="value" x="174" y="113">111</text>
 <text class="label" x="20" y="139">!  Total Issues:</text><text class="value" x="174" y="139">26</text>
 <text class="label" x="20" y="165">▣  Contributed to:</text><text class="value" x="174" y="165">26</text>
