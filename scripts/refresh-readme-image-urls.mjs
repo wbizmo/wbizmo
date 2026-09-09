@@ -7,14 +7,43 @@ import {
   writeFile,
 } from 'node:fs/promises';
 
+const token = process.env.GITHUB_TOKEN;
 const login = process.env.PROFILE_LOGIN || 'wbizmo';
 const version = process.env.GITHUB_RUN_ID || Date.now().toString(36);
 const readmePath = 'README.md';
 const sourceDir = 'assets';
 const snapshotDir = 'assets/profile-cards';
 
-// Preserve the familiar streak flame locally so the streak card does not depend
-// on a third-party image host or emoji-font rendering.
+if (!token) throw new Error('GITHUB_TOKEN is required');
+
+async function gql(query, variables) {
+  const response = await fetch('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+      'user-agent': `${login}-profile-cards`,
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`GitHub GraphQL HTTP ${response.status}: ${await response.text()}`);
+  }
+
+  const payload = await response.json();
+  if (payload.errors?.length) throw new Error(JSON.stringify(payload.errors));
+  return payload.data;
+}
+
+const numberFrom = (source, pattern, label) => {
+  const match = source.match(pattern);
+  if (!match) throw new Error(`Could not read ${label} from generated GitHub cards.`);
+  return Number(match[1].replaceAll(',', ''));
+};
+
+// Preserve the familiar streak flame locally so the streak card remains fully
+// self-hosted and does not depend on emoji-font rendering.
 const streakPath = `${sourceDir}/github-streak.svg`;
 let streakSvg = await readFile(streakPath, 'utf8');
 const flameMarkup = `<g data-streak-flame="true" transform="translate(286 5) scale(.86)">
@@ -30,31 +59,121 @@ if (!streakSvg.includes('data-streak-flame="true"')) {
   await writeFile(streakPath, streakSvg);
 }
 
-// Use the established GitHub Readme Stats rank card instead of inventing a
-// local grading formula. Snapshot the returned SVG into this repository so the
-// README itself never depends on the remote service at render time.
-const rankUrl = new URL('https://github-readme-stats.vercel.app/api');
-rankUrl.searchParams.set('username', login);
-rankUrl.searchParams.set('show_icons', 'true');
-rankUrl.searchParams.set('include_all_commits', 'true');
-rankUrl.searchParams.set('rank_icon', 'default');
-rankUrl.searchParams.set('theme', 'transparent');
-rankUrl.searchParams.set('hide_border', 'true');
-rankUrl.searchParams.set('number_format', 'long');
+// GitHub itself does not publish an A/B/S profile grade. The familiar rank shown
+// on GitHub profile stat cards comes from GitHub Readme Stats. Reproduce that
+// project's current rank algorithm exactly, but calculate it locally from GitHub
+// data so the README does not depend on an external image service being online.
+const statsSvg = await readFile(`${sourceDir}/github-stats.svg`, 'utf8');
+const stars = numberFrom(statsSvg, /Total Stars:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total stars');
+const commits = numberFrom(statsSvg, /Total Commits:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total commits');
+const prs = numberFrom(statsSvg, /Total PRs:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total pull requests');
+const issues = numberFrom(statsSvg, /Total Issues:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total issues');
 
-const rankResponse = await fetch(rankUrl, {
-  headers: { 'user-agent': `${login}-profile-cards` },
-});
+const rankProfileQuery = `
+query RankProfile($login: String!) {
+  user(login: $login) {
+    createdAt
+    followers { totalCount }
+  }
+}`;
 
-if (!rankResponse.ok) {
-  throw new Error(`GitHub Readme Stats HTTP ${rankResponse.status}: ${await rankResponse.text()}`);
+const rankProfile = (await gql(rankProfileQuery, { login })).user;
+if (!rankProfile) throw new Error(`GitHub user ${login} not found`);
+
+const followers = rankProfile.followers.totalCount;
+const createdAt = new Date(rankProfile.createdAt);
+const now = new Date();
+let reviewCursor = new Date(createdAt);
+let reviews = 0;
+
+const reviewsQuery = `
+query RankReviews($login: String!, $from: DateTime!, $to: DateTime!) {
+  user(login: $login) {
+    contributionsCollection(from: $from, to: $to) {
+      totalPullRequestReviewContributions
+    }
+  }
+}`;
+
+while (reviewCursor < now) {
+  const end = new Date(reviewCursor);
+  end.setUTCFullYear(end.getUTCFullYear() + 1);
+  end.setUTCDate(end.getUTCDate() - 1);
+  if (end > now) end.setTime(now.getTime());
+
+  const data = await gql(reviewsQuery, {
+    login,
+    from: reviewCursor.toISOString(),
+    to: end.toISOString(),
+  });
+  reviews += data.user.contributionsCollection.totalPullRequestReviewContributions;
+
+  reviewCursor = new Date(end);
+  reviewCursor.setUTCDate(reviewCursor.getUTCDate() + 1);
 }
 
-const rankSvg = await rankResponse.text();
-if (!/^\s*<svg[\s>]/i.test(rankSvg) || !/rank-circle|rank-text|rank/i.test(rankSvg)) {
-  throw new Error('GitHub Readme Stats returned an unexpected rank-card payload.');
-}
-await writeFile(`${sourceDir}/github-rating.svg`, rankSvg);
+const exponentialCdf = (x) => 1 - 2 ** -x;
+const logNormalCdf = (x) => x / (1 + x);
+
+// Exact medians, weights and thresholds used by anuraghazra/github-readme-stats.
+const COMMITS_MEDIAN = 1000;
+const COMMITS_WEIGHT = 2;
+const PRS_MEDIAN = 50;
+const PRS_WEIGHT = 3;
+const ISSUES_MEDIAN = 25;
+const ISSUES_WEIGHT = 1;
+const REVIEWS_MEDIAN = 2;
+const REVIEWS_WEIGHT = 1;
+const STARS_MEDIAN = 50;
+const STARS_WEIGHT = 4;
+const FOLLOWERS_MEDIAN = 10;
+const FOLLOWERS_WEIGHT = 1;
+const TOTAL_WEIGHT = 12;
+const THRESHOLDS = [1, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100];
+const LEVELS = ['S', 'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C'];
+
+const rankFraction = 1 - (
+  COMMITS_WEIGHT * exponentialCdf(commits / COMMITS_MEDIAN) +
+  PRS_WEIGHT * exponentialCdf(prs / PRS_MEDIAN) +
+  ISSUES_WEIGHT * exponentialCdf(issues / ISSUES_MEDIAN) +
+  REVIEWS_WEIGHT * exponentialCdf(reviews / REVIEWS_MEDIAN) +
+  STARS_WEIGHT * logNormalCdf(stars / STARS_MEDIAN) +
+  FOLLOWERS_WEIGHT * logNormalCdf(followers / FOLLOWERS_MEDIAN)
+) / TOTAL_WEIGHT;
+
+const percentile = rankFraction * 100;
+const levelIndex = THRESHOLDS.findIndex((threshold) => percentile <= threshold);
+const rankLevel = LEVELS[levelIndex === -1 ? LEVELS.length - 1 : levelIndex];
+const percentileLabel = percentile < 1 ? '<1%' : `${percentile.toFixed(1)}%`;
+
+const ratingSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="GitHub Readme Stats rank ${rankLevel}, top ${percentileLabel}">
+<style>
+  .bg{fill:#fff}.border,.divider{fill:none;stroke:#d0d7de;stroke-width:1}
+  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .sub{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .grade{font:700 42px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .metric{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
+  .value{font:600 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .ring{fill:none;stroke:#0969da;stroke-width:5}
+  @media(prefers-color-scheme:dark){
+    .bg{fill:#0d1117}.border,.divider{stroke:#30363d}.title,.grade,.value{fill:#58a6ff}.sub,.metric{fill:#8b949e}.ring{stroke:#58a6ff}
+  }
+</style>
+<rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
+<text class="title" x="18" y="30">GitHub Stats Rank</text>
+<circle class="ring" cx="77" cy="99" r="43"/>
+<text class="grade" x="77" y="109" text-anchor="middle">${rankLevel}</text>
+<text class="sub" x="77" y="151" text-anchor="middle">Top ${percentileLabel}</text>
+<line class="divider" x1="145" y1="48" x2="145" y2="160"/>
+<text class="metric" x="170" y="63">Commits</text><text class="value" x="170" y="82">${commits.toLocaleString('en-US')}</text>
+<text class="metric" x="300" y="63">Pull requests</text><text class="value" x="300" y="82">${prs.toLocaleString('en-US')}</text>
+<text class="metric" x="170" y="105">Issues</text><text class="value" x="170" y="124">${issues.toLocaleString('en-US')}</text>
+<text class="metric" x="300" y="105">Reviews</text><text class="value" x="300" y="124">${reviews.toLocaleString('en-US')}</text>
+<text class="metric" x="170" y="147">Stars</text><text class="value" x="170" y="166">${stars.toLocaleString('en-US')}</text>
+<text class="metric" x="300" y="147">Followers</text><text class="value" x="300" y="166">${followers.toLocaleString('en-US')}</text>
+</svg>`;
+
+await writeFile(`${sourceDir}/github-rating.svg`, ratingSvg);
 
 const cardFiles = [
   'github-stats.svg',
@@ -74,8 +193,6 @@ for (const file of cardFiles) {
   await copyFile(`${sourceDir}/${file}`, `${snapshotDir}/${snapshotName(file)}`);
 }
 
-// Each refresh receives immutable filenames so GitHub's image proxy cannot
-// serve an older cached response for newly generated cards.
 for (const entry of await readdir(snapshotDir)) {
   if (!entry.endsWith(`-${version}.svg`)) {
     await rm(`${snapshotDir}/${entry}`);
@@ -112,4 +229,14 @@ readme = readme.replace(/alt="Williams' custom GitHub activity grade"/g, 'alt="W
 
 await writeFile(readmePath, readme);
 
-console.log(`Published immutable local profile-card snapshot ${version} with GitHub Readme Stats rank.`);
+console.log(JSON.stringify({
+  rank: rankLevel,
+  percentile,
+  commits,
+  prs,
+  issues,
+  reviews,
+  stars,
+  followers,
+  version,
+}, null, 2));
