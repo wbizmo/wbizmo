@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180" viewBox="0 0 600 180" role="img" aria-label="GitHub contribution streak for wbizmo">
+
+<style>
+  .bg{fill:#0d1117}.border{fill:none;stroke:#30363d;stroke-width:1}
+  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .label{font:400 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
+  .value{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .big{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .small{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
+  .sub{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
+  .strong{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .grid{stroke:#30363d;stroke-width:1}.track{fill:#21262d}.mark{fill:#58a6ff}
+  @media(prefers-color-scheme:dark){
+    .bg{fill:#0d1117}.border,.grid{stroke:#30363d}.track{fill:#21262d}
+    .title,.value,.big,.strong,.mark{fill:#58a6ff}.label,.small,.sub{fill:#8b949e}
+  }
+</style>
+<rect class="bg" width="600" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="599" height="179" rx="8"/>
+<line class="grid" x1="200" y1="24" x2="200" y2="158"/><line class="grid" x1="400" y1="24" x2="400" y2="158"/>
+<text class="big" x="100" y="72" text-anchor="middle">112</text>
+<text class="label" x="100" y="105" text-anchor="middle">Active Days</text>
+<text class="sub" x="100" y="131" text-anchor="middle">last 12 months</text>
+<g data-streak-flame="true" transform="translate(286 5) scale(.86)">
+  <path d="M16 1c1 7-3 9-1 14 1-3 4-5 6-8 3 4 5 8 5 13 0 7-5 12-12 12S2 27 2 20c0-6 4-10 8-14-1 5 1 8 4 9-1-5 2-8 2-14Z" fill="#f78166"/>
+  <path d="M14 18c3-3 4-5 4-8 3 3 5 6 5 9 0 5-4 9-9 9s-9-4-9-9c0-3 2-6 5-9 0 4 1 6 4 8Z" fill="#ffab70"/>
+</g>
+<circle cx="300" cy="69" r="38" fill="none" stroke="#58a6ff" stroke-width="6"/>
+<text class="big" x="300" y="80" text-anchor="middle">37</text>
+<text class="strong" x="300" y="120" text-anchor="middle">Current Streak</text>
+<text class="sub" x="300" y="146" text-anchor="middle">Aug 4 – Sep 9</text>
+<text class="big" x="500" y="72" text-anchor="middle">37</text>
+<text class="label" x="500" y="105" text-anchor="middle">Longest Streak</text>
+<text class="sub" x="500" y="131" text-anchor="middle">Aug 4 – Sep 9</text>
+</svg>
