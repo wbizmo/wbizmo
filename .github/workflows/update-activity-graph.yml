@@ -33,6 +33,7 @@ jobs:
 
       - name: Publish immutable README card snapshots
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_LOGIN: wbizmo
         run: node scripts/refresh-readme-image-urls.mjs
 
