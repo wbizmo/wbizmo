@@ -1,6 +1,5 @@
 name: Update GitHub profile cards
 
-# Rebuild marker: force a fresh GitHub-data recollection and immutable SVG snapshot set.
 on:
   schedule:
     - cron: '23 */6 * * *'
@@ -10,9 +9,6 @@ on:
     paths:
       - '.github/workflows/update-activity-graph.yml'
       - '.github/PROFILE_README_RULES.md'
-      - 'scripts/generate-activity-graph.mjs'
-      - 'scripts/refresh-readme-image-urls.mjs'
-      - 'scripts/force-dark-profile-cards.mjs'
 
 permissions:
   contents: write
@@ -28,29 +24,65 @@ jobs:
       - name: Check out profile repository
         uses: actions/checkout@v4
 
-      - name: Generate cards from GitHub data
+      - name: Prepare profile directory
+        run: mkdir -p profile
+
+      - name: Generate GitHub stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=wbizmo&show_icons=true&theme=github_dark&include_all_commits=true
+          path: profile/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Generate top languages card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=wbizmo&layout=compact&langs_count=6&theme=github_dark
+          path: profile/top-langs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Generate streak card
+        uses: DenverCoder1/github-readme-streak-stats@main
+        with:
+          options: user=wbizmo&theme=github-dark-blue&disable_animations=true&timezone=Africa/Lagos
+          path: profile/streak.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate productive-time and activity cards
+        uses: vn7n24fzkq/github-profile-summary-cards@v0.8.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PROFILE_LOGIN: wbizmo
-        run: node scripts/generate-activity-graph.mjs
+        with:
+          USERNAME: wbizmo
+          UTC_OFFSET: 1
+          THEME: github_dark
+          AUTO_PUSH: false
 
-      - name: Publish immutable README card snapshots
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PROFILE_LOGIN: wbizmo
-        run: node scripts/refresh-readme-image-urls.mjs
+      - name: Publish summary cards to stable paths
+        run: |
+          cp profile-summary-card-output/github_dark/4-productive-time.svg profile/productive-time.svg
+          cp profile-summary-card-output/github_dark/0-profile-details.svg profile/activity.svg
 
-      - name: Force dark-mode card palette
-        run: node scripts/force-dark-profile-cards.mjs
+      - name: Validate generated SVGs
+        run: |
+          set -eu
+          for file in profile/stats.svg profile/top-langs.svg profile/streak.svg profile/productive-time.svg profile/activity.svg; do
+            test -s "$file"
+            grep -q '<svg' "$file"
+          done
 
       - name: Commit refreshed cards
         run: |
-          if [ -z "$(git status --porcelain -- README.md assets/)" ]; then
+          if [ -z "$(git status --porcelain -- profile/)" ]; then
             echo 'GitHub profile cards are already current.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A -- README.md assets/
+          git add profile/*.svg
           git commit -m 'chore: refresh GitHub profile cards'
           git push
