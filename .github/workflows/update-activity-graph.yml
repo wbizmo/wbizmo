@@ -38,7 +38,7 @@ jobs:
             sudo apt-get install -y --no-install-recommends librsvg2-bin
           fi
 
-      - name: Publish immutable PNG README card snapshots
+      - name: Post-process and rasterize cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROFILE_LOGIN: wbizmo
@@ -46,12 +46,22 @@ jobs:
 
       - name: Commit refreshed cards
         run: |
-          if [ -z "$(git status --porcelain -- README.md assets/)" ]; then
+          if [ -z "$(git status --porcelain -- assets/github-stats.svg assets/github-stats.png assets/github-productive-time.svg assets/github-productive-time.png assets/github-repos-language.svg assets/github-repos-language.png assets/github-streak.svg assets/github-streak.png assets/github-activity.svg assets/github-activity.png)" ]; then
             echo 'GitHub profile cards are already current.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A -- README.md assets/
+          git add \
+            assets/github-stats.svg \
+            assets/github-stats.png \
+            assets/github-productive-time.svg \
+            assets/github-productive-time.png \
+            assets/github-repos-language.svg \
+            assets/github-repos-language.png \
+            assets/github-streak.svg \
+            assets/github-streak.png \
+            assets/github-activity.svg \
+            assets/github-activity.png
           git commit -m 'chore: refresh GitHub profile cards'
           git push
