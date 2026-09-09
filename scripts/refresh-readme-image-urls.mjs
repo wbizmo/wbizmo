@@ -1,4 +1,5 @@
 import {
+  access,
   copyFile,
   mkdir,
   readFile,
@@ -40,8 +41,14 @@ const numberFrom = (source, pattern, label) => {
   return Number(match[1].replaceAll(',', ''));
 };
 
-// Preserve the familiar streak flame locally so the streak card remains fully
-// self-hosted and does not depend on emoji-font rendering.
+const copyIfMissing = async (source, destination) => {
+  try {
+    await access(destination);
+  } catch {
+    await copyFile(source, destination);
+  }
+};
+
 const streakPath = `${sourceDir}/github-streak.svg`;
 let streakSvg = await readFile(streakPath, 'utf8');
 const flameMarkup = `<g data-streak-flame="true" transform="translate(286 5) scale(.86)">
@@ -57,9 +64,6 @@ if (!streakSvg.includes('data-streak-flame="true"')) {
   await writeFile(streakPath, streakSvg);
 }
 
-// Use the established GitHub Readme Stats rank algorithm and place its familiar
-// letter-in-a-ring directly inside the main stats card, matching the common card
-// layout instead of adding a separate custom rating card.
 const statsPath = `${sourceDir}/github-stats.svg`;
 let statsSvg = await readFile(statsPath, 'utf8');
 const stars = numberFrom(statsSvg, /Total Stars:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total stars');
@@ -112,7 +116,6 @@ while (reviewCursor < now) {
 
 const exponentialCdf = (x) => 1 - 2 ** -x;
 const logNormalCdf = (x) => x / (1 + x);
-
 const COMMITS_MEDIAN = 1000;
 const COMMITS_WEIGHT = 2;
 const PRS_MEDIAN = 50;
@@ -181,11 +184,25 @@ for (const file of cardFiles) {
   await copyFile(`${sourceDir}/${file}`, `${snapshotDir}/${snapshotName(file)}`);
 }
 
-// IMPORTANT: do not delete previous immutable snapshots. GitHub caches rendered
-// README HTML independently from repository contents. Deleting the previous files
-// while an older README render is still cached is exactly what caused the cards to
-// turn into broken-image icons. The SVGs are tiny, so retaining old snapshots is
-// the reliable cache-safe tradeoff.
+// Restore the two immutable versions that were deleted by the previous cleanup
+// implementation. GitHub may still have cached README HTML that references these
+// exact filenames, so keeping compatibility copies immediately heals those renders.
+for (const legacyVersion of ['34314980875', '34315390108']) {
+  for (const file of cardFiles) {
+    await copyIfMissing(
+      `${sourceDir}/${file}`,
+      `${snapshotDir}/${file.replace(/\.svg$/, `-${legacyVersion}.svg`)}`,
+    );
+  }
+}
+await copyIfMissing(
+  `${sourceDir}/github-rating.svg`,
+  `${snapshotDir}/github-rating-34315390108.svg`,
+);
+
+// Never delete immutable snapshots here. GitHub can cache an older rendered
+// README after the repository has already advanced; deleting the file behind an
+// older render is what caused the recurring broken-image state.
 let readme = await readFile(readmePath, 'utf8');
 
 for (const file of cardFiles) {
@@ -203,8 +220,6 @@ readme = readme.replace(
   snapshotPath('github-streak.svg'),
 );
 
-// The rank now belongs inside the main stats card, like the familiar GitHub
-// Readme Stats layout. Remove the temporary standalone rank/custom-grade block.
 readme = readme.replace(
   /\s*<p align="center"><img[^>]+github-rating(?:-[^/"']+)?\.svg[^>]*><\/p>\s*/g,
   '\n\n',
