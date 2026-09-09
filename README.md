@@ -20,16 +20,16 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-stats-34316142615.svg" alt="Williams' lifetime GitHub stats" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-productive-time-34316142615.svg" alt="Williams' productive commit time" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-stats-34316296944.svg" alt="Williams' lifetime GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-productive-time-34316296944.svg" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-repos-language-34316142615.svg" alt="Williams' authored public repositories by primary language" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-streak-34316142615.svg" alt="Williams' live GitHub contribution streak" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-repos-language-34316296944.svg" alt="Williams' authored public repositories by primary language" /></td>
+<td width="50%" align="center"><img width="100%" src="./assets/profile-cards/github-streak-34316296944.svg" alt="Williams' live GitHub contribution streak" /></td>
 </tr>
 </table>
 
-<p align="center"><img src="./assets/profile-cards/github-activity-34316142615.svg" alt="Williams' rolling GitHub contribution activity" /></p>
+<p align="center"><img src="./assets/profile-cards/github-activity-34316296944.svg" alt="Williams' rolling GitHub contribution activity" /></p>
 <p align="center"><sub>Generated from GitHub data and refreshed every six hours. Each card uses its own explicitly labelled scope.</sub></p>
 
 ---
