@@ -1,10 +1,16 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import {
+  copyFile,
+  mkdir,
+  readFile,
+  readdir,
+  rm,
+  writeFile,
+} from 'node:fs/promises';
 
-const login = process.env.PROFILE_LOGIN || 'wbizmo';
-const repository = process.env.PROFILE_REPOSITORY || `${login}/${login}`;
-const ref = process.env.PROFILE_REF || 'main';
 const version = process.env.GITHUB_RUN_ID || Date.now().toString(36);
 const readmePath = 'README.md';
+const sourceDir = 'assets';
+const snapshotDir = 'assets/profile-cards';
 
 const cardFiles = [
   'github-stats.svg',
@@ -14,27 +20,42 @@ const cardFiles = [
   'github-activity.svg',
 ];
 
-const rawUrl = (file) =>
-  `https://raw.githubusercontent.com/${repository}/${ref}/assets/${file}?v=${version}`;
+await mkdir(snapshotDir, { recursive: true });
+
+const snapshotName = (file) => file.replace(/\.svg$/, `-${version}.svg`);
+const snapshotPath = (file) => `./${snapshotDir}/${snapshotName(file)}`;
+
+for (const file of cardFiles) {
+  await copyFile(`${sourceDir}/${file}`, `${snapshotDir}/${snapshotName(file)}`);
+}
+
+// Keep only the files for this refresh. The README points at immutable filenames,
+// so GitHub's image proxy never reuses a stale response for a newly generated card.
+for (const entry of await readdir(snapshotDir)) {
+  if (!entry.endsWith(`-${version}.svg`)) {
+    await rm(`${snapshotDir}/${entry}`);
+  }
+}
 
 let readme = await readFile(readmePath, 'utf8');
 
 for (const file of cardFiles) {
-  const escaped = file.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const stem = file.replace(/\.svg$/, '');
+  const escapedStem = stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
   const existingAssetUrl = new RegExp(
-    `(?:https://raw\\.githubusercontent\\.com/[^"']+?/assets/|(?:\\./)?assets/)${escaped}(?:\\?[^"']*)?`,
+    `(?:https://raw\\.githubusercontent\\.com/[^"']+?/assets/(?:profile-cards/)?|(?:\\./)?assets/(?:profile-cards/)?)${escapedStem}(?:-[^/"']+)?\\.svg(?:\\?[^"']*)?`,
     'g',
   );
-  readme = readme.replace(existingAssetUrl, rawUrl(file));
+
+  readme = readme.replace(existingAssetUrl, snapshotPath(file));
 }
 
-// Eliminate the remaining third-party streak dependency so every GitHub
-// activity card is generated and served from this profile repository.
 readme = readme.replace(
   /https:\/\/streak-stats\.demolab\.com\?[^"']*/g,
-  rawUrl('github-streak.svg'),
+  snapshotPath('github-streak.svg'),
 );
 
 await writeFile(readmePath, readme);
 
-console.log(`Refreshed README profile-card URLs with cache version ${version}.`);
+console.log(`Published immutable local profile-card snapshot ${version}.`);
