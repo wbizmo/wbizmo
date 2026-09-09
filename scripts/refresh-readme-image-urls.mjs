@@ -2,8 +2,6 @@ import {
   copyFile,
   mkdir,
   readFile,
-  readdir,
-  rm,
   writeFile,
 } from 'node:fs/promises';
 
@@ -59,11 +57,11 @@ if (!streakSvg.includes('data-streak-flame="true"')) {
   await writeFile(streakPath, streakSvg);
 }
 
-// GitHub itself does not publish an A/B/S profile grade. The familiar rank shown
-// on GitHub profile stat cards comes from GitHub Readme Stats. Reproduce that
-// project's current rank algorithm exactly, but calculate it locally from GitHub
-// data so the README does not depend on an external image service being online.
-const statsSvg = await readFile(`${sourceDir}/github-stats.svg`, 'utf8');
+// Use the established GitHub Readme Stats rank algorithm and place its familiar
+// letter-in-a-ring directly inside the main stats card, matching the common card
+// layout instead of adding a separate custom rating card.
+const statsPath = `${sourceDir}/github-stats.svg`;
+let statsSvg = await readFile(statsPath, 'utf8');
 const stars = numberFrom(statsSvg, /Total Stars:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total stars');
 const commits = numberFrom(statsSvg, /Total Commits:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total commits');
 const prs = numberFrom(statsSvg, /Total PRs:<\/text><text[^>]*>([\d,]+)<\/text>/, 'total pull requests');
@@ -115,7 +113,6 @@ while (reviewCursor < now) {
 const exponentialCdf = (x) => 1 - 2 ** -x;
 const logNormalCdf = (x) => x / (1 + x);
 
-// Exact medians, weights and thresholds used by anuraghazra/github-readme-stats.
 const COMMITS_MEDIAN = 1000;
 const COMMITS_WEIGHT = 2;
 const PRS_MEDIAN = 50;
@@ -144,43 +141,34 @@ const rankFraction = 1 - (
 const percentile = rankFraction * 100;
 const levelIndex = THRESHOLDS.findIndex((threshold) => percentile <= threshold);
 const rankLevel = LEVELS[levelIndex === -1 ? LEVELS.length - 1 : levelIndex];
-const percentileLabel = percentile < 1 ? '<1%' : `${percentile.toFixed(1)}%`;
 
-const ratingSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="GitHub Readme Stats rank ${rankLevel}, top ${percentileLabel}">
-<style>
-  .bg{fill:#fff}.border,.divider{fill:none;stroke:#d0d7de;stroke-width:1}
-  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .sub{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
-  .grade{font:700 42px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .metric{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
-  .value{font:600 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .ring{fill:none;stroke:#0969da;stroke-width:5}
-  @media(prefers-color-scheme:dark){
-    .bg{fill:#0d1117}.border,.divider{stroke:#30363d}.title,.grade,.value{fill:#58a6ff}.sub,.metric{fill:#8b949e}.ring{stroke:#58a6ff}
-  }
-</style>
-<rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
-<text class="title" x="18" y="30">GitHub Stats Rank</text>
-<circle class="ring" cx="77" cy="99" r="43"/>
-<text class="grade" x="77" y="109" text-anchor="middle">${rankLevel}</text>
-<text class="sub" x="77" y="151" text-anchor="middle">Top ${percentileLabel}</text>
-<line class="divider" x1="145" y1="48" x2="145" y2="160"/>
-<text class="metric" x="170" y="63">Commits</text><text class="value" x="170" y="82">${commits.toLocaleString('en-US')}</text>
-<text class="metric" x="300" y="63">Pull requests</text><text class="value" x="300" y="82">${prs.toLocaleString('en-US')}</text>
-<text class="metric" x="170" y="105">Issues</text><text class="value" x="170" y="124">${issues.toLocaleString('en-US')}</text>
-<text class="metric" x="300" y="105">Reviews</text><text class="value" x="300" y="124">${reviews.toLocaleString('en-US')}</text>
-<text class="metric" x="170" y="147">Stars</text><text class="value" x="170" y="166">${stars.toLocaleString('en-US')}</text>
-<text class="metric" x="300" y="147">Followers</text><text class="value" x="300" y="166">${followers.toLocaleString('en-US')}</text>
-</svg>`;
+const rankStyles = `
+  .rank-ring{fill:none;stroke:#0969da;stroke-width:6}
+  .rank-grade{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  @media(prefers-color-scheme:dark){.rank-ring{stroke:#58a6ff}.rank-grade{fill:#58a6ff}}
+`;
+statsSvg = statsSvg.replace('</style>', `${rankStyles}</style>`);
 
-await writeFile(`${sourceDir}/github-rating.svg`, ratingSvg);
+const rankMarkup = `<g data-readme-stats-rank="true">
+  <circle class="rank-ring" cx="335" cy="101" r="41"/>
+  <text class="rank-grade" x="335" y="111" text-anchor="middle">${rankLevel}</text>
+</g>`;
+
+const statsWithRank = statsSvg.replace(
+  /<g transform="translate\(300 50\) scale\(3\.25\)">[\s\S]*?<\/g>/,
+  rankMarkup,
+);
+if (statsWithRank === statsSvg) {
+  throw new Error('Could not place GitHub Readme Stats rank in the stats card.');
+}
+statsSvg = statsWithRank;
+await writeFile(statsPath, statsSvg);
 
 const cardFiles = [
   'github-stats.svg',
   'github-productive-time.svg',
   'github-repos-language.svg',
   'github-streak.svg',
-  'github-rating.svg',
   'github-activity.svg',
 ];
 
@@ -193,12 +181,11 @@ for (const file of cardFiles) {
   await copyFile(`${sourceDir}/${file}`, `${snapshotDir}/${snapshotName(file)}`);
 }
 
-for (const entry of await readdir(snapshotDir)) {
-  if (!entry.endsWith(`-${version}.svg`)) {
-    await rm(`${snapshotDir}/${entry}`);
-  }
-}
-
+// IMPORTANT: do not delete previous immutable snapshots. GitHub caches rendered
+// README HTML independently from repository contents. Deleting the previous files
+// while an older README render is still cached is exactly what caused the cards to
+// turn into broken-image icons. The SVGs are tiny, so retaining old snapshots is
+// the reliable cache-safe tradeoff.
 let readme = await readFile(readmePath, 'utf8');
 
 for (const file of cardFiles) {
@@ -216,16 +203,12 @@ readme = readme.replace(
   snapshotPath('github-streak.svg'),
 );
 
-if (!/github-rating(?:-[^/"']+)?\.svg/.test(readme)) {
-  const ratingBlock = `<p align="center"><img width="50%" src="${snapshotPath('github-rating.svg')}" alt="Williams' GitHub stats rank" /></p>`;
-  const beforeActivity = /(<\/table>\s*)(<p align="center"><img[^>]+github-activity[^>]+><\/p>)/;
-  if (!beforeActivity.test(readme)) {
-    throw new Error('Could not place GitHub stats rank in README.');
-  }
-  readme = readme.replace(beforeActivity, `$1\n${ratingBlock}\n\n$2`);
-}
-
-readme = readme.replace(/alt="Williams' custom GitHub activity grade"/g, 'alt="Williams\' GitHub stats rank"');
+// The rank now belongs inside the main stats card, like the familiar GitHub
+// Readme Stats layout. Remove the temporary standalone rank/custom-grade block.
+readme = readme.replace(
+  /\s*<p align="center"><img[^>]+github-rating(?:-[^/"']+)?\.svg[^>]*><\/p>\s*/g,
+  '\n\n',
+);
 
 await writeFile(readmePath, readme);
 
