@@ -5,7 +5,10 @@ import {
   readFile,
   writeFile,
 } from 'node:fs/promises';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 
+const execFileAsync = promisify(execFile);
 const token = process.env.GITHUB_TOKEN;
 const login = process.env.PROFILE_LOGIN || 'wbizmo';
 const version = process.env.GITHUB_RUN_ID || Date.now().toString(36);
@@ -167,31 +170,42 @@ if (statsWithRank === statsSvg) {
 statsSvg = statsWithRank;
 await writeFile(statsPath, statsSvg);
 
-const cardFiles = [
-  'github-stats.svg',
-  'github-productive-time.svg',
-  'github-repos-language.svg',
-  'github-streak.svg',
-  'github-activity.svg',
+const cardStems = [
+  'github-stats',
+  'github-productive-time',
+  'github-repos-language',
+  'github-streak',
+  'github-activity',
 ];
 
 await mkdir(snapshotDir, { recursive: true });
 
-const snapshotName = (file) => file.replace(/\.svg$/, `-${version}.svg`);
-const snapshotPath = (file) => `./${snapshotDir}/${snapshotName(file)}`;
-
-for (const file of cardFiles) {
-  await copyFile(`${sourceDir}/${file}`, `${snapshotDir}/${snapshotName(file)}`);
+// GitHub's profile renderer has repeatedly been unreliable with these generated
+// SVGs on mobile. Rasterise the final cards and use PNGs in the README. The SVGs
+// remain as source artifacts, while PNG avoids SVG proxy/sanitisation failures.
+for (const stem of cardStems) {
+  await execFileAsync('rsvg-convert', [
+    '--keep-aspect-ratio',
+    '--output', `${sourceDir}/${stem}.png`,
+    `${sourceDir}/${stem}.svg`,
+  ]);
 }
 
-// Restore the two immutable versions that were deleted by the previous cleanup
-// implementation. GitHub may still have cached README HTML that references these
-// exact filenames, so keeping compatibility copies immediately heals those renders.
+const pngSnapshotPath = (stem) => `./${snapshotDir}/${stem}-${version}.png`;
+for (const stem of cardStems) {
+  await copyFile(
+    `${sourceDir}/${stem}.png`,
+    `${snapshotDir}/${stem}-${version}.png`,
+  );
+}
+
+// Preserve old SVG snapshots indefinitely. GitHub may cache older README HTML,
+// and deleting a referenced snapshot turns that cached render into a broken image.
 for (const legacyVersion of ['34314980875', '34315390108']) {
-  for (const file of cardFiles) {
+  for (const stem of cardStems) {
     await copyIfMissing(
-      `${sourceDir}/${file}`,
-      `${snapshotDir}/${file.replace(/\.svg$/, `-${legacyVersion}.svg`)}`,
+      `${sourceDir}/${stem}.svg`,
+      `${snapshotDir}/${stem}-${legacyVersion}.svg`,
     );
   }
 }
@@ -200,28 +214,24 @@ await copyIfMissing(
   `${snapshotDir}/github-rating-34315390108.svg`,
 );
 
-// Never delete immutable snapshots here. GitHub can cache an older rendered
-// README after the repository has already advanced; deleting the file behind an
-// older render is what caused the recurring broken-image state.
 let readme = await readFile(readmePath, 'utf8');
 
-for (const file of cardFiles) {
-  const stem = file.replace(/\.svg$/, '');
+for (const stem of cardStems) {
   const escapedStem = stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const existingAssetUrl = new RegExp(
-    `(?:https://raw\\.githubusercontent\\.com/[^"']+?/assets/(?:profile-cards/)?|(?:\\./)?assets/(?:profile-cards/)?)${escapedStem}(?:-[^/"']+)?\\.svg(?:\\?[^"']*)?`,
+    `(?:https://raw\\.githubusercontent\\.com/[^"']+?/assets/(?:profile-cards/)?|(?:\\./)?assets/(?:profile-cards/)?)${escapedStem}(?:-[^/"']+)?\\.(?:svg|png)(?:\\?[^"']*)?`,
     'g',
   );
-  readme = readme.replace(existingAssetUrl, snapshotPath(file));
+  readme = readme.replace(existingAssetUrl, pngSnapshotPath(stem));
 }
 
 readme = readme.replace(
   /https:\/\/streak-stats\.demolab\.com\?[^"']*/g,
-  snapshotPath('github-streak.svg'),
+  pngSnapshotPath('github-streak'),
 );
 
 readme = readme.replace(
-  /\s*<p align="center"><img[^>]+github-rating(?:-[^/"']+)?\.svg[^>]*><\/p>\s*/g,
+  /\s*<p align="center"><img[^>]+github-rating(?:-[^/"']+)?\.(?:svg|png)[^>]*><\/p>\s*/g,
   '\n\n',
 );
 
@@ -237,4 +247,5 @@ console.log(JSON.stringify({
   stars,
   followers,
   version,
+  output: 'png',
 }, null, 2));
