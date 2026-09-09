@@ -29,8 +29,6 @@ I am especially interested in systems that must remain correct when <strong>mone
 </tr>
 </table>
 
-<p align="center"><img width="100%" src="./profile/activity.svg" alt="Williams' GitHub activity summary" /></p>
-
 ---
 
 <p><strong>PUBLISHED PRODUCTS</strong></p>
