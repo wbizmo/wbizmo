@@ -31,11 +31,9 @@ jobs:
           PROFILE_LOGIN: wbizmo
         run: node scripts/generate-activity-graph.mjs
 
-      - name: Refresh README image URLs
+      - name: Publish immutable README card snapshots
         env:
           PROFILE_LOGIN: wbizmo
-          PROFILE_REPOSITORY: wbizmo/wbizmo
-          PROFILE_REF: main
         run: node scripts/refresh-readme-image-urls.mjs
 
       - name: Commit refreshed cards
@@ -46,12 +44,13 @@ jobs:
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add \
+          git add -A -- \
             README.md \
             assets/github-stats.svg \
             assets/github-productive-time.svg \
             assets/github-repos-language.svg \
             assets/github-streak.svg \
-            assets/github-activity.svg
+            assets/github-activity.svg \
+            assets/profile-cards/
           git commit -m 'chore: refresh GitHub profile cards'
           git push
