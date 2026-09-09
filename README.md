@@ -20,16 +20,16 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/github-stats.png" alt="Williams' lifetime GitHub stats" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/github-productive-time.png" alt="Williams' productive commit time" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-stats.png?v=34317645961" alt="Williams' lifetime GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-productive-time.png?v=34317645961" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
-<td width="50%" align="center"><img width="100%" src="./assets/github-repos-language.png" alt="Williams' authored public repositories by primary language" /></td>
-<td width="50%" align="center"><img width="100%" src="./assets/github-streak.png" alt="Williams' live GitHub contribution streak" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-repos-language.png?v=34317645961" alt="Williams' authored public repositories by primary language" /></td>
+<td width="50%" align="center"><img width="100%" src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-streak.png?v=34317645961" alt="Williams' live GitHub contribution streak" /></td>
 </tr>
 </table>
 
-<p align="center"><img src="./assets/github-activity.png" alt="Williams' rolling GitHub contribution activity" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets/github-activity.png?v=34317645961" alt="Williams' rolling GitHub contribution activity" /></p>
 
 ---
 
