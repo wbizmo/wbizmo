@@ -44,15 +44,50 @@ jobs:
           PROFILE_LOGIN: wbizmo
         run: node scripts/refresh-readme-image-urls.mjs
 
+      - name: Point README at cache-busted raw card files
+        env:
+          CARD_VERSION: ${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          readme_path = Path('README.md')
+          text = readme_path.read_text()
+          version = os.environ['CARD_VERSION']
+          stems = [
+              'github-stats',
+              'github-productive-time',
+              'github-repos-language',
+              'github-streak',
+              'github-activity',
+          ]
+          base = 'https://raw.githubusercontent.com/wbizmo/wbizmo/main/assets'
+
+          for stem in stems:
+              target = f'{base}/{stem}.png?v={version}'
+              patterns = [
+                  rf'https://raw\.githubusercontent\.com/wbizmo/wbizmo/main/assets/{re.escape(stem)}\.png(?:\?[^\"\']*)?',
+                  rf'(?:\./)?assets/{re.escape(stem)}\.png(?:\?[^\"\']*)?',
+                  rf'(?:\./)?assets/profile-cards/{re.escape(stem)}-[^/\"\']+\.(?:png|svg)(?:\?[^\"\']*)?',
+              ]
+              for pattern in patterns:
+                  text = re.sub(pattern, target, text)
+
+          readme_path.write_text(text)
+          PY
+
       - name: Commit refreshed cards
         run: |
-          if [ -z "$(git status --porcelain -- assets/github-stats.svg assets/github-stats.png assets/github-productive-time.svg assets/github-productive-time.png assets/github-repos-language.svg assets/github-repos-language.png assets/github-streak.svg assets/github-streak.png assets/github-activity.svg assets/github-activity.png)" ]; then
+          if [ -z "$(git status --porcelain -- README.md assets/github-stats.svg assets/github-stats.png assets/github-productive-time.svg assets/github-productive-time.png assets/github-repos-language.svg assets/github-repos-language.png assets/github-streak.svg assets/github-streak.png assets/github-activity.svg assets/github-activity.png)" ]; then
             echo 'GitHub profile cards are already current.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add \
+            README.md \
             assets/github-stats.svg \
             assets/github-stats.png \
             assets/github-productive-time.svg \
