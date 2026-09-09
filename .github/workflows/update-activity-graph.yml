@@ -1,5 +1,6 @@
 name: Update GitHub profile cards
 
+# Rebuild marker: force a fresh GitHub-data recollection and immutable SVG snapshot set.
 on:
   schedule:
     - cron: '23 */6 * * *'
