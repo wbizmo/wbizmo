@@ -1,20 +1,11 @@
-import {
-  access,
-  copyFile,
-  mkdir,
-  readFile,
-  writeFile,
-} from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
 const token = process.env.GITHUB_TOKEN;
 const login = process.env.PROFILE_LOGIN || 'wbizmo';
-const version = process.env.GITHUB_RUN_ID || Date.now().toString(36);
-const readmePath = 'README.md';
 const sourceDir = 'assets';
-const snapshotDir = 'assets/profile-cards';
 
 if (!token) throw new Error('GITHUB_TOKEN is required');
 
@@ -42,14 +33,6 @@ const numberFrom = (source, pattern, label) => {
   const match = source.match(pattern);
   if (!match) throw new Error(`Could not read ${label} from generated GitHub cards.`);
   return Number(match[1].replaceAll(',', ''));
-};
-
-const copyIfMissing = async (source, destination) => {
-  try {
-    await access(destination);
-  } catch {
-    await copyFile(source, destination);
-  }
 };
 
 const streakPath = `${sourceDir}/github-streak.svg`;
@@ -178,11 +161,6 @@ const cardStems = [
   'github-activity',
 ];
 
-await mkdir(snapshotDir, { recursive: true });
-
-// GitHub's profile renderer has repeatedly been unreliable with these generated
-// SVGs on mobile. Rasterise the final cards and use PNGs in the README. The SVGs
-// remain as source artifacts, while PNG avoids SVG proxy/sanitisation failures.
 for (const stem of cardStems) {
   await execFileAsync('rsvg-convert', [
     '--keep-aspect-ratio',
@@ -190,52 +168,6 @@ for (const stem of cardStems) {
     `${sourceDir}/${stem}.svg`,
   ]);
 }
-
-const pngSnapshotPath = (stem) => `./${snapshotDir}/${stem}-${version}.png`;
-for (const stem of cardStems) {
-  await copyFile(
-    `${sourceDir}/${stem}.png`,
-    `${snapshotDir}/${stem}-${version}.png`,
-  );
-}
-
-// Preserve old SVG snapshots indefinitely. GitHub may cache older README HTML,
-// and deleting a referenced snapshot turns that cached render into a broken image.
-for (const legacyVersion of ['34314980875', '34315390108']) {
-  for (const stem of cardStems) {
-    await copyIfMissing(
-      `${sourceDir}/${stem}.svg`,
-      `${snapshotDir}/${stem}-${legacyVersion}.svg`,
-    );
-  }
-}
-await copyIfMissing(
-  `${sourceDir}/github-rating.svg`,
-  `${snapshotDir}/github-rating-34315390108.svg`,
-);
-
-let readme = await readFile(readmePath, 'utf8');
-
-for (const stem of cardStems) {
-  const escapedStem = stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const existingAssetUrl = new RegExp(
-    `(?:https://raw\\.githubusercontent\\.com/[^"']+?/assets/(?:profile-cards/)?|(?:\\./)?assets/(?:profile-cards/)?)${escapedStem}(?:-[^/"']+)?\\.(?:svg|png)(?:\\?[^"']*)?`,
-    'g',
-  );
-  readme = readme.replace(existingAssetUrl, pngSnapshotPath(stem));
-}
-
-readme = readme.replace(
-  /https:\/\/streak-stats\.demolab\.com\?[^"']*/g,
-  pngSnapshotPath('github-streak'),
-);
-
-readme = readme.replace(
-  /\s*<p align="center"><img[^>]+github-rating(?:-[^/"']+)?\.(?:svg|png)[^>]*><\/p>\s*/g,
-  '\n\n',
-);
-
-await writeFile(readmePath, readme);
 
 console.log(JSON.stringify({
   rank: rankLevel,
@@ -246,6 +178,5 @@ console.log(JSON.stringify({
   reviews,
   stars,
   followers,
-  version,
-  output: 'png',
+  output: 'stable-png',
 }, null, 2));
