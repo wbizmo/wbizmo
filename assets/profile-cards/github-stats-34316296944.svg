@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Lifetime GitHub stats for wbizmo">
 
 <style>
-  .bg{fill:#fff}.border{fill:none;stroke:#d0d7de;stroke-width:1}
-  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .label{font:400 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
-  .value{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .big{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .small{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
-  .sub{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#57606a}
-  .strong{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
-  .grid{stroke:#d8dee4;stroke-width:1}.track{fill:#eaeef2}.mark{fill:#0969da}
+  .bg{fill:#0d1117}.border{fill:none;stroke:#30363d;stroke-width:1}
+  .title{font:600 19px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .label{font:400 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
+  .value{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .big{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .small{font:400 11px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
+  .sub{font:400 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
+  .strong{font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
+  .grid{stroke:#30363d;stroke-width:1}.track{fill:#21262d}.mark{fill:#58a6ff}
   @media(prefers-color-scheme:dark){
     .bg{fill:#0d1117}.border,.grid{stroke:#30363d}.track{fill:#21262d}
     .title,.value,.big,.strong,.mark{fill:#58a6ff}.label,.small,.sub{fill:#8b949e}
   }
 
-  .rank-ring{fill:none;stroke:#0969da;stroke-width:6}
-  .rank-grade{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#0969da}
+  .rank-ring{fill:none;stroke:#58a6ff;stroke-width:6}
+  .rank-grade{font:700 31px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
   @media(prefers-color-scheme:dark){.rank-ring{stroke:#58a6ff}.rank-grade{fill:#58a6ff}}
 </style>
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
