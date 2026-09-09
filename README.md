@@ -20,12 +20,11 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="https://beautiful-github-homepage.vercel.app/api?username=wbizmo&hide_title=true&hide_rank=true&show_icons=true&theme=gotham&include_all_commits=true" alt="Williams' GitHub stats" /></td>
 <td width="50%" align="center"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=github_dark&utcOffset=1" alt="Williams' productive commit time" /></td>
+<td width="50%" align="center"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=wbizmo&theme=github_dark" alt="Williams' top GitHub languages" /></td>
 </tr>
 <tr>
-<td width="50%" align="center"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=wbizmo&theme=github_dark" alt="Williams' top GitHub languages" /></td>
-<td width="50%" align="center"><img width="100%" src="https://streak-stats.demolab.com?user=wbizmo&theme=github-dark-blue&hide_border=true" alt="Williams' GitHub contribution streak" /></td>
+<td colspan="2" align="center"><img width="50%" src="https://streak-stats.demolab.com?user=wbizmo&theme=github-dark-blue&hide_border=true" alt="Williams' GitHub contribution streak" /></td>
 </tr>
 </table>
 
@@ -65,7 +64,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 <td valign="top"><strong>Infrastructure & Delivery</strong><br><br>
 <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white"> <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black"> <img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white"> <img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonwebservices&logoColor=white"> <img src="https://img.shields.io/badge/Azure-0078D4?style=flat-square&logo=microsoftazure&logoColor=white"> <img src="https://img.shields.io/badge/Oracle_Cloud-F80000?style=flat-square&logo=oracle&logoColor=white"></td>
 <td valign="top"><strong>Testing, Security & Data Science</strong><br><br>
-<img src="https://img.shields.io/badge/Vitest-6E9F18?style=flat-square&logo=vitest&logoColor=white"> <img src="https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white"> <img src="https://img.shields.io/badge/PHPUnit-3C9CD7?style=flat-square&logo=php&logoColor=white"> <img src="https://img.shields.io/badge/Testcontainers-2496ED?style=flat-square&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/OpenAPI-6BA539?style=flat-square&logo=openapiinitiative&logoColor=white"> <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white"> <img src="https://img.shields.io/badge/XGBoost-EB5B2A?style=flat-square"> <img src="https://img.shields.io/badge/SHAP-111827?style=flat-square"></td>
+<img src="https://img.shields.io/badge/Vitest-6E9F18?style=flat-square&logo=vitest&logoColor=white"> <img src="https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white"> <img src="https://img.shields.io/badge/PHPUnit-3C9CD7?style=flat-square&logo=php&logoColor=white"> <img src="https://img.shields.io/badge/Testcontainers-2496ED?style=flat-square&logo=docker"> <img src="https://img.shields.io/badge/OpenAPI-6BA539?style=flat-square&logo=openapiinitiative&logoColor=white"> <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white"> <img src="https://img.shields.io/badge/XGBoost-EB5B2A?style=flat-square"> <img src="https://img.shields.io/badge/SHAP-111827?style=flat-square"></td>
 </tr>
 </table>
 
