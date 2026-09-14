@@ -102,10 +102,11 @@ test('private stats generator verifies viewer identity and fetches followers plu
   assert.doesNotMatch(source, /console\.log\([^\n]*token/i);
 });
 
-test('profile stats workflow is scheduled, manual, secret-backed, and activates only after successful generation', () => {
+test('profile stats workflow is scheduled, manual, main-push triggered, secret-backed, and activates only after successful generation', () => {
   const source = readFileSync(resolve(repoRoot, '.github/workflows/profile-stats.yml'), 'utf8');
   assert.match(source, /workflow_dispatch:/);
   assert.match(source, /schedule:/);
+  assert.match(source, /push:\s*\n\s*branches:\s*\[main\]/);
   assert.match(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
   assert.match(source, /node scripts\/generate-private-profile-stats\.mjs/);
   assert.match(source, /node scripts\/activate-private-profile-stats\.mjs/);
