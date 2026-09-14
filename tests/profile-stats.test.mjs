@@ -101,3 +101,23 @@ test('private stats generator verifies viewer identity and fetches followers plu
   assert.match(source, /PROFILE_STATS_TOKEN/);
   assert.doesNotMatch(source, /console\.log\([^\n]*token/i);
 });
+
+test('profile stats workflow is scheduled, manual, secret-backed, and activates only after successful generation', () => {
+  const source = readFileSync(resolve(repoRoot, '.github/workflows/profile-stats.yml'), 'utf8');
+  assert.match(source, /workflow_dispatch:/);
+  assert.match(source, /schedule:/);
+  assert.match(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
+  assert.match(source, /node scripts\/generate-private-profile-stats\.mjs/);
+  assert.match(source, /node scripts\/activate-private-profile-stats\.mjs/);
+  assert.match(source, /git add assets\/github-stats\.svg README\.md/);
+  assert.doesNotMatch(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.GITHUB_TOKEN \}\}/);
+});
+
+test('activation script switches the README to the local card idempotently', async () => {
+  const { activatePrivateStatsCard } = await import('../scripts/activate-private-profile-stats.mjs');
+  const source = '<img src="https://github-readme-stats.shion.dev/api?username=wbizmo&hide_border=true" alt="Williams stats">';
+  const activated = activatePrivateStatsCard(source);
+  assert.match(activated, /src="\.\/assets\/github-stats\.svg"/);
+  assert.doesNotMatch(activated, /github-readme-stats\.shion\.dev/);
+  assert.equal(activatePrivateStatsCard(activated), activated);
+});
