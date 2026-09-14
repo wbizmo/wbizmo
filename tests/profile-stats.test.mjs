@@ -75,6 +75,7 @@ test('renderStatsSvg is deterministic, borderless, ranked, and does not leak ext
   assert.equal(first, second);
   assert.match(first, /Total Commits:<\/text><text[^>]*>3,169<\/text>/);
   assert.match(first, /data-testid="rank-grade"/);
+  assert.doesNotMatch(first, /<text[^>]*>rank<\/text>/);
   assert.doesNotMatch(first, /class="border"/);
   assert.doesNotMatch(first, /secret-client-repo/);
 });
