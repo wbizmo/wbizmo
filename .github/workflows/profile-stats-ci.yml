@@ -1,0 +1,32 @@
+name: Profile stats CI
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/profile-stats-core.mjs'
+      - 'scripts/generate-private-profile-stats.mjs'
+      - 'scripts/activate-private-profile-stats.mjs'
+      - 'tests/profile-stats.test.mjs'
+      - '.github/workflows/profile-stats*.yml'
+      - 'docs/superpowers/**'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/profile-stats-core.mjs'
+      - 'scripts/generate-private-profile-stats.mjs'
+      - 'scripts/activate-private-profile-stats.mjs'
+      - 'tests/profile-stats.test.mjs'
+      - '.github/workflows/profile-stats*.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node --test tests/profile-stats.test.mjs
