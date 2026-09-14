@@ -4,19 +4,17 @@
   .label{font:400 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
   .value{font:600 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
   .rank{font:700 34px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
-  .rank-label{font:500 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
 </style>
 <rect class="bg" width="430" height="180" rx="8"/>
 <text class="title" x="18" y="28">wbizmo&apos;s GitHub Stats</text>
 <text class="label" x="20" y="58">★  Total Stars:</text><text class="value" x="165" y="58">3</text>
 <text class="label" x="20" y="82">⌁  Total Commits:</text><text class="value" x="165" y="82">2,782</text>
-<text class="label" x="20" y="106">⑂  Total PRs:</text><text class="value" x="165" y="106">266</text>
+<text class="label" x="20" y="106">⑂  Total PRs:</text><text class="value" x="165" y="106">267</text>
 <text class="label" x="20" y="130">!  Total Issues:</text><text class="value" x="165" y="130">191</text>
 <text class="label" x="20" y="154">▣  Contributed to:</text><text class="value" x="165" y="154">48</text>
 <g transform="translate(337 91) rotate(-90)">
   <circle cx="0" cy="0" r="41" fill="none" stroke="#21262d" stroke-width="6"/>
-  <circle cx="0" cy="0" r="41" fill="none" stroke="#58a6ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="152.83 104.78"/>
+  <circle cx="0" cy="0" r="41" fill="none" stroke="#58a6ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="152.85 104.76"/>
 </g>
 <text data-testid="rank-grade" class="rank" x="337" y="101" text-anchor="middle">B+</text>
-<text class="rank-label" x="337" y="128" text-anchor="middle">rank</text>
 </svg>
