@@ -80,7 +80,6 @@ export function renderStatsSvg({
   .label{font:400 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
   .value{font:600 13px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
   .rank{font:700 34px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#58a6ff}
-  .rank-label{font:500 12px -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;fill:#8b949e}
 </style>
 <rect class="bg" width="430" height="180" rx="8"/>
 <text class="title" x="18" y="28">${safeLogin}&apos;s GitHub Stats</text>
@@ -94,6 +93,5 @@ export function renderStatsSvg({
   <circle cx="0" cy="0" r="41" fill="none" stroke="#58a6ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}"/>
 </g>
 <text data-testid="rank-grade" class="rank" x="337" y="101" text-anchor="middle">${escapeXml(rank.level)}</text>
-<text class="rank-label" x="337" y="128" text-anchor="middle">rank</text>
 </svg>`;
 }
