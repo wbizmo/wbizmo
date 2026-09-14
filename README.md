@@ -20,7 +20,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 
 <table>
 <tr>
-<td width="50%" align="center"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=wbizmo&theme=github_dark" alt="Williams' GitHub stats" /></td>
+<td width="50%" align="center"><img width="100%" src="https://github-readme-stats.vercel.app/api?username=wbizmo&show_icons=true&theme=github_dark&include_all_commits=true&hide_rank=false" alt="Williams' GitHub stats and rank" /></td>
 <td width="50%" align="center"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=wbizmo&theme=github_dark&utcOffset=1" alt="Williams' productive commit time" /></td>
 </tr>
 <tr>
@@ -57,7 +57,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 </tr>
 <tr>
 <td valign="top"><strong>Web, Mobile, Desktop & CMS</strong><br><br>
-<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/Expo-000020?style=flat-square&logo=expo&logoColor=white"> <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"> <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"> <img src="https://img.shields.io/badge/Electron-47848F?style=flat-square&logo=electron&logoColor=white"> <img src="https://img.shields.io/badge/WordPress-21759B?style=flat-square&logo=wordpress&logoColor=white"></td>
+<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/Expo-000020?style=flat-square&logo=expo&logoColor=white"> <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white"> <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white"> <img src="https://img.shields.io/badge/Electron-47848F?style=flat-square&logo=electron&logoColor=white"> <img src="https://img.shields.io/badge/WordPress-21759A?style=flat-square&logo=wordpress&logoColor=white"></td>
 <td valign="top"><strong>Data, Persistence & Messaging</strong><br><br>
 <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white"> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white"> <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white"> <img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white"> <img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white"> <img src="https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white"> <img src="https://img.shields.io/badge/Mongoose-880000?style=flat-square"> <img src="https://img.shields.io/badge/BullMQ-DC382D?style=flat-square&logo=redis&logoColor=white"> <img src="https://img.shields.io/badge/NATS-27AAE1?style=flat-square"></td>
 </tr>
