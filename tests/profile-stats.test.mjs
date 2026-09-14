@@ -1,5 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 import {
   calculateRank,
   assertAuthenticatedLogin,
@@ -16,6 +20,8 @@ const medianFixture = {
   stars: 50,
   followers: 10,
 };
+
+const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
 test('calculateRank matches the upstream median fixture', () => {
   const rank = calculateRank(medianFixture);
@@ -71,4 +77,27 @@ test('renderStatsSvg is deterministic, borderless, ranked, and does not leak ext
   assert.match(first, /data-testid="rank-grade"/);
   assert.doesNotMatch(first, /class="border"/);
   assert.doesNotMatch(first, /secret-client-repo/);
+});
+
+test('private stats generator requires the dedicated profile token before any network work', () => {
+  const result = spawnSync(process.execPath, ['scripts/generate-private-profile-stats.mjs'], {
+    cwd: repoRoot,
+    env: { ...process.env, PROFILE_STATS_TOKEN: '' },
+    encoding: 'utf8',
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /PROFILE_STATS_TOKEN is required/);
+});
+
+test('private stats generator verifies viewer identity and fetches followers plus yearly contribution totals', () => {
+  const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-profile-stats.mjs'), 'utf8');
+  assert.match(source, /viewer\s*\{\s*login\s*\}/s);
+  assert.match(source, /assertAuthenticatedLogin/);
+  assert.match(source, /followers\s*\{\s*totalCount\s*\}/s);
+  assert.match(source, /totalCommitContributions/);
+  assert.match(source, /totalPullRequestReviewContributions/);
+  assert.match(source, /mergeContributionTotals/);
+  assert.match(source, /renderStatsSvg/);
+  assert.match(source, /PROFILE_STATS_TOKEN/);
+  assert.doesNotMatch(source, /console\.log\([^\n]*token/i);
 });
