@@ -15,10 +15,6 @@ const CARD_REPLACEMENTS = [
     external: /https:\/\/github-profile-summary-cards\.vercel\.app\/api\/cards\/repos-per-language\?[^"\s]+/g,
   },
   {
-    local: './assets/github-streak.svg',
-    external: /https:\/\/streak-stats\.demolab\.com\?[^"\s]+/g,
-  },
-  {
     local: './assets/github-activity.svg',
     external: /https:\/\/github-profile-summary-cards\.vercel\.app\/api\/cards\/profile-details\?[^"\s]+/g,
   },
