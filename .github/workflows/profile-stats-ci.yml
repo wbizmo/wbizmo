@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'scripts/profile-stats-core.mjs'
-      - 'scripts/generate-activity-graph.mjs'
+      - 'scripts/generate-private-activity-cards.mjs'
       - 'scripts/generate-private-profile-stats.mjs'
       - 'scripts/activate-private-profile-stats.mjs'
       - 'tests/profile-stats.test.mjs'
@@ -14,7 +14,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/profile-stats-core.mjs'
-      - 'scripts/generate-activity-graph.mjs'
+      - 'scripts/generate-private-activity-cards.mjs'
       - 'scripts/generate-private-profile-stats.mjs'
       - 'scripts/activate-private-profile-stats.mjs'
       - 'tests/profile-stats.test.mjs'
