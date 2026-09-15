@@ -1,15 +1,31 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
-const LOCAL_CARD = './assets/github-stats.svg';
-const EXTERNAL_CARD = /https:\/\/github-readme-stats(?:\.shion\.dev|\.vercel\.app)\/api\?[^"\s]+/;
+const CARD_REPLACEMENTS = [
+  {
+    local: './assets/github-stats.svg',
+    external: /https:\/\/github-readme-stats(?:\.shion\.dev|\.vercel\.app)\/api\?[^"\s]+/g,
+  },
+  {
+    local: './assets/github-productive-time.svg',
+    external: /https:\/\/github-profile-summary-cards\.vercel\.app\/api\/cards\/productive-time\?[^"\s]+/g,
+  },
+  {
+    local: './assets/github-repos-language.svg',
+    external: /https:\/\/github-profile-summary-cards\.vercel\.app\/api\/cards\/repos-per-language\?[^"\s]+/g,
+  },
+  {
+    local: './assets/github-activity.svg',
+    external: /https:\/\/github-profile-summary-cards\.vercel\.app\/api\/cards\/profile-details\?[^"\s]+/g,
+  },
+];
 
 export function activatePrivateStatsCard(readme) {
-  if (readme.includes(`src="${LOCAL_CARD}"`)) return readme;
-  if (!EXTERNAL_CARD.test(readme)) {
-    throw new Error('Could not find the external GitHub stats card in README.md');
+  let activated = readme;
+  for (const { local, external } of CARD_REPLACEMENTS) {
+    activated = activated.replace(external, local);
   }
-  return readme.replace(EXTERNAL_CARD, LOCAL_CARD);
+  return activated;
 }
 
 async function main() {

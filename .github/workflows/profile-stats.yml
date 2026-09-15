@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/profile-stats-core.mjs'
+      - 'scripts/generate-private-activity-cards.mjs'
       - 'scripts/generate-private-profile-stats.mjs'
       - 'scripts/activate-private-profile-stats.mjs'
       - '.github/workflows/profile-stats.yml'
@@ -48,27 +49,33 @@ jobs:
             exit 1
           fi
 
+      - name: Generate private-aware activity cards
+        env:
+          PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
+          PROFILE_LOGIN: wbizmo
+        run: node scripts/generate-private-activity-cards.mjs
+
       - name: Generate private-aware profile stats
         env:
           PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
           PROFILE_LOGIN: wbizmo
         run: node scripts/generate-private-profile-stats.mjs
 
-      - name: Activate repository-local stats card
+      - name: Activate repository-local stats cards
         run: node scripts/activate-private-profile-stats.mjs
 
       - name: Run profile stats tests
         run: node --test tests/profile-stats.test.mjs
 
-      - name: Commit refreshed stats card
+      - name: Commit refreshed stats cards
         run: |
-          if git diff --quiet -- assets/github-stats.svg README.md; then
+          if git diff --quiet -- assets/github-stats.svg assets/github-productive-time.svg assets/github-repos-language.svg assets/github-activity.svg README.md; then
             echo "Profile stats already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/github-stats.svg README.md
+          git add assets/github-stats.svg assets/github-productive-time.svg assets/github-repos-language.svg assets/github-activity.svg README.md
           git commit -m "chore: refresh private-aware profile stats"
           git pull --rebase origin main
           git push

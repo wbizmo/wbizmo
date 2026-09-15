@@ -113,16 +113,54 @@ test('profile stats workflow is scheduled, manual, main-push triggered, secret-b
   assert.match(source, /git reset --hard origin\/main/);
   assert.match(source, /node scripts\/generate-private-profile-stats\.mjs/);
   assert.match(source, /node scripts\/activate-private-profile-stats\.mjs/);
-  assert.match(source, /git add assets\/github-stats\.svg README\.md/);
+  assert.match(source, /git add assets\/github-stats\.svg assets\/github-productive-time\.svg assets\/github-repos-language\.svg assets\/github-activity\.svg README\.md/);
   assert.match(source, /git pull --rebase origin main/);
   assert.doesNotMatch(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.GITHUB_TOKEN \}\}/);
 });
 
-test('activation script switches the README to the local card idempotently', async () => {
+test('activation script switches the README stats card to the local card idempotently', async () => {
   const { activatePrivateStatsCard } = await import('../scripts/activate-private-profile-stats.mjs');
   const source = '<img src="https://github-readme-stats.shion.dev/api?username=wbizmo&hide_border=true" alt="Williams stats">';
   const activated = activatePrivateStatsCard(source);
   assert.match(activated, /src="\.\/assets\/github-stats\.svg"/);
   assert.doesNotMatch(activated, /github-readme-stats\.shion\.dev/);
   assert.equal(activatePrivateStatsCard(activated), activated);
+});
+
+test('profile README uses local private-aware cards but leaves the streak card untouched', () => {
+  const readme = readFileSync(resolve(repoRoot, 'README.md'), 'utf8');
+  assert.doesNotMatch(readme, /github-profile-summary-cards\.vercel\.app/);
+  for (const file of [
+    'github-stats.svg',
+    'github-productive-time.svg',
+    'github-repos-language.svg',
+    'github-activity.svg',
+  ]) {
+    assert.match(readme, new RegExp(`src="\\.\\/assets\\/${file.replace('.', '\\.')}`));
+  }
+  assert.match(readme, /src="https:\/\/streak-stats\.demolab\.com\?user=wbizmo[^"\s]*"/);
+  assert.doesNotMatch(readme, /src="\.\/assets\/github-streak\.svg"/);
+});
+
+test('private activity generator uses the authenticated profile token and includes private repositories', () => {
+  const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
+  assert.match(source, /process\.env\.PROFILE_STATS_TOKEN/);
+  assert.match(source, /viewer\s*\{\s*login\s*\}/s);
+  assert.match(source, /assertAuthenticatedLogin/);
+  assert.match(source, /ownerAffiliations:\s*OWNER/);
+  assert.doesNotMatch(source, /privacy:\s*PUBLIC/);
+  assert.doesNotMatch(source, /process\.env\.GITHUB_TOKEN/);
+  assert.match(source, /github-productive-time\.svg/);
+  assert.match(source, /github-repos-language\.svg/);
+  assert.match(source, /github-activity\.svg/);
+  assert.doesNotMatch(source, /github-streak\.svg/);
+});
+
+test('profile stats workflow refreshes private-aware cards from the dedicated profile token without touching streak', () => {
+  const source = readFileSync(resolve(repoRoot, '.github/workflows/profile-stats.yml'), 'utf8');
+  assert.match(source, /node scripts\/generate-private-activity-cards\.mjs/);
+  assert.match(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
+  assert.doesNotMatch(source, /GITHUB_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
+  assert.match(source, /git add assets\/github-stats\.svg assets\/github-productive-time\.svg assets\/github-repos-language\.svg assets\/github-activity\.svg README\.md/);
+  assert.doesNotMatch(source, /git add[^\n]*github-streak\.svg/);
 });
