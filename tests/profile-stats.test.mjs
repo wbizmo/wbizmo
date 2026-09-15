@@ -142,9 +142,19 @@ test('profile README uses repository-local activity cards instead of public rate
   }
 });
 
-test('profile stats workflow refreshes and commits every repository-local activity card', () => {
+test('activity generator uses the authenticated profile token and private-aware repository view', () => {
+  const source = readFileSync(resolve(repoRoot, 'scripts/generate-activity-graph.mjs'), 'utf8');
+  assert.match(source, /process\.env\.PROFILE_STATS_TOKEN/);
+  assert.match(source, /viewer\s*\{\s*login\s*\}/s);
+  assert.match(source, /assertAuthenticatedLogin/);
+  assert.doesNotMatch(source, /privacy:\s*PUBLIC/);
+  assert.doesNotMatch(source, /process\.env\.GITHUB_TOKEN/);
+});
+
+test('profile stats workflow refreshes every repository-local activity card from the dedicated profile token', () => {
   const source = readFileSync(resolve(repoRoot, '.github/workflows/profile-stats.yml'), 'utf8');
   assert.match(source, /node scripts\/generate-activity-graph\.mjs/);
-  assert.match(source, /GITHUB_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
+  assert.match(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
+  assert.doesNotMatch(source, /GITHUB_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
   assert.match(source, /git add assets\/github-\*\.svg README\.md/);
 });
