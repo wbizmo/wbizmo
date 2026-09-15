@@ -113,7 +113,7 @@ test('profile stats workflow is scheduled, manual, main-push triggered, secret-b
   assert.match(source, /git reset --hard origin\/main/);
   assert.match(source, /node scripts\/generate-private-profile-stats\.mjs/);
   assert.match(source, /node scripts\/activate-private-profile-stats\.mjs/);
-  assert.match(source, /git add assets\/github-stats\.svg README\.md/);
+  assert.match(source, /git add assets\/github-\*\.svg README\.md/);
   assert.match(source, /git pull --rebase origin main/);
   assert.doesNotMatch(source, /PROFILE_STATS_TOKEN:\s*\$\{\{ secrets\.GITHUB_TOKEN \}\}/);
 });
