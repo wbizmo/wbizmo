@@ -126,3 +126,25 @@ test('activation script switches the README to the local card idempotently', asy
   assert.doesNotMatch(activated, /github-readme-stats\.shion\.dev/);
   assert.equal(activatePrivateStatsCard(activated), activated);
 });
+
+test('profile README uses repository-local activity cards instead of public rate-limited renderers', () => {
+  const readme = readFileSync(resolve(repoRoot, 'README.md'), 'utf8');
+  assert.doesNotMatch(readme, /github-profile-summary-cards\.vercel\.app/);
+  assert.doesNotMatch(readme, /streak-stats\.demolab\.com/);
+  for (const file of [
+    'github-stats.svg',
+    'github-productive-time.svg',
+    'github-repos-language.svg',
+    'github-streak.svg',
+    'github-activity.svg',
+  ]) {
+    assert.match(readme, new RegExp(`src="\\.\\/assets\\/${file.replace('.', '\\.')}`));
+  }
+});
+
+test('profile stats workflow refreshes and commits every repository-local activity card', () => {
+  const source = readFileSync(resolve(repoRoot, '.github/workflows/profile-stats.yml'), 'utf8');
+  assert.match(source, /node scripts\/generate-activity-graph\.mjs/);
+  assert.match(source, /GITHUB_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
+  assert.match(source, /git add assets\/github-\*\.svg README\.md/);
+});
