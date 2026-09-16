@@ -1,5 +1,5 @@
 import { mkdir, rename, writeFile } from 'node:fs/promises';
-import { assertAuthenticatedLogin, escapeXml } from './profile-stats-core.mjs';
+import { assertAuthenticatedLogin, escapeXml, summarizeLanguages } from './profile-stats-core.mjs';
 
 const token = process.env.PROFILE_STATS_TOKEN;
 const login = process.env.PROFILE_LOGIN || 'wbizmo';
@@ -43,14 +43,19 @@ query PrivateAwareProfile($login: String!, $after: String) {
     repositories(
       first: 100
       after: $after
-      ownerAffiliations: OWNER
+      ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]
       orderBy: { field: UPDATED_AT, direction: DESC }
     ) {
       nodes {
         id
         isFork
-        primaryLanguage { name color }
         defaultBranchRef { name }
+        languages(first: 100, orderBy: { field: SIZE, direction: DESC }) {
+          edges {
+            size
+            node { name color }
+          }
+        }
       }
       pageInfo { hasNextPage endCursor }
     }
@@ -77,7 +82,7 @@ do {
 
 if (!userId || !createdAt) throw new Error('Required GitHub profile data was not returned');
 
-const authoredRepos = repositories.filter((repo) => !repo.isFork && repo.defaultBranchRef);
+const accessibleRepos = repositories.filter((repo) => !repo.isFork && repo.defaultBranchRef);
 
 const contributionQuery = `
 query PrivateAwareContributions($login: String!, $from: DateTime!, $to: DateTime!) {
@@ -146,7 +151,8 @@ query PrivateAwareRepoHistory($repoId: ID!, $authorId: ID!, $after: String) {
 }`;
 
 const commitDates = [];
-for (const repo of authoredRepos) {
+const authoredRepoIds = new Set();
+for (const repo of accessibleRepos) {
   let historyAfter = null;
   do {
     const data = await gql(historyQuery, {
@@ -157,10 +163,13 @@ for (const repo of authoredRepos) {
     const history = data.node?.defaultBranchRef?.target?.history;
     if (!history) break;
 
+    if (history.nodes.length > 0) authoredRepoIds.add(repo.id);
     commitDates.push(...history.nodes.map((node) => node.committedDate));
     historyAfter = history.pageInfo.hasNextPage ? history.pageInfo.endCursor : null;
   } while (historyAfter);
 }
+
+const languageRepos = accessibleRepos.filter((repo) => authoredRepoIds.has(repo.id));
 
 const hourCounts = Array.from({ length: 24 }, () => 0);
 for (const committedDate of commitDates) {
@@ -169,18 +178,7 @@ for (const committedDate of commitDates) {
   hourCounts[localHour] += 1;
 }
 
-const languageCounts = new Map();
-for (const repo of authoredRepos) {
-  const language = repo.primaryLanguage?.name || 'Other';
-  const color = repo.primaryLanguage?.color || '#8c959f';
-  const current = languageCounts.get(language) || { count: 0, color };
-  current.count += 1;
-  languageCounts.set(language, current);
-}
-
-const languages = [...languageCounts.entries()]
-  .map(([name, data]) => ({ name, ...data }))
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+const languages = summarizeLanguages(languageRepos, 10);
 
 const sharedStyles = `
 <style>
@@ -229,19 +227,19 @@ ${bars}${pTicks}
 <text class="small" x="406" y="169" text-anchor="end">per day hour</text>
 </svg>`;
 
-const languageRows = languages.slice(0, 5);
-const maxLanguage = Math.max(1, ...languageRows.map((item) => item.count));
-const languageBars = languageRows.map((item, index) => {
-  const y = 55 + index * 24;
-  const width = (item.count / maxLanguage) * 220;
-  return `<text class="label" x="18" y="${y + 10}">${escapeXml(item.name)}</text><rect class="track" x="145" y="${y}" width="220" height="11" rx="5.5"/><rect x="145" y="${y}" width="${width.toFixed(1)}" height="11" rx="5.5" fill="${escapeXml(item.color)}"/><text class="value" x="405" y="${y + 10}" text-anchor="end">${item.count}</text>`;
+const leftLanguages = languages.slice(0, 5);
+const rightLanguages = languages.slice(5, 10);
+const renderLanguageColumn = (items, startX, valueX) => items.map((item, index) => {
+  const baseline = 62 + index * 23;
+  return `<circle cx="${startX + 4}" cy="${baseline - 4}" r="4" fill="${escapeXml(item.color)}"/><text class="label" x="${startX + 14}" y="${baseline}">${escapeXml(item.name)}</text><text class="value" x="${valueX}" y="${baseline}" text-anchor="end">${item.percentage.toFixed(1)}%</text>`;
 }).join('');
+const languageRows = `${renderLanguageColumn(leftLanguages, 18, 198)}${renderLanguageColumn(rightLanguages, 224, 410)}`;
 
-const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Private-aware repositories per language for ${escapeXml(login)}">
+const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Private-aware top languages for ${escapeXml(login)}">
 ${sharedStyles}
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
-<text class="title" x="18" y="30">Repos per Language</text><text class="sub" x="410" y="29" text-anchor="end">${authoredRepos.length} accessible authored repos</text>
-${languageBars}
+<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${languageRepos.length} accessible authored repos</text>
+${languageRows}
 </svg>`;
 
 const shortDate = (iso) => new Intl.DateTimeFormat('en-GB', {
@@ -334,7 +332,8 @@ for (const [outputPath, svg] of outputs) {
 
 console.log(JSON.stringify({
   login,
-  accessibleAuthoredRepositories: authoredRepos.length,
+  accessibleRepositories: accessibleRepos.length,
+  authoredRepositories: languageRepos.length,
   defaultBranchCommitsAnalysed: commitDates.length,
   contributionsLast90Days: recentTotal,
   cards: outputs.map(([path]) => path),

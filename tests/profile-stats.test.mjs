@@ -169,7 +169,7 @@ test('private activity generator uses the authenticated profile token and includ
   assert.match(source, /process\.env\.PROFILE_STATS_TOKEN/);
   assert.match(source, /viewer\s*\{\s*login\s*\}/s);
   assert.match(source, /assertAuthenticatedLogin/);
-  assert.match(source, /ownerAffiliations:\s*OWNER/);
+  assert.match(source, /ownerAffiliations:\s*\[\s*OWNER\s*,\s*COLLABORATOR\s*,\s*ORGANIZATION_MEMBER\s*\]/s);
   assert.doesNotMatch(source, /privacy:\s*PUBLIC/);
   assert.doesNotMatch(source, /process\.env\.GITHUB_TOKEN/);
   assert.match(source, /github-productive-time\.svg/);

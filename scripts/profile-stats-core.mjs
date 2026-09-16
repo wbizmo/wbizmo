@@ -60,6 +60,40 @@ export function mergeLineChangeTotals(total, commits, seenCommitOids) {
   return next;
 }
 
+export function summarizeLanguages(repositories, limit = 10) {
+  const totals = new Map();
+  let totalBytes = 0;
+
+  for (const repository of repositories) {
+    for (const edge of repository.languages?.edges ?? []) {
+      const name = edge?.node?.name;
+      const size = Number(edge?.size) || 0;
+      if (!name || size <= 0) continue;
+
+      totalBytes += size;
+      const current = totals.get(name) || {
+        bytes: 0,
+        color: edge.node.color || '#8c959f',
+      };
+      current.bytes += size;
+      if ((!current.color || current.color === '#8c959f') && edge.node.color) {
+        current.color = edge.node.color;
+      }
+      totals.set(name, current);
+    }
+  }
+
+  return [...totals.entries()]
+    .map(([name, data]) => ({
+      name,
+      bytes: data.bytes,
+      color: data.color || '#8c959f',
+      percentage: totalBytes > 0 ? (data.bytes / totalBytes) * 100 : 0,
+    }))
+    .sort((a, b) => b.bytes - a.bytes || a.name.localeCompare(b.name))
+    .slice(0, Math.max(0, limit));
+}
+
 export function escapeXml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
