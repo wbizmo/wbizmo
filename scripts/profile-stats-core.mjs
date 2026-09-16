@@ -62,20 +62,36 @@ export function mergeLineChangeTotals(total, commits, seenCommitOids) {
 
 export function summarizeLanguages(repositories, limit = 10) {
   const totals = new Map();
-  let totalBytes = 0;
+  let contributingRepositories = 0;
 
   for (const repository of repositories) {
-    for (const edge of repository.languages?.edges ?? []) {
+    const edges = (repository.languages?.edges ?? []).filter((edge) => {
       const name = edge?.node?.name;
       const size = Number(edge?.size) || 0;
-      if (!name || size <= 0) continue;
+      return Boolean(name) && size > 0;
+    });
+    const repositoryBytes = edges.reduce((sum, edge) => sum + Number(edge.size), 0);
+    if (repositoryBytes <= 0) continue;
 
-      totalBytes += size;
+    contributingRepositories += 1;
+    const seenLanguages = new Set();
+
+    for (const edge of edges) {
+      const name = edge.node.name;
+      const size = Number(edge.size);
       const current = totals.get(name) || {
+        weight: 0,
         bytes: 0,
+        repositories: 0,
         color: edge.node.color || '#8c959f',
       };
+
+      current.weight += size / repositoryBytes;
       current.bytes += size;
+      if (!seenLanguages.has(name)) {
+        current.repositories += 1;
+        seenLanguages.add(name);
+      }
       if ((!current.color || current.color === '#8c959f') && edge.node.color) {
         current.color = edge.node.color;
       }
@@ -87,10 +103,13 @@ export function summarizeLanguages(repositories, limit = 10) {
     .map(([name, data]) => ({
       name,
       bytes: data.bytes,
+      repositories: data.repositories,
       color: data.color || '#8c959f',
-      percentage: totalBytes > 0 ? (data.bytes / totalBytes) * 100 : 0,
+      percentage: contributingRepositories > 0
+        ? (data.weight / contributingRepositories) * 100
+        : 0,
     }))
-    .sort((a, b) => b.bytes - a.bytes || a.name.localeCompare(b.name))
+    .sort((a, b) => b.percentage - a.percentage || b.bytes - a.bytes || a.name.localeCompare(b.name))
     .slice(0, Math.max(0, limit));
 }
 
