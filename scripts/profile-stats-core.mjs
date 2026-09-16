@@ -60,7 +60,11 @@ export function mergeLineChangeTotals(total, commits, seenCommitOids) {
   return next;
 }
 
-export function summarizeLanguages(repositories, limit = 10) {
+export function summarizeLanguages(
+  repositories,
+  limit = 10,
+  { excludedLanguages = new Set(['HTML']) } = {},
+) {
   const totals = new Map();
   let contributingRepositories = 0;
 
@@ -68,7 +72,7 @@ export function summarizeLanguages(repositories, limit = 10) {
     const edges = (repository.languages?.edges ?? []).filter((edge) => {
       const name = edge?.node?.name;
       const size = Number(edge?.size) || 0;
-      return Boolean(name) && size > 0;
+      return Boolean(name) && size > 0 && !excludedLanguages.has(name);
     });
     const repositoryBytes = edges.reduce((sum, edge) => sum + Number(edge.size), 0);
     if (repositoryBytes <= 0) continue;

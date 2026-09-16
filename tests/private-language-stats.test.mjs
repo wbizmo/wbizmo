@@ -7,11 +7,12 @@ import { summarizeLanguages } from '../scripts/profile-stats-core.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-test('summarizeLanguages normalizes each authored repository so one huge codebase cannot dominate the profile', () => {
+test('summarizeLanguages normalizes each authored repository and completely excludes HTML', () => {
   const repositories = [
     { languages: { edges: [
       { size: 9000, node: { name: 'HTML', color: '#e34c26' } },
       { size: 1000, node: { name: 'JavaScript', color: '#f1e05a' } },
+      { size: 500, node: { name: 'Shell', color: '#89e051' } },
     ] } },
     { languages: { edges: [
       { size: 900, node: { name: 'Python', color: '#3572A5' } },
@@ -20,13 +21,23 @@ test('summarizeLanguages normalizes each authored repository so one huge codebas
   ];
 
   const summary = summarizeLanguages(repositories, 10);
-  assert.deepEqual(summary.map((item) => item.name), ['HTML', 'Python', 'JavaScript', 'TypeScript']);
-  assert.equal(summary[0].percentage, 45);
-  assert.equal(summary[1].percentage, 45);
-  assert.equal(summary[2].percentage, 5);
-  assert.equal(summary[3].percentage, 5);
-  assert.equal(summary[0].repositories, 1);
-  assert.equal(summary.reduce((sum, item) => sum + item.percentage, 0), 100);
+  assert.deepEqual(summary.map((item) => item.name), ['Python', 'JavaScript', 'Shell', 'TypeScript']);
+  assert.equal(summary.some((item) => item.name === 'HTML'), false);
+  assert.ok(Math.abs(summary.reduce((sum, item) => sum + item.percentage, 0) - 100) < 1e-9);
+});
+
+test('summarizeLanguages supports explicit additional exclusions', () => {
+  const repositories = [{ languages: { edges: [
+    { size: 500, node: { name: 'HTML', color: '#e34c26' } },
+    { size: 300, node: { name: 'JavaScript', color: '#f1e05a' } },
+    { size: 200, node: { name: 'Python', color: '#3572A5' } },
+  ] } }];
+
+  const summary = summarizeLanguages(repositories, 10, {
+    excludedLanguages: new Set(['HTML', 'JavaScript']),
+  });
+  assert.deepEqual(summary.map((item) => item.name), ['Python']);
+  assert.equal(summary[0].percentage, 100);
 });
 
 test('private activity generator includes accessible affiliations and discovers authored work beyond default branches', () => {
