@@ -40,12 +40,14 @@ test('summarizeLanguages aggregates Linguist bytes across repositories and retur
   assert.ok(totalPercentage < 100, 'top ten percentage should be based on all language bytes, including omitted languages');
 });
 
-test('private activity generator includes owner, collaborator and organization repositories and full language byte breakdowns', () => {
+test('private activity generator includes accessible affiliations but limits language totals to repos with authored default-branch commits', () => {
   const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
   assert.match(source, /ownerAffiliations:\s*\[\s*OWNER\s*,\s*COLLABORATOR\s*,\s*ORGANIZATION_MEMBER\s*\]/s);
   assert.match(source, /languages\s*\(\s*first:\s*100[\s\S]*orderBy:\s*\{\s*field:\s*SIZE\s*,\s*direction:\s*DESC\s*\}/s);
   assert.match(source, /edges\s*\{[\s\S]*size[\s\S]*node\s*\{[\s\S]*name[\s\S]*color/s);
-  assert.match(source, /summarizeLanguages\s*\(/);
+  assert.match(source, /authoredRepoIds\.add\(repo\.id\)/);
+  assert.match(source, /languageRepos\s*=\s*accessibleRepos\.filter/);
+  assert.match(source, /summarizeLanguages\s*\(languageRepos,\s*10\)/);
   assert.doesNotMatch(source, /primaryLanguage\s*\{/);
   assert.match(source, /Top Languages/);
   assert.match(source, /slice\(0,\s*5\)/);
