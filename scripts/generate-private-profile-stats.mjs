@@ -3,6 +3,7 @@ import {
   assertAuthenticatedLogin,
   calculateRank,
   mergeContributionTotals,
+  mergeLineChangeTotals,
   renderStatsSvg,
 } from './profile-stats-core.mjs';
 
@@ -37,9 +38,13 @@ async function gql(query, variables = {}) {
 
 const identity = await gql(`
 query AuthenticatedViewer {
-  viewer { login }
+  viewer { login id }
 }`);
 assertAuthenticatedLogin(identity.viewer?.login, login);
+const viewerId = identity.viewer?.id;
+if (!viewerId) {
+  throw new Error('GitHub did not return the authenticated viewer ID');
+}
 
 const profileQuery = `
 query ProfileStats($login: String!, $after: String) {
@@ -97,6 +102,9 @@ query LifetimeContributions($login: String!, $from: DateTime!, $to: DateTime!) {
       totalIssueContributions
       totalPullRequestReviewContributions
       restrictedContributionsCount
+      commitContributionsByRepository(maxRepositories: 100) {
+        repository { nameWithOwner }
+      }
     }
   }
 }`;
@@ -104,6 +112,7 @@ query LifetimeContributions($login: String!, $from: DateTime!, $to: DateTime!) {
 const now = new Date();
 let cursor = new Date(createdAt);
 let totals = { commits: 0, pullRequests: 0, issues: 0, reviews: 0 };
+const contributedRepositories = new Set();
 
 while (cursor < now) {
   const end = new Date(cursor);
@@ -122,8 +131,51 @@ while (cursor < now) {
   }
 
   totals = mergeContributionTotals(totals, collection);
+  for (const group of collection.commitContributionsByRepository) {
+    contributedRepositories.add(group.repository.nameWithOwner);
+  }
+
   cursor = new Date(end);
   cursor.setUTCDate(cursor.getUTCDate() + 1);
+}
+
+const lineChangeQuery = `
+query RepositoryLineChanges($owner: String!, $name: String!, $authorId: ID!, $after: String) {
+  repository(owner: $owner, name: $name) {
+    defaultBranchRef {
+      target {
+        ... on Commit {
+          history(first: 100, after: $after, author: { id: $authorId }) {
+            nodes { oid additions deletions }
+            pageInfo { hasNextPage endCursor }
+          }
+        }
+      }
+    }
+  }
+}`;
+
+let linesChanged = 0;
+const seenCommitOids = new Set();
+
+for (const nameWithOwner of contributedRepositories) {
+  const [owner, name] = nameWithOwner.split('/');
+  if (!owner || !name) continue;
+
+  let after = null;
+  do {
+    const data = await gql(lineChangeQuery, {
+      owner,
+      name,
+      authorId: viewerId,
+      after,
+    });
+    const history = data.repository?.defaultBranchRef?.target?.history;
+    if (!history) break;
+
+    linesChanged = mergeLineChangeTotals(linesChanged, history.nodes, seenCommitOids);
+    after = history.pageInfo.hasNextPage ? history.pageInfo.endCursor : null;
+  } while (after);
 }
 
 const rank = calculateRank({
@@ -140,6 +192,7 @@ const svg = renderStatsSvg({
   reviews: totals.reviews,
   followers,
   contributedTo,
+  linesChanged,
   rank,
 });
 
@@ -158,5 +211,6 @@ console.log(JSON.stringify({
   reviews: totals.reviews,
   followers,
   contributedTo,
+  linesChanged,
   rank: rank.level,
 }, null, 2));

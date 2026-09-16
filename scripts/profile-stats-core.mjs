@@ -50,6 +50,16 @@ export function mergeContributionTotals(total, window) {
   };
 }
 
+export function mergeLineChangeTotals(total, commits, seenCommitOids) {
+  let next = total;
+  for (const commit of commits) {
+    if (seenCommitOids.has(commit.oid)) continue;
+    seenCommitOids.add(commit.oid);
+    next += commit.additions + commit.deletions;
+  }
+  return next;
+}
+
 export function escapeXml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -66,6 +76,7 @@ export function renderStatsSvg({
   pullRequests,
   issues,
   contributedTo,
+  linesChanged,
   rank,
 }) {
   const safeLogin = escapeXml(login);
@@ -84,10 +95,11 @@ export function renderStatsSvg({
 <rect class="bg" width="430" height="180" rx="8"/>
 <text class="title" x="18" y="28">${safeLogin}&apos;s GitHub Stats</text>
 <text class="label" x="20" y="58">★  Total Stars:</text><text class="value" x="165" y="58">${fmt.format(stars)}</text>
-<text class="label" x="20" y="82">⌁  Total Commits:</text><text class="value" x="165" y="82">${fmt.format(commits)}</text>
-<text class="label" x="20" y="106">⑂  Total PRs:</text><text class="value" x="165" y="106">${fmt.format(pullRequests)}</text>
-<text class="label" x="20" y="130">!  Total Issues:</text><text class="value" x="165" y="130">${fmt.format(issues)}</text>
-<text class="label" x="20" y="154">▣  Contributed to:</text><text class="value" x="165" y="154">${fmt.format(contributedTo)}</text>
+<text class="label" x="20" y="78">⌁  Total Commits:</text><text class="value" x="165" y="78">${fmt.format(commits)}</text>
+<text class="label" x="20" y="98">⑂  Total PRs:</text><text class="value" x="165" y="98">${fmt.format(pullRequests)}</text>
+<text class="label" x="20" y="118">!  Total Issues:</text><text class="value" x="165" y="118">${fmt.format(issues)}</text>
+<text class="label" x="20" y="138">▣  Contributed to:</text><text class="value" x="165" y="138">${fmt.format(contributedTo)}</text>
+<text class="label" x="20" y="158">±  Lines Changed:</text><text class="value" x="165" y="158">${fmt.format(linesChanged)}</text>
 <g transform="translate(337 91) rotate(-90)">
   <circle cx="0" cy="0" r="41" fill="none" stroke="#21262d" stroke-width="6"/>
   <circle cx="0" cy="0" r="41" fill="none" stroke="#58a6ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="${dash.toFixed(2)} ${gap.toFixed(2)}"/>
