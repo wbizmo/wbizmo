@@ -21,7 +21,7 @@ test('summarizeLanguages normalizes each authored repository and completely excl
   ];
 
   const summary = summarizeLanguages(repositories, 10);
-  assert.deepEqual(summary.map((item) => item.name), ['JavaScript', 'Python', 'Shell', 'TypeScript']);
+  assert.deepEqual(summary.map((item) => item.name), ['Python', 'JavaScript', 'Shell', 'TypeScript']);
   assert.equal(summary.some((item) => item.name === 'HTML'), false);
   assert.ok(Math.abs(summary.reduce((sum, item) => sum + item.percentage, 0) - 100) < 1e-9);
 });
