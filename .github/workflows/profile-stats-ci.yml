@@ -7,7 +7,7 @@ on:
       - 'scripts/generate-private-activity-cards.mjs'
       - 'scripts/generate-private-profile-stats.mjs'
       - 'scripts/activate-private-profile-stats.mjs'
-      - 'tests/profile-stats.test.mjs'
+      - 'tests/*.test.mjs'
       - '.github/workflows/profile-stats*.yml'
       - 'docs/superpowers/**'
   push:
@@ -17,7 +17,7 @@ on:
       - 'scripts/generate-private-activity-cards.mjs'
       - 'scripts/generate-private-profile-stats.mjs'
       - 'scripts/activate-private-profile-stats.mjs'
-      - 'tests/profile-stats.test.mjs'
+      - 'tests/*.test.mjs'
       - '.github/workflows/profile-stats*.yml'
 
 permissions:
@@ -31,4 +31,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: node --test tests/profile-stats.test.mjs
+      - run: node --test tests/*.test.mjs
