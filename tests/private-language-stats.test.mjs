@@ -34,7 +34,7 @@ test('summarizeLanguages aggregates Linguist bytes across repositories and retur
   assert.equal(summary[0].name, 'TypeScript');
   assert.equal(summary[0].bytes, 1000);
   assert.equal(summary[1].name, 'Go');
-  assert.equal(summary.at(-1).name, 'Kotlin');
+  assert.equal(summary.at(-1).name, 'Dart');
   assert.ok(summary.every((item) => item.percentage > 0));
   const totalPercentage = summary.reduce((sum, item) => sum + item.percentage, 0);
   assert.ok(totalPercentage < 100, 'top ten percentage should be based on all language bytes, including omitted languages');
