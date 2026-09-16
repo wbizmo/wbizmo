@@ -169,6 +169,51 @@ for (const repo of accessibleRepos) {
   } while (historyAfter);
 }
 
+const authoredBranchQuery = `
+query AuthoredBranchDiscovery($repoId: ID!, $authorId: ID!, $refsAfter: String) {
+  node(id: $repoId) {
+    ... on Repository {
+      refs(refPrefix: "refs/heads/", first: 25, after: $refsAfter) {
+        nodes {
+          target {
+            ... on Commit {
+              history(first: 1, author: { id: $authorId }) {
+                nodes { oid }
+              }
+            }
+          }
+        }
+        pageInfo { hasNextPage endCursor }
+      }
+    }
+  }
+}`;
+
+for (const repo of accessibleRepos) {
+  if (authoredRepoIds.has(repo.id)) continue;
+
+  let refsAfter = null;
+  do {
+    const data = await gql(authoredBranchQuery, {
+      repoId: repo.id,
+      authorId: userId,
+      refsAfter,
+    });
+    const refs = data.node?.refs;
+    if (!refs) break;
+
+    const hasAuthoredBranch = refs.nodes.some(
+      (ref) => (ref.target?.history?.nodes?.length ?? 0) > 0,
+    );
+    if (hasAuthoredBranch) {
+      authoredRepoIds.add(repo.id);
+      break;
+    }
+
+    refsAfter = refs.pageInfo.hasNextPage ? refs.pageInfo.endCursor : null;
+  } while (refsAfter);
+}
+
 const languageRepos = accessibleRepos.filter((repo) => authoredRepoIds.has(repo.id));
 
 const hourCounts = Array.from({ length: 24 }, () => 0);
@@ -238,7 +283,7 @@ const languageRows = `${renderLanguageColumn(leftLanguages, 18, 198)}${renderLan
 const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Private-aware top languages for ${escapeXml(login)}">
 ${sharedStyles}
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
-<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${languageRepos.length} accessible authored repos</text>
+<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${languageRepos.length} repos · all branches checked</text>
 ${languageRows}
 </svg>`;
 
