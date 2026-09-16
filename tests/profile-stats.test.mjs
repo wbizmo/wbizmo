@@ -8,6 +8,7 @@ import {
   calculateRank,
   assertAuthenticatedLogin,
   mergeContributionTotals,
+  mergeLineChangeTotals,
   escapeXml,
   renderStatsSvg,
 } from '../scripts/profile-stats-core.mjs';
@@ -53,6 +54,19 @@ test('mergeContributionTotals accumulates lifetime windows without mutating the 
   assert.deepEqual(total, { commits: 10, pullRequests: 2, issues: 3, reviews: 4 });
 });
 
+test('mergeLineChangeTotals sums additions and deletions once per commit', () => {
+  const seenCommitOids = new Set(['existing']);
+  const total = mergeLineChangeTotals(5, [
+    { oid: 'a', additions: 10, deletions: 3 },
+    { oid: 'a', additions: 10, deletions: 3 },
+    { oid: 'existing', additions: 100, deletions: 100 },
+    { oid: 'b', additions: 2, deletions: 4 },
+  ], seenCommitOids);
+
+  assert.equal(total, 24);
+  assert.deepEqual([...seenCommitOids], ['existing', 'a', 'b']);
+});
+
 test('escapeXml escapes untrusted SVG text', () => {
   assert.equal(escapeXml(`<wbizmo & "friends">`), '&lt;wbizmo &amp; &quot;friends&quot;&gt;');
 });
@@ -67,6 +81,7 @@ test('renderStatsSvg is deterministic, borderless, ranked, and does not leak ext
     reviews: 42,
     followers: 20,
     contributedTo: 23,
+    linesChanged: 1234567,
     rank: calculateRank({ commits: 3169, pullRequests: 149, issues: 113, reviews: 42, stars: 3, followers: 20 }),
     privateRepositories: ['secret-client-repo'],
   };
@@ -74,6 +89,7 @@ test('renderStatsSvg is deterministic, borderless, ranked, and does not leak ext
   const second = renderStatsSvg(model);
   assert.equal(first, second);
   assert.match(first, /Total Commits:<\/text><text[^>]*>3,169<\/text>/);
+  assert.match(first, /Lines Changed:<\/text><text[^>]*>1,234,567<\/text>/);
   assert.match(first, /data-testid="rank-grade"/);
   assert.doesNotMatch(first, /<text[^>]*>rank<\/text>/);
   assert.doesNotMatch(first, /class="border"/);
@@ -90,14 +106,20 @@ test('private stats generator requires the dedicated profile token before any ne
   assert.match(result.stderr, /PROFILE_STATS_TOKEN is required/);
 });
 
-test('private stats generator verifies viewer identity and fetches followers plus yearly contribution totals', () => {
+test('private stats generator verifies viewer identity and fetches followers plus lifetime contributions and line changes', () => {
   const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-profile-stats.mjs'), 'utf8');
-  assert.match(source, /viewer\s*\{\s*login\s*\}/s);
+  assert.match(source, /viewer\s*\{[\s\S]*login[\s\S]*id[\s\S]*\}/);
   assert.match(source, /assertAuthenticatedLogin/);
   assert.match(source, /followers\s*\{\s*totalCount\s*\}/s);
   assert.match(source, /totalCommitContributions/);
   assert.match(source, /totalPullRequestReviewContributions/);
+  assert.match(source, /commitContributionsByRepository/);
+  assert.match(source, /history\s*\(/);
+  assert.match(source, /author:\s*\{\s*id:\s*\$authorId\s*\}/);
+  assert.match(source, /additions/);
+  assert.match(source, /deletions/);
   assert.match(source, /mergeContributionTotals/);
+  assert.match(source, /mergeLineChangeTotals/);
   assert.match(source, /renderStatsSvg/);
   assert.match(source, /PROFILE_STATS_TOKEN/);
   assert.doesNotMatch(source, /console\.log\([^\n]*token/i);
