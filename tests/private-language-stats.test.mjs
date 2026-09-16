@@ -7,7 +7,7 @@ import { summarizeLanguages } from '../scripts/profile-stats-core.mjs';
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-test('summarizeLanguages normalizes each authored repository and completely excludes requested languages', () => {
+test('summarizeLanguages normalizes each authored repository and completely excludes HTML', () => {
   const repositories = [
     { languages: { edges: [
       { size: 9000, node: { name: 'HTML', color: '#e34c26' } },
@@ -20,13 +20,27 @@ test('summarizeLanguages normalizes each authored repository and completely excl
     ] } },
   ];
 
-  const summary = summarizeLanguages(repositories, 10, { excludedLanguages: new Set(['HTML']) });
+  const summary = summarizeLanguages(repositories, 10);
   assert.deepEqual(summary.map((item) => item.name), ['JavaScript', 'Python', 'Shell', 'TypeScript']);
   assert.equal(summary.some((item) => item.name === 'HTML'), false);
   assert.ok(Math.abs(summary.reduce((sum, item) => sum + item.percentage, 0) - 100) < 1e-9);
 });
 
-test('private activity generator includes accessible affiliations, checks all branches, and omits HTML from the language calculation', () => {
+test('summarizeLanguages supports explicit additional exclusions', () => {
+  const repositories = [{ languages: { edges: [
+    { size: 500, node: { name: 'HTML', color: '#e34c26' } },
+    { size: 300, node: { name: 'JavaScript', color: '#f1e05a' } },
+    { size: 200, node: { name: 'Python', color: '#3572A5' } },
+  ] } }];
+
+  const summary = summarizeLanguages(repositories, 10, {
+    excludedLanguages: new Set(['HTML', 'JavaScript']),
+  });
+  assert.deepEqual(summary.map((item) => item.name), ['Python']);
+  assert.equal(summary[0].percentage, 100);
+});
+
+test('private activity generator includes accessible affiliations and discovers authored work beyond default branches', () => {
   const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
   assert.match(source, /ownerAffiliations:\s*\[\s*OWNER\s*,\s*COLLABORATOR\s*,\s*ORGANIZATION_MEMBER\s*\]/s);
   assert.match(source, /languages\s*\(\s*first:\s*100[\s\S]*orderBy:\s*\{\s*field:\s*SIZE\s*,\s*direction:\s*DESC\s*\}/s);
@@ -35,8 +49,7 @@ test('private activity generator includes accessible affiliations, checks all br
   assert.match(source, /authoredRepoIds\.add\(repo\.id\)/);
   assert.match(source, /if\s*\(authoredRepoIds\.has\(repo\.id\)\)\s*continue/);
   assert.match(source, /languageRepos\s*=\s*accessibleRepos\.filter/);
-  assert.match(source, /excludedLanguages:\s*new Set\(\['HTML'\]\)/);
-  assert.match(source, /summarizeLanguages\s*\(languageRepos,\s*10,[\s\S]*excludedLanguages/s);
+  assert.match(source, /summarizeLanguages\s*\(languageRepos,\s*10\)/);
   assert.doesNotMatch(source, /primaryLanguage\s*\{/);
   assert.match(source, /Top Languages/);
   assert.match(source, /all branches checked/);
