@@ -9,7 +9,7 @@ My work spans the full path from client, device, or protocol to production infra
 I am especially interested in systems that must remain correct when <strong>money, data, devices, networks, external providers, concurrency, and failures</strong> are involved.
 
 <p align="center">
-  <a href="https://wbizmo.vercel.app" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.vercel.app-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://wbizmo.zivoralabs.xyz/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.zivoralabs.xyz-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/LinkedIn-wbizmo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:wbizmo@gmail.com"><img src="https://img.shields.io/badge/Email-wbizmo%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 </p>
@@ -79,7 +79,7 @@ I value <strong>correctness over cleverness</strong>, explicit boundaries, borin
 
 <p align="center"><strong>CONNECT</strong></p>
 <p align="center">
-  <a href="https://wbizmo.vercel.app" target="_blank" rel="noopener noreferrer">Portfolio</a> ·
+  <a href="https://wbizmo.zivoralabs.xyz/" target="_blank" rel="noopener noreferrer">Portfolio</a> ·
   <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
   <a href="https://github.com/wbizmo" target="_blank" rel="noopener noreferrer">GitHub</a> ·
   <a href="https://codepen.io/wbizmo" target="_blank" rel="noopener noreferrer">CodePen</a> ·
