@@ -8,8 +8,6 @@ My work spans the full path from client, device, or protocol to production infra
 
 I am especially interested in systems that must remain correct when <strong>money, data, devices, networks, external providers, concurrency, and failures</strong> are involved.
 
-🎓 Currently pursuing an <strong>MSc in Financial Engineering (MScFE) at WorldQuant University</strong>, with a focus on quantitative finance, risk, portfolio modelling, and computational methods.
-
 <p align="center">
   <a href="https://wbizmo.zivoralabs.xyz/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.zivoralabs.xyz-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/LinkedIn-wbizmo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
