@@ -48,6 +48,19 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 
 ---
 
+<p><strong>OPEN SOURCE</strong></p>
+
+<table>
+<tr>
+<td valign="top"><strong><a href="https://github.com/nautechsystems/nautilus_trader/pull/5037" target="_blank" rel="noopener noreferrer">NautilusTrader — Upstream Rust Contribution</a></strong><br><sub>Investigated and fixed a correctness defect in the Rust-native <code>AroonOscillator</code> at the accepted <code>MAX_PERIOD = 1024</code> boundary. The indicator requires a <code>period + 1</code> observation window, but its wrapping buffers could retain only 1,024 values, evicting the oldest extreme too early and producing an incorrect trading-indicator signal. Merged PR #5037 expands the internal capacity to preserve the required 1,025-observation window and adds mirrored Rust and Python regression coverage for exact initialization, oldest-high/oldest-low retention, correct boundary values and rollover.</sub><br><br><a href="https://github.com/nautechsystems/nautilus_trader/pull/5037" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235037-merged-8250df?style=flat-square&logo=github" alt="Merged NautilusTrader PR 5037"></a> <a href="https://github.com/nautechsystems/nautilus_trader/issues/4995" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%234995-fixed-238636?style=flat-square&logo=github" alt="NautilusTrader issue 4995"></a> <img src="https://img.shields.io/badge/Rust-upstream-B7410E?style=flat-square&logo=rust&logoColor=white" alt="Rust upstream contribution"></td>
+</tr>
+<tr>
+<td valign="top"><strong><a href="https://github.com/nautechsystems/nautilus_trader/issues/4996" target="_blank" rel="noopener noreferrer">AroonOscillator Performance RFC</a></strong><br><sub>Proposed replacing repeated full-window extrema scans with maintained monotonic deques, reducing initialized update work from O(p) to amortized O(1) and stream work from O(Np) toward O(N), while preserving the existing newest-occurrence tie semantics. The proposal explicitly keeps benchmark evidence and correctness at window boundaries as prerequisites for adopting the added complexity.</sub><br><br><a href="https://github.com/nautechsystems/nautilus_trader/issues/4996" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/RFC_%234996-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader RFC 4996"></a></td>
+</tr>
+</table>
+
+---
+
 <p><strong>TECH STACK</strong></p>
 
 <table>
