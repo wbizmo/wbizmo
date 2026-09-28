@@ -52,7 +52,7 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 
 <table>
 <tr>
-<td width="100%" valign="top">
+<td colspan="2" width="100%" valign="top">
 <strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AroonOscillator</a></strong><br>
 <sub>Found and reproduced the accepted <code>MAX_PERIOD = 1024</code> window-capacity bug, then shipped the merged Rust/Python regression fix. Also opened the separate rolling-extrema performance RFC proposing amortized O(1) updates with monotonic deques while preserving newest-occurrence tie semantics.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/4995" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%234995-fixed-238636?style=flat-square&logo=github" alt="NautilusTrader issue 4995"></a>
@@ -61,7 +61,7 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 </td>
 </tr>
 <tr>
-<td width="100%" valign="top">
+<td colspan="2" width="100%" valign="top">
 <strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AMAT</a></strong><br>
 <sub>Reported two correctness defects in <code>ArcherMovingAveragesTrends</code>: the Rust path ignored slow-MA direction and trend flags could remain latched across reversals. Opened two independently reviewable Rust fixes with focused regression coverage and full <code>nautilus-indicators</code> crate validation.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/5122" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235122-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader issue 5122"></a>
@@ -71,10 +71,11 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 </td>
 </tr>
 <tr>
-<td width="100%" valign="top">
+<td colspan="2" width="100%" valign="top">
 <strong><a href="https://github.com/Okeha/SignrrGPT" target="_blank" rel="noopener noreferrer">SignrrGPT · Backend, Frontend & Inference</a></strong><br>
-<sub>Audited SignrrGPT across its FastAPI/VideoMAE backend and React frontend, then opened upstream fixes for bounded video-upload memory, cloud chat persistence, sample-before-decode inference, first-click WebSocket streaming, duplicate connection races, SSE error propagation, bounded chat-memory lifetime, and local LLM token limits. Also opened an inference-concurrency/backpressure RFC with a bounded-execution prototype.</sub><br><br>
-<table width="100%">
+<sub>Audited SignrrGPT across its FastAPI/VideoMAE backend and React frontend, then opened upstream fixes for bounded video-upload memory, cloud chat persistence, sample-before-decode inference, first-click WebSocket streaming, duplicate connection races, SSE error propagation, bounded chat-memory lifetime, and local LLM token limits. Also opened an inference-concurrency/backpressure RFC with a bounded-execution prototype.</sub>
+</td>
+</tr>
 <tr>
 <th width="50%" align="left">Issue</th>
 <th width="50%" align="left">Pull Request</th>
@@ -83,42 +84,39 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 <td colspan="2"><strong>Backend</strong></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 1"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 4"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 1"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 4"></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 2"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/pull/5" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 5"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 2"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/pull/5" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 5"></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/issues/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 3"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/pull/6" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%236-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 6"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/issues/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 3"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/pull/6" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%236-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 6"></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/issues/7" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%237-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 7"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/pull/10" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%2310-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 10"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/issues/7" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%237-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 7"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/pull/10" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%2310-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 10"></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/issues/8" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%238-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 8"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/pull/11" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%2311-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 11"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/issues/8" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%238-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 8"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/pull/11" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%2311-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 11"></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-translator-backend/issues/9" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/RFC_%239-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend RFC 9"></a></td>
-<td><sub>Implementation PR pending</sub></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-translator-backend/issues/9" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/RFC_%239-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend RFC 9"></a></td>
+<td width="50%"><sub>Implementation PR pending</sub></td>
 </tr>
 <tr>
 <td colspan="2"><strong>Frontend</strong></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 1"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 3"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 1"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 3"></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 2"></a></td>
-<td><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 4"></a></td>
-</tr>
-</table>
-</td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 2"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 4"></a></td>
 </tr>
 </table>
 
