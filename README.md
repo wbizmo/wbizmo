@@ -52,20 +52,34 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 
 <table>
 <tr>
-<td width="50%" valign="top">
+<td width="100%" valign="top">
 <strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AroonOscillator</a></strong><br>
 <sub>Found and reproduced the accepted <code>MAX_PERIOD = 1024</code> window-capacity bug, then shipped the merged Rust/Python regression fix. Also opened the separate rolling-extrema performance RFC proposing amortized O(1) updates with monotonic deques while preserving newest-occurrence tie semantics.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/4995" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%234995-fixed-238636?style=flat-square&logo=github" alt="NautilusTrader issue 4995"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5037" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235037-merged-8250df?style=flat-square&logo=github" alt="Merged NautilusTrader PR 5037"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/4996" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/RFC_%234996-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader RFC 4996"></a>
 </td>
-<td width="50%" valign="top">
+</tr>
+<tr>
+<td width="100%" valign="top">
 <strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AMAT</a></strong><br>
 <sub>Reported two correctness defects in <code>ArcherMovingAveragesTrends</code>: the Rust path ignored slow-MA direction and trend flags could remain latched across reversals. Opened two independently reviewable Rust fixes with focused regression coverage and full <code>nautilus-indicators</code> crate validation.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/5122" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235122-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader issue 5122"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5124" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235124-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader PR 5124"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/5123" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235123-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader issue 5123"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5125" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235125-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader PR 5125"></a>
+</td>
+</tr>
+<tr>
+<td width="100%" valign="top">
+<strong><a href="https://github.com/Okeha/sign-language-translator-backend" target="_blank" rel="noopener noreferrer">SignrrGPT · Signrr Backend</a></strong><br>
+<sub>Opened three upstream issues and matching pull requests across the FastAPI/VideoMAE backend: bounded-memory video upload inference, restored cloud chat session persistence, and sample-before-decode VideoMAE inference that avoids unnecessary JPEG decoding while preserving the existing temporal sampling contract.</sub><br><br>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr issue 1"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr PR 4"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr issue 2"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/5" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235-open-1f6feb?style=flat-square&logo=github" alt="Signrr PR 5"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr issue 3"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/6" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%236-open-1f6feb?style=flat-square&logo=github" alt="Signrr PR 6"></a>
 </td>
 </tr>
 </table>
