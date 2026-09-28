@@ -72,14 +72,29 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 </tr>
 <tr>
 <td width="100%" valign="top">
-<strong><a href="https://github.com/Okeha/sign-language-translator-backend" target="_blank" rel="noopener noreferrer">SignrrGPT · Signrr Backend</a></strong><br>
-<sub>Opened three upstream issues and matching pull requests across the FastAPI/VideoMAE backend: bounded-memory video upload inference, restored cloud chat session persistence, and sample-before-decode VideoMAE inference that avoids unnecessary JPEG decoding while preserving the existing temporal sampling contract.</sub><br><br>
-<a href="https://github.com/Okeha/sign-language-translator-backend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr issue 1"></a>
-<a href="https://github.com/Okeha/sign-language-translator-backend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr PR 4"></a>
-<a href="https://github.com/Okeha/sign-language-translator-backend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr issue 2"></a>
-<a href="https://github.com/Okeha/sign-language-translator-backend/pull/5" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235-open-1f6feb?style=flat-square&logo=github" alt="Signrr PR 5"></a>
-<a href="https://github.com/Okeha/sign-language-translator-backend/issues/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr issue 3"></a>
-<a href="https://github.com/Okeha/sign-language-translator-backend/pull/6" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%236-open-1f6feb?style=flat-square&logo=github" alt="Signrr PR 6"></a>
+<strong><a href="https://github.com/Okeha/SignrrGPT" target="_blank" rel="noopener noreferrer">SignrrGPT · Backend, Frontend & Inference</a></strong><br>
+<sub>Audited SignrrGPT across its FastAPI/VideoMAE backend and React frontend, then opened upstream fixes for bounded video-upload memory, cloud chat persistence, sample-before-decode inference, first-click WebSocket streaming, duplicate connection races, SSE error propagation, bounded chat-memory lifetime, and local LLM token limits. Also opened an inference-concurrency/backpressure RFC with a bounded-execution prototype. The original umbrella reports were closed after the actionable issues were moved into the repositories where the implementations live.</sub><br><br>
+<strong>Backend</strong><br>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 1"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 4"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 2"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/5" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_PR_%235-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 5"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_Issue_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 3"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/6" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_PR_%236-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 6"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/7" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_Issue_%237-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 7"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/10" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_PR_%2310-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 10"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/8" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_Issue_%238-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend issue 8"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/pull/11" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_PR_%2311-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend PR 11"></a>
+<a href="https://github.com/Okeha/sign-language-translator-backend/issues/9" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Backend_RFC_%239-open-1f6feb?style=flat-square&logo=github" alt="Signrr backend RFC 9"></a><br><br>
+<strong>Frontend</strong><br>
+<a href="https://github.com/Okeha/sign-language-detector-frontend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Frontend_Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 1"></a>
+<a href="https://github.com/Okeha/sign-language-detector-frontend/pull/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Frontend_PR_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 3"></a>
+<a href="https://github.com/Okeha/sign-language-detector-frontend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Frontend_Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 2"></a>
+<a href="https://github.com/Okeha/sign-language-detector-frontend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Frontend_PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 4"></a><br><br>
+<strong>Umbrella tracking · moved to implementation repositories</strong><br>
+<a href="https://github.com/Okeha/SignrrGPT/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Umbrella_Issue_%231-moved-6e7681?style=flat-square&logo=github" alt="SignrrGPT umbrella issue 1 moved"></a>
+<a href="https://github.com/Okeha/SignrrGPT/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Umbrella_Issue_%232-moved-6e7681?style=flat-square&logo=github" alt="SignrrGPT umbrella issue 2 moved"></a>
+<a href="https://github.com/Okeha/SignrrGPT/issues/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Umbrella_Issue_%233-moved-6e7681?style=flat-square&logo=github" alt="SignrrGPT umbrella issue 3 moved"></a>
 </td>
 </tr>
 </table>
