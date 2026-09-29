@@ -63,11 +63,11 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 <tr>
 <td colspan="2" width="100%" valign="top">
 <strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AMAT</a></strong><br>
-<sub>Investigated two <code>ArcherMovingAveragesTrends</code> behaviors. Maintainer reference review closed the slow-MA hypothesis (#5122/#5124) as inconsistent with the indicator definition, while the reversal-state bug in #5123 was confirmed and its Rust fix in #5125 received maintainer approval.</sub><br><br>
+<sub>Investigated two <code>ArcherMovingAveragesTrends</code> behaviors. Maintainer reference review closed the slow-MA hypothesis (#5122/#5124) as inconsistent with the indicator definition, while the confirmed reversal-state bug in #5123 was fixed by merged Rust PR #5125.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/5122" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235122-closed_not_a_bug-6e7681?style=flat-square&logo=github" alt="NautilusTrader issue 5122 closed after reference review"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5124" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235124-closed_unmerged-6e7681?style=flat-square&logo=github" alt="NautilusTrader PR 5124 closed unmerged"></a>
-<a href="https://github.com/nautechsystems/nautilus_trader/issues/5123" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235123-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader issue 5123"></a>
-<a href="https://github.com/nautechsystems/nautilus_trader/pull/5125" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235125-approved-238636?style=flat-square&logo=github" alt="Approved NautilusTrader PR 5125"></a>
+<a href="https://github.com/nautechsystems/nautilus_trader/issues/5123" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235123-fixed-238636?style=flat-square&logo=github" alt="NautilusTrader issue 5123 fixed by merged PR 5125"></a>
+<a href="https://github.com/nautechsystems/nautilus_trader/pull/5125" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235125-merged-8250df?style=flat-square&logo=github" alt="Merged NautilusTrader PR 5125"></a>
 </td>
 </tr>
 <tr>
