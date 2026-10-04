@@ -54,10 +54,10 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 <tr>
 <td colspan="2" width="100%" valign="top">
 <strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AroonOscillator</a></strong><br>
-<sub>Found and reproduced the accepted <code>MAX_PERIOD = 1024</code> window-capacity bug, then shipped the merged Rust/Python regression fix. Also opened the separate rolling-extrema performance RFC proposing amortized O(1) updates with monotonic deques while preserving newest-occurrence tie semantics.</sub><br><br>
+<sub>Found and reproduced the accepted <code>MAX_PERIOD = 1024</code> window-capacity bug, then shipped the merged Rust/Python regression fix. Also opened a rolling-extrema performance RFC proposing amortized O(1) updates with monotonic deques while preserving newest-occurrence tie semantics. Maintainers closed the RFC as not planned, preferring the current simple scan for typical Aroon periods unless profiling later shows it as a meaningful bottleneck.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/4995" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%234995-fixed-238636?style=flat-square&logo=github" alt="NautilusTrader issue 4995"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5037" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235037-merged-8250df?style=flat-square&logo=github" alt="Merged NautilusTrader PR 5037"></a>
-<a href="https://github.com/nautechsystems/nautilus_trader/issues/4996" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/RFC_%234996-open-1f6feb?style=flat-square&logo=github" alt="NautilusTrader RFC 4996"></a>
+<a href="https://github.com/nautechsystems/nautilus_trader/issues/4996" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/RFC_%234996-closed_not_planned-6e7681?style=flat-square&logo=github" alt="NautilusTrader RFC 4996 closed as not planned"></a>
 </td>
 </tr>
 <tr>
