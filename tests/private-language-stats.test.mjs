@@ -54,15 +54,15 @@ test('summarizeLanguages can include HTML-only repositories when requested', () 
 
 test('private activity generator includes all owned repos without an authorship filter', () => {
   const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
-  assert.match(source, /ownerAffiliations:\\s*\\[\\s*OWNER\\s*\\]/s);
-  assert.match(source, /languages\\s*\\(\\s*first:\\s*100[\\s\\S]*orderBy:\\s*\\{\\s*field:\\s*SIZE\\s*,\\s*direction:\\s*DESC\\s*\\}/s);
+  assert.match(source, /ownerAffiliations:\s*\[\s*OWNER\s*\]/s);
+  assert.match(source, /languages\s*\(\s*first:\s*100[\s\S]*orderBy:\s*\{\s*field:\s*SIZE\s*,\s*direction:\s*DESC\s*\}/s);
   assert.match(source, /const languageRepos = repositories;/);
-  assert.match(source, /const historyRepos = repositories\\.filter/);
-  assert.match(source, /summarizeLanguages\\(languageRepos, 10, \\{ excludedLanguages: new Set\\(\\) \\}\\)/);
-  assert.doesNotMatch(source, /authoredRepoIds|AuthoredBranchDiscovery|!repo\\.isFork/);
-  assert.doesNotMatch(source, /primaryLanguage\\s*\\{/);
+  assert.match(source, /const historyRepos = repositories\.filter/);
+  assert.match(source, /summarizeLanguages\(languageRepos, 10, \{ excludedLanguages: new Set\(\) \}\)/);
+  assert.doesNotMatch(source, /authoredRepoIds|AuthoredBranchDiscovery|!repo\.isFork/);
+  assert.doesNotMatch(source, /primaryLanguage\s*\{/);
   assert.match(source, /Top Languages/);
   assert.match(source, /owned repos/);
-  assert.match(source, /slice\\(0,\\s*5\\)/);
-  assert.match(source, /slice\\(5,\\s*10\\)/);
+  assert.match(source, /slice\(0,\s*5\)/);
+  assert.match(source, /slice\(5,\s*10\)/);
 });
