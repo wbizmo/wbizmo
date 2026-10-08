@@ -189,10 +189,10 @@ test('profile stats workflow refreshes private-aware cards from the dedicated pr
 
 test('all owned repositories contribute to language stats regardless of forks or authorship', () => {
   const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
-  assert.match(source, /const languageRepos = repositories;/);
+  assert.match(source, /const languageRepos = selectProfileLanguageRepositories\(repositories, login\);/);
   assert.match(source, /const historyRepos = repositories\.filter/);
-  assert.match(source, /summarizeLanguages\(languageRepos, 10, \{ excludedLanguages: new Set\(\) \}\)/);
-  assert.match(source, /\$\{languageRepos\.length\} owned repos/);
+  assert.match(source, /summarizeLanguages\(languageRepos, 10\)/);
+  assert.match(source, /\$\{repositories\.length\} owned · \$\{languageRepos\.length\} analyzed/);
   assert.doesNotMatch(source, /authoredRepoIds|AuthoredBranchDiscovery|!repo\.isFork/);
 });
 
