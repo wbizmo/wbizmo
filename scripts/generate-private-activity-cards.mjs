@@ -1,5 +1,5 @@
 import { mkdir, rename, writeFile } from 'node:fs/promises';
-import { assertAuthenticatedLogin, escapeXml, summarizeLanguages } from './profile-stats-core.mjs';
+import { assertAuthenticatedLogin, escapeXml, selectProfileLanguageRepositories, summarizeLanguages } from './profile-stats-core.mjs';
 
 const token = process.env.PROFILE_STATS_TOKEN;
 const login = process.env.PROFILE_LOGIN || 'wbizmo';
@@ -48,6 +48,7 @@ query PrivateAwareProfile($login: String!, $after: String) {
     ) {
       nodes {
         id
+        nameWithOwner
         isFork
         defaultBranchRef { name }
         languages(first: 100, orderBy: { field: SIZE, direction: DESC }) {
@@ -82,9 +83,9 @@ do {
 
 if (!userId || !createdAt) throw new Error('Required GitHub profile data was not returned');
 
-// All owned repositories contribute to the language summary, including private
-// repositories, forks, and those without authored commits or a default branch.
-const languageRepos = repositories;
+// Include every owned repository except the Express Cloud backups repository.
+// Backups must not skew the language share or the analyzed-repository count.
+const languageRepos = selectProfileLanguageRepositories(repositories, login);
 const historyRepos = repositories.filter((repo) => repo.defaultBranchRef);
 
 const contributionQuery = `
@@ -177,7 +178,7 @@ for (const committedDate of commitDates) {
   hourCounts[localHour] += 1;
 }
 
-const languages = summarizeLanguages(languageRepos, 10, { excludedLanguages: new Set() });
+const languages = summarizeLanguages(languageRepos, 10);
 
 const sharedStyles = `
 <style>
@@ -237,7 +238,7 @@ const languageRows = `${renderLanguageColumn(leftLanguages, 18, 198)}${renderLan
 const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Private-aware top languages for ${escapeXml(login)}">
 ${sharedStyles}
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
-<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${languageRepos.length} owned repos</text>
+<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${repositories.length} owned · ${languageRepos.length} analyzed</text>
 ${languageRows}
 </svg>`;
 
@@ -332,6 +333,7 @@ for (const [outputPath, svg] of outputs) {
 console.log(JSON.stringify({
   login,
   ownedRepositories: repositories.length,
+  languageRepositoriesAnalyzed: languageRepos.length,
   repositoriesWithDefaultBranch: historyRepos.length,
   defaultBranchCommitsAnalysed: commitDates.length,
   contributionsLast90Days: recentTotal,
