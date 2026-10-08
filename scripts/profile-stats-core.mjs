@@ -2,6 +2,17 @@ const THRESHOLDS = [1, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100];
 const LEVELS = ['S', 'A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C'];
 const fmt = new Intl.NumberFormat('en-US');
 
+// These are intentionally excluded from the profile language calculation.
+// Keeping the exclusions here prevents callers from accidentally including them.
+const ALWAYS_EXCLUDED_LANGUAGES = new Set(['html', 'sql', 'mysql']);
+
+export function selectProfileLanguageRepositories(repositories, login) {
+  const backupRepository = `${login}/express-cloud-backups`.toLowerCase();
+  return repositories.filter(
+    (repository) => repository.nameWithOwner?.toLowerCase() !== backupRepository,
+  );
+}
+
 function exponentialCdf(x) {
   return 1 - 2 ** -x;
 }
@@ -63,8 +74,12 @@ export function mergeLineChangeTotals(total, commits, seenCommitOids) {
 export function summarizeLanguages(
   repositories,
   limit = 10,
-  { excludedLanguages = new Set(['HTML']) } = {},
+  { excludedLanguages = new Set() } = {},
 ) {
+  const excluded = new Set([
+    ...ALWAYS_EXCLUDED_LANGUAGES,
+    ...[...excludedLanguages].map((language) => String(language).toLowerCase()),
+  ]);
   const totals = new Map();
   let contributingRepositories = 0;
 
@@ -72,7 +87,7 @@ export function summarizeLanguages(
     const edges = (repository.languages?.edges ?? []).filter((edge) => {
       const name = edge?.node?.name;
       const size = Number(edge?.size) || 0;
-      return Boolean(name) && size > 0 && !excludedLanguages.has(name);
+      return Boolean(name) && size > 0 && !excluded.has(name.toLowerCase());
     });
     const repositoryBytes = edges.reduce((sum, edge) => sum + Number(edge.size), 0);
     if (repositoryBytes <= 0) continue;
