@@ -11,7 +11,7 @@ I am especially interested in systems that must remain correct when <strong>mone
 Graduate study: <strong>Master of Science in Financial Engineering (MScFE), WorldQuant University</strong>.
 
 <p align="center">
-  <a href="https://wbizmo.zivoralabs.xyz/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.zivoralabs.xyz-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://wbizmo.xyz/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.xyz-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
   <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/LinkedIn-wbizmo-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
   <a href="mailto:wbizmo@gmail.com"><img src="https://img.shields.io/badge/Email-wbizmo%40gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
 </p>
@@ -53,7 +53,7 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 <table>
 <tr>
 <td colspan="2" width="100%" valign="top">
-<strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AroonOscillator</a></strong><br>
+<strong><a href="https://wbizmo.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AroonOscillator</a></strong><br>
 <sub>Found and reproduced the accepted <code>MAX_PERIOD = 1024</code> window-capacity bug, then shipped the merged Rust/Python regression fix. Also opened a rolling-extrema performance RFC proposing amortized O(1) updates with monotonic deques while preserving newest-occurrence tie semantics. Maintainers closed the RFC as not planned, preferring the current simple scan for typical Aroon periods unless profiling later shows it as a meaningful bottleneck.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/4995" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%234995-fixed-238636?style=flat-square&logo=github" alt="NautilusTrader issue 4995"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5037" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235037-merged-8250df?style=flat-square&logo=github" alt="Merged NautilusTrader PR 5037"></a>
@@ -62,7 +62,7 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 </tr>
 <tr>
 <td colspan="2" width="100%" valign="top">
-<strong><a href="https://wbizmo.zivoralabs.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AMAT</a></strong><br>
+<strong><a href="https://wbizmo.xyz/open-source/nautilus-trader" target="_blank" rel="noopener noreferrer">NautilusTrader · AMAT</a></strong><br>
 <sub>Investigated two <code>ArcherMovingAveragesTrends</code> behaviors. Maintainer reference review closed the slow-MA hypothesis (#5122/#5124) as inconsistent with the indicator definition, while the confirmed reversal-state bug in #5123 was fixed by merged Rust PR #5125.</sub><br><br>
 <a href="https://github.com/nautechsystems/nautilus_trader/issues/5122" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%235122-closed_not_a_bug-6e7681?style=flat-square&logo=github" alt="NautilusTrader issue 5122 closed after reference review"></a>
 <a href="https://github.com/nautechsystems/nautilus_trader/pull/5124" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%235124-closed_unmerged-6e7681?style=flat-square&logo=github" alt="NautilusTrader PR 5124 closed unmerged"></a>
@@ -155,7 +155,7 @@ I value <strong>correctness over cleverness</strong>, explicit boundaries, borin
 
 <p align="center"><strong>CONNECT</strong></p>
 <p align="center">
-  <a href="https://wbizmo.zivoralabs.xyz/" target="_blank" rel="noopener noreferrer">Portfolio</a> ·
+  <a href="https://wbizmo.xyz/" target="_blank" rel="noopener noreferrer">Portfolio</a> ·
   <a href="https://www.linkedin.com/in/wbizmo" target="_blank" rel="noopener noreferrer">LinkedIn</a> ·
   <a href="https://github.com/wbizmo" target="_blank" rel="noopener noreferrer">GitHub</a> ·
   <a href="https://codepen.io/wbizmo" target="_blank" rel="noopener noreferrer">CodePen</a> ·

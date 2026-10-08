@@ -164,12 +164,12 @@ test('profile README uses local private-aware cards but leaves the streak card u
   assert.doesNotMatch(readme, /src="\.\/assets\/github-streak\.svg"/);
 });
 
-test('private activity generator uses the authenticated profile token and includes private repositories', () => {
+test('private activity generator uses the authenticated profile token and includes all owned repositories', () => {
   const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
   assert.match(source, /process\.env\.PROFILE_STATS_TOKEN/);
   assert.match(source, /viewer\s*\{\s*login\s*\}/s);
   assert.match(source, /assertAuthenticatedLogin/);
-  assert.match(source, /ownerAffiliations:\s*\[\s*OWNER\s*,\s*COLLABORATOR\s*,\s*ORGANIZATION_MEMBER\s*\]/s);
+  assert.match(source, /ownerAffiliations:\s*\[\s*OWNER\s*\]/s);
   assert.doesNotMatch(source, /privacy:\s*PUBLIC/);
   assert.doesNotMatch(source, /process\.env\.GITHUB_TOKEN/);
   assert.match(source, /github-productive-time\.svg/);
@@ -185,4 +185,27 @@ test('profile stats workflow refreshes private-aware cards from the dedicated pr
   assert.doesNotMatch(source, /GITHUB_TOKEN:\s*\$\{\{ secrets\.PROFILE_STATS_TOKEN \}\}/);
   assert.match(source, /git add assets\/github-stats\.svg assets\/github-productive-time\.svg assets\/github-repos-language\.svg assets\/github-activity\.svg README\.md/);
   assert.doesNotMatch(source, /git add[^\n]*github-streak\.svg/);
+});
+
+test('all owned repositories contribute to language stats regardless of forks or authorship', () => {
+  const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-activity-cards.mjs'), 'utf8');
+  assert.match(source, /const languageRepos = repositories;/);
+  assert.match(source, /const historyRepos = repositories\.filter/);
+  assert.match(source, /summarizeLanguages\(languageRepos, 10, \{ excludedLanguages: new Set\(\) \}\)/);
+  assert.match(source, /\$\{languageRepos\.length\} owned repos/);
+  assert.doesNotMatch(source, /authoredRepoIds|AuthoredBranchDiscovery|!repo\.isFork/);
+});
+
+test('line-change coverage includes every owned repo plus external contribution repositories', () => {
+  const source = readFileSync(resolve(repoRoot, 'scripts/generate-private-profile-stats.mjs'), 'utf8');
+  assert.match(source, /nodes \{ nameWithOwner isPrivate stargazerCount \}/);
+  assert.match(source, /ownedRepositories\.add\(repo\.nameWithOwner\)/);
+  assert.match(source, /new Set\(\[\.\.\.ownedRepositories, \.\.\.contributedRepositories\]\)/);
+  assert.doesNotMatch(source, /privacy: PUBLIC/);
+});
+
+test('profile README uses wbizmo.xyz for all portfolio links', () => {
+  const readme = readFileSync(resolve(repoRoot, 'README.md'), 'utf8');
+  assert.match(readme, /href="https:\/\/wbizmo\.xyz\//);
+  assert.doesNotMatch(readme, /wbizmo\.zivoralabs\.xyz/);
 });

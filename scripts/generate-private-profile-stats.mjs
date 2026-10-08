@@ -60,10 +60,9 @@ query ProfileStats($login: String!, $after: String) {
       first: 100
       after: $after
       ownerAffiliations: OWNER
-      privacy: PUBLIC
       orderBy: { field: UPDATED_AT, direction: DESC }
     ) {
-      nodes { stargazerCount }
+      nodes { nameWithOwner isPrivate stargazerCount }
       pageInfo { hasNextPage endCursor }
     }
   }
@@ -74,6 +73,7 @@ let createdAt = null;
 let followers = null;
 let contributedTo = null;
 let stars = 0;
+const ownedRepositories = new Set();
 
 do {
   const data = await gql(profileQuery, { login, after: profileAfter });
@@ -83,7 +83,11 @@ do {
   createdAt ??= user.createdAt;
   followers ??= user.followers.totalCount;
   contributedTo ??= user.repositoriesContributedTo.totalCount;
-  stars += user.repositories.nodes.reduce((sum, repo) => sum + repo.stargazerCount, 0);
+  for (const repo of user.repositories.nodes) {
+    ownedRepositories.add(repo.nameWithOwner);
+    // Keep the public star metric stable while discovering private repositories.
+    if (!repo.isPrivate) stars += repo.stargazerCount;
+  }
   profileAfter = user.repositories.pageInfo.hasNextPage
     ? user.repositories.pageInfo.endCursor
     : null;
@@ -158,7 +162,8 @@ query RepositoryLineChanges($owner: String!, $name: String!, $authorId: ID!, $af
 let linesChanged = 0;
 const seenCommitOids = new Set();
 
-for (const nameWithOwner of contributedRepositories) {
+// Cover every owned default branch as well as external contributed repositories.
+for (const nameWithOwner of new Set([...ownedRepositories, ...contributedRepositories])) {
   const [owner, name] = nameWithOwner.split('/');
   if (!owner || !name) continue;
 
@@ -211,6 +216,7 @@ console.log(JSON.stringify({
   reviews: totals.reviews,
   followers,
   contributedTo,
+  ownedRepositories: ownedRepositories.size,
   linesChanged,
   rank: rank.level,
 }, null, 2));

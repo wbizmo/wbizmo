@@ -43,7 +43,7 @@ query PrivateAwareProfile($login: String!, $after: String) {
     repositories(
       first: 100
       after: $after
-      ownerAffiliations: [OWNER, COLLABORATOR, ORGANIZATION_MEMBER]
+      ownerAffiliations: [OWNER]
       orderBy: { field: UPDATED_AT, direction: DESC }
     ) {
       nodes {
@@ -82,7 +82,10 @@ do {
 
 if (!userId || !createdAt) throw new Error('Required GitHub profile data was not returned');
 
-const accessibleRepos = repositories.filter((repo) => !repo.isFork && repo.defaultBranchRef);
+// All owned repositories contribute to the language summary, including private
+// repositories, forks, and those without authored commits or a default branch.
+const languageRepos = repositories;
+const historyRepos = repositories.filter((repo) => repo.defaultBranchRef);
 
 const contributionQuery = `
 query PrivateAwareContributions($login: String!, $from: DateTime!, $to: DateTime!) {
@@ -151,8 +154,7 @@ query PrivateAwareRepoHistory($repoId: ID!, $authorId: ID!, $after: String) {
 }`;
 
 const commitDates = [];
-const authoredRepoIds = new Set();
-for (const repo of accessibleRepos) {
+for (const repo of historyRepos) {
   let historyAfter = null;
   do {
     const data = await gql(historyQuery, {
@@ -163,58 +165,10 @@ for (const repo of accessibleRepos) {
     const history = data.node?.defaultBranchRef?.target?.history;
     if (!history) break;
 
-    if (history.nodes.length > 0) authoredRepoIds.add(repo.id);
     commitDates.push(...history.nodes.map((node) => node.committedDate));
     historyAfter = history.pageInfo.hasNextPage ? history.pageInfo.endCursor : null;
   } while (historyAfter);
 }
-
-const authoredBranchQuery = `
-query AuthoredBranchDiscovery($repoId: ID!, $authorId: ID!, $refsAfter: String) {
-  node(id: $repoId) {
-    ... on Repository {
-      refs(refPrefix: "refs/heads/", first: 25, after: $refsAfter) {
-        nodes {
-          target {
-            ... on Commit {
-              history(first: 1, author: { id: $authorId }) {
-                nodes { oid }
-              }
-            }
-          }
-        }
-        pageInfo { hasNextPage endCursor }
-      }
-    }
-  }
-}`;
-
-for (const repo of accessibleRepos) {
-  if (authoredRepoIds.has(repo.id)) continue;
-
-  let refsAfter = null;
-  do {
-    const data = await gql(authoredBranchQuery, {
-      repoId: repo.id,
-      authorId: userId,
-      refsAfter,
-    });
-    const refs = data.node?.refs;
-    if (!refs) break;
-
-    const hasAuthoredBranch = refs.nodes.some(
-      (ref) => (ref.target?.history?.nodes?.length ?? 0) > 0,
-    );
-    if (hasAuthoredBranch) {
-      authoredRepoIds.add(repo.id);
-      break;
-    }
-
-    refsAfter = refs.pageInfo.hasNextPage ? refs.pageInfo.endCursor : null;
-  } while (refsAfter);
-}
-
-const languageRepos = accessibleRepos.filter((repo) => authoredRepoIds.has(repo.id));
 
 const hourCounts = Array.from({ length: 24 }, () => 0);
 for (const committedDate of commitDates) {
@@ -223,7 +177,7 @@ for (const committedDate of commitDates) {
   hourCounts[localHour] += 1;
 }
 
-const languages = summarizeLanguages(languageRepos, 10);
+const languages = summarizeLanguages(languageRepos, 10, { excludedLanguages: new Set() });
 
 const sharedStyles = `
 <style>
@@ -263,7 +217,7 @@ const pTicks = [0, 6, 12, 18, 23].map((hour) => {
 const productiveSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Private-aware commit time distribution for ${escapeXml(login)}">
 ${sharedStyles}
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
-<text class="title" x="18" y="30">Commits (UTC +1.00)</text><text class="sub" x="410" y="29" text-anchor="end">all accessible default branches</text>
+<text class="title" x="18" y="30">Commits (UTC +1.00)</text><text class="sub" x="410" y="29" text-anchor="end">owned default branches</text>
 <line class="grid" x1="${pLeft}" y1="${pTop + pChartH}" x2="${pLeft + pChartW}" y2="${pTop + pChartH}"/>
 <line class="grid" x1="${pLeft}" y1="${pTop}" x2="${pLeft + pChartW}" y2="${pTop}"/>
 <text class="small" x="36" y="${pTop + 4}" text-anchor="end">${maxHour}</text>
@@ -283,7 +237,7 @@ const languageRows = `${renderLanguageColumn(leftLanguages, 18, 198)}${renderLan
 const languageSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="430" height="180" viewBox="0 0 430 180" role="img" aria-label="Private-aware top languages for ${escapeXml(login)}">
 ${sharedStyles}
 <rect class="bg" width="430" height="180" rx="8"/><rect class="border" x=".5" y=".5" width="429" height="179" rx="8"/>
-<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${languageRepos.length} repos · all branches checked</text>
+<text class="title" x="18" y="30">Top Languages</text><text class="sub" x="410" y="29" text-anchor="end">${languageRepos.length} owned repos</text>
 ${languageRows}
 </svg>`;
 
@@ -377,8 +331,8 @@ for (const [outputPath, svg] of outputs) {
 
 console.log(JSON.stringify({
   login,
-  accessibleRepositories: accessibleRepos.length,
-  authoredRepositories: languageRepos.length,
+  ownedRepositories: repositories.length,
+  repositoriesWithDefaultBranch: historyRepos.length,
   defaultBranchCommitsAnalysed: commitDates.length,
   contributionsLast90Days: recentTotal,
   cards: outputs.map(([path]) => path),
