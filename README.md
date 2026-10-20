@@ -111,12 +111,12 @@ Graduate study: <strong>Master of Science in Financial Engineering (MScFE), Worl
 <td colspan="2"><strong>Frontend</strong></td>
 </tr>
 <tr>
-<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 1"></a></td>
-<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%233-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 3"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/1" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%231-closed-238636?style=flat-square&logo=github" alt="Signrr frontend issue 1"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/3" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%233-merged-8250df?style=flat-square&logo=github" alt="Signrr frontend PR 3"></a></td>
 </tr>
 <tr>
-<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend issue 2"></a></td>
-<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-open-1f6feb?style=flat-square&logo=github" alt="Signrr frontend PR 4"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/issues/2" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Issue_%232-closed-238636?style=flat-square&logo=github" alt="Signrr frontend issue 2"></a></td>
+<td width="50%"><a href="https://github.com/Okeha/sign-language-detector-frontend/pull/4" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/PR_%234-merged-8250df?style=flat-square&logo=github" alt="Signrr frontend PR 4"></a></td>
 </tr>
 </table>
 
