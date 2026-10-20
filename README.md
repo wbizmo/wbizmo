@@ -8,7 +8,8 @@ My work spans the full path from client, device, or protocol to production infra
 
 I am especially interested in systems that must remain correct when <strong>money, data, devices, networks, external providers, concurrency, and failures</strong> are involved.
 
-Graduate study: <strong>Master of Science in Financial Engineering (MScFE), WorldQuant University</strong>.
+Graduate study: <strong>Master of Science in Financial Engineering (MScFE), WorldQuant University</strong>.<br>
+MBA: <strong>Master of Business Administration (MBA), University of East London</strong>.
 
 <p align="center">
   <a href="https://wbizmo.xyz/" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Portfolio-wbizmo.xyz-111827?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" /></a>
